@@ -12,7 +12,7 @@ The original agent pulls political contracts from Kalshi, searches for relevant 
 4. **Lacking context + hallucination** — models fabricate "historical data" when they lack real evidence
 5. **Cost** — running frontier models on hundreds of contracts is expensive
 
-This plan describes 10 improvements: 8 fixes for the problems above, plus 2 new features. Each was selected for high impact relative to implementation effort. Everything over-engineered or speculative was cut.
+This plan describes 9 improvements: 7 fixes for the problems above, plus 2 new features. Each was selected for high impact relative to implementation effort. Everything over-engineered or speculative was cut.
 
 ---
 
@@ -323,38 +323,11 @@ Only applies to contracts Kalshi explicitly groups together. We don't try to aut
 
 ---
 
-## Improvement 7: News Summarization Before Expensive Models
-
-**Problem solved**: #5 (cost management)
-
-**Priority**: 7th — reduces cost and noise before you turn on heavy Sonnet/Opus usage at scale.
-
-When promoting a contract from Tier 1 (Haiku) to Tier 2 (Sonnet) or Tier 3 (Opus), compress the raw news into a focused briefing before passing it to the expensive model.
-
-### Implementation
-1. Fetch relevant news articles from GDELT (existing pipeline)
-2. Pass articles to Haiku with the prompt:
-   ```
-   Summarize these {n} articles into a ~500-word briefing focused ONLY on
-   facts relevant to this prediction market contract: "{contract_title}"
-
-   Include: key facts, dates, named actors, quantitative data.
-   Exclude: commentary, speculation, duplicate information.
-   ```
-3. Pass the briefing (not raw articles) to Sonnet/Opus for analysis
-
-### Benefits
-- Reduces input tokens to expensive models (10 articles → 500 words)
-- Reduces noise — the expensive model gets signal, not verbose journalism
-- Haiku summarization costs ~$0.001 per contract — negligible
-
----
-
-## Improvement 8: Web Search for Top Contracts
+## Improvement 7: Web Search for Top Contracts
 
 **Problems solved**: #3 (missing nuance), #4 (hallucination / lacking context)
 
-**Priority**: 8th — the biggest quality improvement but requires integration work. Build after the core pipeline is stable.
+**Priority**: 7th — the biggest quality improvement but requires integration work. Build after the core pipeline is stable.
 
 The root cause of most analysis errors in the original agent was the model lacking current, relevant information and filling the gap with confident fabrication. The fix is giving top-tier contracts access to web search.
 
@@ -371,11 +344,11 @@ Web search adds cost per contract. Reserve for Tier 2+ only (~50 contracts per r
 
 ---
 
-## Improvement 9: Trigger-Based Re-Analysis
+## Improvement 8: Trigger-Based Re-Analysis
 
 **Problem solved**: #5 (cost management)
 
-**Priority**: 9th — cost optimization for sustained daily operation. Depends on prediction logging (Improvement 3) to know what was last analyzed.
+**Priority**: 8th — cost optimization for sustained daily operation. Depends on prediction logging (Improvement 3) to know what was last analyzed.
 
 Instead of re-analyzing every contract on a fixed daily schedule, only re-analyze when something has changed.
 
@@ -397,17 +370,17 @@ This is cheaper than a full re-analysis and produces more focused updates.
 
 ---
 
-## Improvement 10: Resolution Countdown
+## Improvement 9: Resolution Countdown
 
 **New feature** — increases monitoring intensity as contracts approach resolution.
 
-**Priority**: 10th — extends trigger-based re-analysis (Improvement 9). Only matters once the system is operational with active recommendations.
+**Priority**: 9th — extends trigger-based re-analysis (Improvement 8). Only matters once the system is operational with active recommendations.
 
 Near-resolution contracts are where the sharpest edges exist. A contract resolving Friday that the agent last checked Monday is a missed opportunity. The final 48-72 hours before resolution are when information asymmetry is highest and the market is most likely to be stale.
 
 ### Implementation
 
-Extend the trigger-based re-analysis (Improvement 9) with a time-to-resolution multiplier:
+Extend the trigger-based re-analysis (Improvement 8) with a time-to-resolution multiplier:
 
 ```python
 def get_reanalysis_priority(contract, last_analysis_date) -> float:
@@ -461,6 +434,7 @@ def get_reanalysis_priority(contract, last_analysis_date) -> float:
 | Automated trade execution | Premature. The analysis layer is unproven. Keep human-in-the-loop. |
 | Cost tracking dashboard | Use a spreadsheet until running at scale. |
 | Portfolio correlation warnings | Nice to have, not material. Add later if needed. |
+| News summarization before expensive models | Saves <$1/day. May lose important details that expensive models would catch. Not worth the complexity. |
 | Price movement detector | Human-in-the-loop delay kills the speed advantage. Only suits fully automated systems. |
 | Cross-contract conditional reasoning | Model struggles with basic probability; conditional dependencies are harder, unreliable output. |
 
@@ -476,16 +450,15 @@ def get_reanalysis_priority(contract, last_analysis_date) -> float:
 | **4** | Contract ID verification | ~10 LOC | Wrong-contract mistakes | None |
 | **5** | Market inconsistency scanner | ~40 LOC | (New) Risk-free arbitrage | None |
 | **6** | Consistency enforcement | ~20 LOC | Probability incoherence across related contracts | Pipeline running |
-| **7** | News summarization | ~30 LOC | Cost + noise reduction for Tier 2+ | GDELT pipeline |
-| **8** | Web search for top contracts | Medium | Context gap, hallucination | Integration work |
-| **9** | Trigger-based re-analysis | Medium | Cost optimization for daily operation | Prediction logging (3) |
-| **10** | Resolution countdown | ~30 LOC | (New) Near-resolution edge capture | Trigger re-analysis (9) |
+| **7** | Web search for top contracts | Medium | Context gap, hallucination | Integration work |
+| **8** | Trigger-based re-analysis | Medium | Cost optimization for daily operation | Prediction logging (3) |
+| **9** | Resolution countdown | ~30 LOC | (New) Near-resolution edge capture | Trigger re-analysis (8) |
 
 **Session 1** (items 1–5): Core fixes + arbitrage scanner. No dependencies between these — all can be built independently.
 
-**Session 2** (items 6–8): Consistency enforcement, news compression, web search. Requires the core pipeline from Session 1 to be running.
+**Session 2** (items 6–7): Consistency enforcement + web search. Requires the core pipeline from Session 1 to be running.
 
-**Session 3** (items 9–10): Operational optimizations. Only matter once the system is running daily with active recommendations.
+**Session 3** (items 8–9): Operational optimizations. Only matter once the system is running daily with active recommendations.
 
 ---
 
@@ -501,11 +474,6 @@ Kalshi API ──→ Contract Fetcher ──→ All ~675 contracts
                     │                 Top 50 by edge
                     │                       │
                     │                       ▼
-                    │           ┌── News Summarizer (Haiku) ──┐
-                    │           │   Compress GDELT articles    │
-                    │           └──────────┬──────────────────┘
-                    │                      │
-                    │                      ▼
                     │                Tier 2: Sonnet
                     │                (+ web search for context)
                     │                      │
@@ -554,12 +522,12 @@ Kalshi API ──→ Contract Fetcher ──→ All ~675 contracts
 | #1 Temporal confusion | Prompt 2A + Contract ID verification (4) + regex check | Full |
 | #2 Overconfidence | Shrinkage (1) + fee adjustment (1) + market anchoring (2B) + longshot bias (2E) | Full |
 | #2b Probability incoherence | Consistency enforcement (6) | Full |
-| #3 Missing political nuance | Web search (8) + shrinkage (1) + anchoring (2B) | Adequate |
-| #4 Hallucination / no context | Web search (8) + epistemic humility (2C) | Full |
-| #5 Cost | Trigger re-analysis (9) + news summarization (7) + resolution countdown (10) | Adequate |
+| #3 Missing political nuance | Web search (7) + shrinkage (1) + anchoring (2B) | Adequate |
+| #4 Hallucination / no context | Web search (7) + epistemic humility (2C) | Full |
+| #5 Cost | Trigger re-analysis (8) + resolution countdown (9) | Adequate |
 | (New) Unprofitable recommendations | Fee-adjusted edge (1) | New fix |
 | (New) Risk-free edge | Market inconsistency scanner (5) | New capability |
-| (New) Near-resolution edge | Resolution countdown (10) | New capability |
+| (New) Near-resolution edge | Resolution countdown (9) | New capability |
 
 ---
 
