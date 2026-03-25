@@ -458,14 +458,45 @@ function renderLLMPredictions(llmData) {
   for (const p of sorted) {
     const divPct = Math.abs(p.divergence || 0) * 100;
     const divColor = divPct > 10 ? 'var(--accent-red)' : divPct > 5 ? 'var(--accent-orange)' : 'var(--accent-green)';
-    const tierColor = p.tier === 'sonnet' ? 'var(--accent-purple)' : 'var(--accent-blue)';
+    const tierColor = p.tier === 'sonnet' ? 'var(--accent-purple)' : p.tier === 'opus' ? 'var(--accent-orange)' : 'var(--accent-blue)';
+    const isMulti = p.type === 'multi-outcome';
+
+    // For multi-outcome: find the top predicted outcome
+    let marketStr = '—', predStr = '—', shrunkStr = '—';
+    if (isMulti && p.outcome_questions && p.shrunk_outcome_predictions) {
+      // Find index of highest shrunk prediction
+      let topIdx = 0;
+      let topVal = -1;
+      for (let i = 0; i < p.shrunk_outcome_predictions.length; i++) {
+        if (p.shrunk_outcome_predictions[i] > topVal) {
+          topVal = p.shrunk_outcome_predictions[i];
+          topIdx = i;
+        }
+      }
+      const topQ = (p.outcome_questions[topIdx] || '').replace(p.question, '').trim();
+      const topLabel = topQ.length > 30 ? topQ.substring(0, 27) + '...' : topQ;
+      const mktVal = p.outcome_market_prices ? p.outcome_market_prices[topIdx] : null;
+      const rawVal = p.outcome_predictions ? p.outcome_predictions[topIdx] : null;
+
+      marketStr = mktVal != null ? `${(mktVal * 100).toFixed(0)}%` : '—';
+      predStr = rawVal != null ? `${(rawVal * 100).toFixed(0)}%` : '—';
+      shrunkStr = `${(topVal * 100).toFixed(0)}%`;
+      // Append the top outcome name as a subtitle
+      marketStr = `<span style="font-size:0.7rem;color:var(--text-secondary);display:block">${topLabel || 'Top outcome'}</span>${marketStr}`;
+    } else {
+      marketStr = p.market_price != null && typeof p.market_price === 'number' ? (p.market_price * 100).toFixed(0) + '%' : '—';
+      predStr = p.prediction != null && typeof p.prediction === 'number' ? (p.prediction * 100).toFixed(0) + '%' : '—';
+      shrunkStr = p.shrunk_prediction != null && typeof p.shrunk_prediction === 'number' ? (p.shrunk_prediction * 100).toFixed(0) + '%' : '—';
+    }
+
+    const typeLabel = isMulti ? '<span style="font-size:0.6rem;color:var(--text-muted);margin-left:4px">[multi]</span>' : '';
 
     html += `<tr>
-      <td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.question}</td>
+      <td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.question}${typeLabel}</td>
       <td><span style="color:${tierColor};font-weight:600;text-transform:capitalize">${p.tier || '—'}</span></td>
-      <td>${p.market_price != null ? (typeof p.market_price === 'number' ? (p.market_price * 100).toFixed(0) + '%' : '—') : '—'}</td>
-      <td>${p.prediction != null ? (typeof p.prediction === 'number' ? (p.prediction * 100).toFixed(0) + '%' : '—') : '—'}</td>
-      <td>${p.shrunk_prediction != null ? (typeof p.shrunk_prediction === 'number' ? (p.shrunk_prediction * 100).toFixed(0) + '%' : '—') : '—'}</td>
+      <td>${marketStr}</td>
+      <td>${predStr}</td>
+      <td>${shrunkStr}</td>
       <td>
         <div style="display:flex;align-items:center;gap:0.5rem">
           <div class="divergence-bar">
