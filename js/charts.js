@@ -221,6 +221,134 @@ function renderDivergenceChart(llmData) {
   });
 }
 
+// LLM Calibration plot (predicted probability vs actual frequency)
+function renderCalibrationChart(rollingScores) {
+  const canvas = document.getElementById('calibration-canvas');
+  if (!canvas) return;
+
+  if (!rollingScores || rollingScores.length === 0) {
+    canvas.parentElement.innerHTML = '<div class="loading" style="height:400px;display:flex;align-items:center;justify-content:center">Need more scored predictions for calibration. Scores appear after contracts resolve.</div>';
+    return;
+  }
+
+  // Bucket predictions into 10 bins: 0-10%, 10-20%, ..., 90-100%
+  const bins = Array.from({ length: 10 }, () => ({ predictions: [], outcomes: [] }));
+
+  for (const r of rollingScores) {
+    if (typeof r.prediction !== 'number' || typeof r.outcome !== 'number') continue;
+    const binIdx = Math.min(Math.floor(r.prediction * 10), 9);
+    bins[binIdx].predictions.push(r.prediction);
+    bins[binIdx].outcomes.push(r.outcome);
+  }
+
+  const labels = bins.map((_, i) => `${i * 10}-${(i + 1) * 10}%`);
+  const avgPredicted = bins.map(b => b.predictions.length > 0
+    ? b.predictions.reduce((s, v) => s + v, 0) / b.predictions.length * 100
+    : null);
+  const avgActual = bins.map(b => b.outcomes.length > 0
+    ? b.outcomes.reduce((s, v) => s + v, 0) / b.outcomes.length * 100
+    : null);
+  const counts = bins.map(b => b.predictions.length);
+
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          type: 'bar',
+          label: 'Count',
+          data: counts,
+          backgroundColor: 'rgba(139,148,158,0.2)',
+          borderColor: '#8b949e',
+          borderWidth: 1,
+          yAxisID: 'yCount',
+          order: 2,
+        },
+        {
+          type: 'line',
+          label: 'Avg Predicted',
+          data: avgPredicted,
+          borderColor: '#bc8cff',
+          backgroundColor: 'rgba(188,140,255,0.15)',
+          borderWidth: 2,
+          pointRadius: 4,
+          spanGaps: true,
+          yAxisID: 'yPct',
+          order: 1,
+        },
+        {
+          type: 'line',
+          label: 'Avg Actual Outcome',
+          data: avgActual,
+          borderColor: '#3fb950',
+          backgroundColor: 'rgba(63,185,80,0.15)',
+          borderWidth: 2,
+          pointRadius: 4,
+          spanGaps: true,
+          yAxisID: 'yPct',
+          order: 0,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { grid: { color: '#21262d' } },
+        yPct: {
+          type: 'linear',
+          position: 'left',
+          title: { display: true, text: 'Probability (%)', color: '#8b949e' },
+          grid: { color: '#21262d' },
+          min: 0,
+          max: 100,
+        },
+        yCount: {
+          type: 'linear',
+          position: 'right',
+          title: { display: true, text: 'Count', color: '#8b949e' },
+          grid: { display: false },
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        legend: {
+          labels: { usePointStyle: true, pointStyle: 'circle', padding: 16 },
+        },
+        tooltip: {
+          backgroundColor: '#1c2129',
+          borderColor: '#30363d',
+          borderWidth: 1,
+        },
+        annotation: {
+          annotations: {
+            perfectLine: {
+              type: 'line',
+              xMin: -0.5,
+              xMax: 9.5,
+              yMin: 5,
+              yMax: 95,
+              yScaleID: 'yPct',
+              borderColor: 'rgba(139,148,158,0.3)',
+              borderWidth: 1,
+              borderDash: [6, 4],
+              label: {
+                display: true,
+                content: 'Perfect calibration',
+                position: 'end',
+                backgroundColor: 'transparent',
+                color: '#6e7681',
+                font: { size: 10 },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
 // Inline SVG sparkline for agent cards
 function renderSparkline(container, values, color) {
   if (!values || values.length < 2) {

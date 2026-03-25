@@ -72,3 +72,24 @@ function agentLabel(name) {
 function agentColor(name) {
   return AGENTS[name]?.color || '#8b949e';
 }
+
+// Category colors
+const CATEGORY_COLORS = {
+  geopolitics: '#f85149',
+  economics: '#58a6ff',
+  politics: '#d29922',
+  sports: '#3fb950',
+  tech: '#bc8cff',
+  entertainment: '#f778ba',
+  other: '#8b949e',
+};
+
+// Build a slug -> category lookup from contracts data
+function buildCategoryLookup(contractsData) {
+  const lookup = {};
+  if (!contractsData || !contractsData.contracts) return lookup;
+  for (const c of contractsData.contracts) {
+    lookup[c.slug] = c.category;
+  }
+  return lookup;
+}

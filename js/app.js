@@ -57,6 +57,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderLLMOverview(data.llmPredictions, data.rollingScores);
     renderLLMPredictions(data.llmPredictions);
     renderDivergenceChart(data.llmPredictions);
+    renderLLMvsMarket(data.rollingScores, data.contracts);
+    renderCategoryPerformance(data.rollingScores, data.llmPredictions, data.contracts);
+    renderCalibrationChart(data.rollingScores);
+    renderPnLSimulator(data.rollingScores);
     renderRollingScores(data.rollingScores);
     window._llmChartsRendered = true;
 

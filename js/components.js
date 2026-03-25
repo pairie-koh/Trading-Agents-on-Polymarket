@@ -455,3 +455,203 @@ function renderLLMPredictions(llmData) {
   html += '</tbody></table>';
   container.innerHTML = html;
 }
+
+// === LLM vs Market ===
+function renderLLMvsMarket(rollingScores, contractsData) {
+  const container = document.querySelector('#llm-vs-market .section-content');
+  if (!container) return;
+
+  if (!rollingScores || rollingScores.length === 0) {
+    container.innerHTML = '<div class="loading">Need scored predictions to compare LLM vs Market. Scores appear after contracts resolve.</div>';
+    return;
+  }
+
+  let llmWins = 0, marketWins = 0, ties = 0;
+  let llmBrier = 0, marketBrier = 0;
+  let count = 0;
+
+  for (const r of rollingScores) {
+    if (r.squared_error == null || r.outcome == null || r.prediction == null || r.market_price == null) continue;
+    if (typeof r.prediction !== 'number' || typeof r.market_price !== 'number' || typeof r.outcome !== 'number') continue;
+
+    const llmErr = Math.pow(r.prediction - r.outcome, 2);
+    const mktErr = Math.pow(r.market_price - r.outcome, 2);
+
+    llmBrier += llmErr;
+    marketBrier += mktErr;
+    count++;
+
+    if (llmErr < mktErr) llmWins++;
+    else if (mktErr < llmErr) marketWins++;
+    else ties++;
+  }
+
+  const llmAvg = count > 0 ? llmBrier / count : 0;
+  const mktAvg = count > 0 ? marketBrier / count : 0;
+  const llmBetter = llmAvg < mktAvg;
+
+  let html = `
+    <div class="llm-stats-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--accent-green)">${llmWins}</div>
+        <div class="stat-label">LLM Wins</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--accent-red)">${marketWins}</div>
+        <div class="stat-label">Market Wins</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--text-secondary)">${ties}</div>
+        <div class="stat-label">Ties</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value">${count}</div>
+        <div class="stat-label">Scored</div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
+        <div style="font-size:0.75rem;color:var(--text-secondary)">LLM Avg Brier Score</div>
+        <div style="font-size:1.4rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${llmAvg.toFixed(4)}</div>
+      </div>
+      <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
+        <div style="font-size:0.75rem;color:var(--text-secondary)">Market Avg Brier Score</div>
+        <div style="font-size:1.4rem;font-weight:700;color:${!llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${mktAvg.toFixed(4)}</div>
+      </div>
+      <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
+        <div style="font-size:0.75rem;color:var(--text-secondary)">Verdict</div>
+        <div style="font-size:1.2rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-orange)'}">
+          ${count === 0 ? 'Awaiting data' : llmBetter ? 'LLM beats market' : 'Market leads'}
+        </div>
+      </div>
+    </div>`;
+
+  container.innerHTML = html;
+}
+
+// === Per-Category Performance ===
+function renderCategoryPerformance(rollingScores, llmPredictions, contractsData) {
+  const container = document.querySelector('#llm-categories .section-content');
+  if (!container) return;
+
+  const catLookup = buildCategoryLookup(contractsData);
+
+  const predsByCategory = {};
+  if (llmPredictions && llmPredictions.predictions) {
+    for (const p of llmPredictions.predictions) {
+      const cat = catLookup[p.key] || 'other';
+      if (!predsByCategory[cat]) predsByCategory[cat] = { count: 0, totalDiv: 0, sonnet: 0, haiku: 0 };
+      predsByCategory[cat].count++;
+      predsByCategory[cat].totalDiv += Math.abs(p.divergence || 0);
+      if (p.tier === 'sonnet') predsByCategory[cat].sonnet++;
+      else predsByCategory[cat].haiku++;
+    }
+  }
+
+  const scoresByCategory = {};
+  if (rollingScores) {
+    for (const r of rollingScores) {
+      const cat = catLookup[r.contract_key] || 'other';
+      if (!scoresByCategory[cat]) scoresByCategory[cat] = { scored: 0, correct: 0, totalSE: 0 };
+      scoresByCategory[cat].scored++;
+      if (r.correct === true || r.correct === 'True') scoresByCategory[cat].correct++;
+      scoresByCategory[cat].totalSE += (r.squared_error || 0);
+    }
+  }
+
+  const allCats = new Set([...Object.keys(predsByCategory), ...Object.keys(scoresByCategory)]);
+
+  if (allCats.size === 0) {
+    container.innerHTML = '<div class="loading">No category data available yet.</div>';
+    return;
+  }
+
+  let html = '<table><thead><tr><th>Category</th><th>Contracts</th><th>Avg Divergence</th><th>Sonnet / Haiku</th><th>Scored</th><th>Accuracy</th></tr></thead><tbody>';
+
+  for (const cat of allCats) {
+    const pred = predsByCategory[cat] || { count: 0, totalDiv: 0, sonnet: 0, haiku: 0 };
+    const score = scoresByCategory[cat] || { scored: 0, correct: 0, totalSE: 0 };
+    const avgDiv = pred.count > 0 ? (pred.totalDiv / pred.count * 100).toFixed(1) + '%' : '—';
+    const acc = score.scored > 0 ? fmtPct(score.correct / score.scored) : '—';
+    const catColor = CATEGORY_COLORS[cat] || CATEGORY_COLORS.other;
+
+    html += `<tr>
+      <td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${catColor};margin-right:6px;vertical-align:middle"></span>${cat}</td>
+      <td>${pred.count}</td>
+      <td>${avgDiv}</td>
+      <td>${pred.sonnet} / ${pred.haiku}</td>
+      <td>${score.scored}</td>
+      <td>${acc}</td>
+    </tr>`;
+  }
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+// === P&L Simulator ===
+function renderPnLSimulator(rollingScores) {
+  const container = document.querySelector('#llm-pnl .section-content');
+  if (!container) return;
+
+  if (!rollingScores || rollingScores.length === 0) {
+    container.innerHTML = '<div class="loading">Need scored predictions to simulate P&L. Scores appear after contracts resolve.</div>';
+    return;
+  }
+
+  const thresholds = [0.02, 0.05, 0.10, 0.15];
+  const results = {};
+
+  for (const threshold of thresholds) {
+    let totalPnL = 0, bets = 0, wins = 0;
+
+    for (const r of rollingScores) {
+      if (typeof r.prediction !== 'number' || typeof r.market_price !== 'number' || typeof r.outcome !== 'number') continue;
+
+      const div = r.prediction - r.market_price;
+      if (Math.abs(div) < threshold) continue;
+
+      bets++;
+      const betYes = div > 0;
+      const price = betYes ? r.market_price : (1 - r.market_price);
+      const won = betYes ? (r.outcome >= 0.5) : (r.outcome < 0.5);
+
+      if (won) {
+        totalPnL += (1 / price) - 1;
+        wins++;
+      } else {
+        totalPnL -= 1;
+      }
+    }
+
+    results[threshold] = { totalPnL, bets, wins };
+  }
+
+  let html = `
+    <p style="color:var(--text-secondary);font-size:0.8rem;margin-bottom:1rem">
+      Simulates $1 bets when LLM diverges from market by at least the threshold.
+    </p>
+    <table>
+      <thead><tr>
+        <th>Threshold</th><th>Bets Placed</th><th>Wins</th><th>Win Rate</th><th>Total P&L</th><th>ROI</th>
+      </tr></thead><tbody>`;
+
+  for (const t of thresholds) {
+    const r = results[t];
+    const winRate = r.bets > 0 ? fmtPct(r.wins / r.bets) : '—';
+    const roi = r.bets > 0 ? fmtPct(r.totalPnL / r.bets) : '—';
+    const pnlColor = r.totalPnL >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+
+    html += `<tr>
+      <td>${(t * 100).toFixed(0)}%</td>
+      <td>${r.bets}</td>
+      <td>${r.wins}</td>
+      <td>${winRate}</td>
+      <td style="color:${pnlColor};font-weight:600">$${r.totalPnL.toFixed(2)}</td>
+      <td style="color:${pnlColor}">${roi}</td>
+    </tr>`;
+  }
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
