@@ -21,59 +21,99 @@
     </div>
   </header>
 
-  <main class="dashboard-grid">
-    <!-- Leaderboard -->
-    <section id="leaderboard" class="dashboard-section">
-      <h2>Leaderboard</h2>
-      <div class="section-content"></div>
-    </section>
+  <!-- Tab Navigation -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="deterministic">Deterministic Agents</button>
+    <button class="tab-btn" data-tab="llm">LLM Forecaster</button>
+    <button class="tab-btn" data-tab="contracts">Contracts &amp; Intel</button>
+  </nav>
 
-    <!-- Per-Market Breakdown -->
-    <section id="market-breakdown" class="dashboard-section">
-      <h2>Per-Market Breakdown</h2>
-      <div class="section-content"></div>
-    </section>
+  <!-- ==================== TAB 1: Deterministic Agents ==================== -->
+  <main id="tab-deterministic" class="tab-content active">
+    <div class="dashboard-grid">
+      <!-- Leaderboard -->
+      <section id="leaderboard" class="dashboard-section">
+        <h2>Leaderboard</h2>
+        <div class="section-content"></div>
+      </section>
 
-    <!-- Agent Cards -->
-    <section id="agent-cards" class="dashboard-section full-width">
-      <h2>Agent Performance</h2>
-      <div class="cards-grid"></div>
-    </section>
+      <!-- Per-Market Breakdown -->
+      <section id="market-breakdown" class="dashboard-section">
+        <h2>Per-Market Breakdown</h2>
+        <div class="section-content"></div>
+      </section>
 
-    <!-- MSE Over Time -->
-    <section id="mse-chart" class="dashboard-section full-width">
-      <h2>MSE Over Time</h2>
-      <div class="chart-container">
-        <canvas id="mse-canvas"></canvas>
-      </div>
-    </section>
+      <!-- Agent Cards -->
+      <section id="agent-cards" class="dashboard-section full-width">
+        <h2>Agent Performance</h2>
+        <div class="cards-grid"></div>
+      </section>
 
-    <!-- Prediction History -->
-    <section id="prediction-history" class="dashboard-section full-width">
-      <h2>Prediction History</h2>
-      <div class="chart-container">
-        <canvas id="scatter-canvas"></canvas>
-      </div>
-      <div class="prediction-table"></div>
-    </section>
+      <!-- MSE Over Time -->
+      <section id="mse-chart" class="dashboard-section full-width">
+        <h2>MSE Over Time</h2>
+        <div class="chart-container">
+          <canvas id="mse-canvas"></canvas>
+        </div>
+      </section>
 
-    <!-- Contract Overview -->
-    <section id="contracts" class="dashboard-section full-width">
-      <h2>Active Contracts <span class="badge" id="contract-count"></span></h2>
-      <div class="contracts-grid"></div>
-    </section>
+      <!-- Prediction History -->
+      <section id="prediction-history" class="dashboard-section full-width">
+        <h2>Prediction History</h2>
+        <div class="chart-container">
+          <canvas id="scatter-canvas"></canvas>
+        </div>
+        <div class="prediction-table"></div>
+      </section>
+    </div>
+  </main>
 
-    <!-- Latest Briefing -->
-    <section id="briefing" class="dashboard-section full-width">
-      <h2>Latest Intelligence Briefing</h2>
-      <div class="briefing-content"></div>
-    </section>
+  <!-- ==================== TAB 2: LLM Forecaster ==================== -->
+  <main id="tab-llm" class="tab-content">
+    <div class="dashboard-grid">
+      <!-- LLM Overview Stats -->
+      <section id="llm-overview" class="dashboard-section full-width">
+        <h2>LLM Forecaster Overview</h2>
+        <div class="section-content"></div>
+      </section>
 
-    <!-- LLM Predictions -->
-    <section id="llm-predictions" class="dashboard-section full-width">
-      <h2>LLM Predictions</h2>
-      <div class="section-content"></div>
-    </section>
+      <!-- LLM Predictions Table -->
+      <section id="llm-predictions" class="dashboard-section full-width">
+        <h2>Latest Predictions</h2>
+        <div class="section-content"></div>
+      </section>
+
+      <!-- LLM Divergence Chart -->
+      <section id="llm-divergence-chart" class="dashboard-section full-width">
+        <h2>Prediction vs Market (Top 15 by Divergence)</h2>
+        <div class="chart-container" style="height:500px">
+          <canvas id="divergence-canvas"></canvas>
+        </div>
+      </section>
+
+      <!-- Rolling Scores -->
+      <section id="llm-rolling-scores" class="dashboard-section full-width">
+        <h2>Scored Predictions (Rolling Contracts)</h2>
+        <div class="section-content"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== TAB 3: Contracts & Intel ==================== -->
+  <main id="tab-contracts" class="tab-content">
+    <div class="dashboard-grid">
+      <!-- Contract Overview -->
+      <section id="contracts" class="dashboard-section full-width">
+        <h2>Active Contracts <span class="badge" id="contract-count"></span></h2>
+        <div class="contracts-grid"></div>
+      </section>
+
+      <!-- Latest Briefing -->
+      <section id="briefing" class="dashboard-section full-width">
+        <h2>Latest Intelligence Briefing</h2>
+        <div class="briefing-content"></div>
+      </section>
+    </div>
   </main>
 
   <footer>

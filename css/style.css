@@ -90,6 +90,89 @@ header h1 {
 .freshness-dot.stale { background: var(--accent-orange); }
 .freshness-dot.old { background: var(--accent-red); }
 
+/* === Tab Navigation === */
+.tab-nav {
+  display: flex;
+  gap: 0;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.tab-btn.active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* === LLM Overview Stats === */
+.llm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.llm-stat-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  text-align: center;
+}
+
+.llm-stat-card .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.llm-stat-card .stat-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* === Tier Badges === */
+.tier-badge {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.tier-badge.sonnet { background: rgba(188,140,255,0.2); color: var(--accent-purple); }
+.tier-badge.haiku { background: rgba(88,166,255,0.2); color: var(--accent-blue); }
+
 /* === Dashboard Grid === */
 .dashboard-grid {
   display: grid;
@@ -439,7 +522,10 @@ footer code {
 @media (max-width: 768px) {
   .dashboard-grid { grid-template-columns: 1fr; padding: 1rem; }
   header { padding: 1rem; }
+  .tab-nav { padding: 0 1rem; overflow-x: auto; }
+  .tab-btn { padding: 0.6rem 1rem; font-size: 0.8rem; white-space: nowrap; }
   .cards-grid { grid-template-columns: 1fr; }
+  .llm-stats-grid { grid-template-columns: repeat(2, 1fr); }
   table { font-size: 0.75rem; }
   th, td { padding: 0.4rem 0.5rem; }
 }

@@ -287,6 +287,126 @@ function renderBriefing(briefing, stateData) {
   container.innerHTML = html;
 }
 
+// === LLM Overview Stats ===
+function renderLLMOverview(llmData, rollingScores) {
+  const container = document.querySelector('#llm-overview .section-content');
+  if (!container) return;
+
+  const predictions = llmData?.predictions || [];
+  const scores = rollingScores || [];
+
+  // Count tiers
+  const sonnetCount = predictions.filter(p => p.tier === 'sonnet').length;
+  const haikuCount = predictions.filter(p => p.tier === 'haiku').length;
+
+  // Average divergence
+  const divValues = predictions.map(p => Math.abs(p.divergence || 0)).filter(v => !isNaN(v));
+  const avgDiv = divValues.length > 0 ? divValues.reduce((s, v) => s + v, 0) / divValues.length : 0;
+
+  // Max divergence
+  const maxDiv = divValues.length > 0 ? Math.max(...divValues) : 0;
+
+  // Rolling scores stats
+  const scored = scores.length;
+  const correct = scores.filter(r => r.correct === true || r.correct === 'True').length;
+  const avgSE = scored > 0 ? scores.reduce((s, r) => s + (r.squared_error || 0), 0) / scored : 0;
+
+  // Timestamp
+  const lastRun = llmData?.timestamp ? fmtDate(llmData.timestamp) : '—';
+
+  let html = `
+    <p style="color:var(--text-secondary);font-size:0.8rem;margin-bottom:1rem">Last forecast run: ${lastRun}</p>
+    <div class="llm-stats-grid">
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--text-primary)">${predictions.length}</div>
+        <div class="stat-label">Contracts Predicted</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--accent-purple)">${sonnetCount}</div>
+        <div class="stat-label">Sonnet (Deep Dive)</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--accent-blue)">${haikuCount}</div>
+        <div class="stat-label">Haiku (Triage)</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:${avgDiv > 0.1 ? 'var(--accent-red)' : 'var(--accent-orange)'}">${(avgDiv * 100).toFixed(1)}%</div>
+        <div class="stat-label">Avg Divergence</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--accent-red)">${(maxDiv * 100).toFixed(1)}%</div>
+        <div class="stat-label">Max Divergence</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:var(--text-primary)">${scored}</div>
+        <div class="stat-label">Scored Predictions</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value" style="color:${scored > 0 && correct/scored > 0.5 ? 'var(--accent-green)' : 'var(--accent-orange)'}">${scored > 0 ? fmtPct(correct / scored) : '—'}</div>
+        <div class="stat-label">Accuracy (Rolling)</div>
+      </div>
+      <div class="llm-stat-card">
+        <div class="stat-value">${scored > 0 ? fmtMSE(avgSE) : '—'}</div>
+        <div class="stat-label">Avg Squared Error</div>
+      </div>
+    </div>`;
+
+  container.innerHTML = html;
+}
+
+// === Rolling Scores (Scored LLM Predictions) ===
+function renderRollingScores(rollingScores) {
+  const container = document.querySelector('#llm-rolling-scores .section-content');
+  if (!container) return;
+
+  if (!rollingScores || rollingScores.length === 0) {
+    container.innerHTML = '<div class="loading">No scored rolling predictions yet. Scores appear after daily contracts resolve.</div>';
+    return;
+  }
+
+  let html = `<table>
+    <thead><tr>
+      <th>Date</th><th>Contract</th><th>Type</th><th>Prediction</th><th>Market</th><th>Outcome</th><th>Correct</th><th>Squared Error</th><th>Tier</th>
+    </tr></thead><tbody>`;
+
+  for (const r of rollingScores) {
+    const isCorrect = r.correct === true || r.correct === 'True';
+    const correctIcon = isCorrect
+      ? '<span style="color:var(--accent-green)">Yes</span>'
+      : '<span style="color:var(--accent-red)">No</span>';
+
+    // Handle array predictions (multi-outcome) vs scalar
+    let predStr = '—';
+    if (typeof r.prediction === 'number') {
+      predStr = (r.prediction * 100).toFixed(0) + '%';
+    } else if (typeof r.prediction === 'string' && r.prediction.startsWith('[')) {
+      predStr = 'Multi';
+    }
+
+    let marketStr = '—';
+    if (typeof r.market_price === 'number') {
+      marketStr = (r.market_price * 100).toFixed(0) + '%';
+    } else if (typeof r.market_price === 'string' && r.market_price.startsWith('[')) {
+      marketStr = 'Multi';
+    }
+
+    html += `<tr>
+      <td>${r.date || '—'}</td>
+      <td>${r.contract_name || r.contract_key || '—'}</td>
+      <td>${r.contract_type || '—'}</td>
+      <td>${predStr}</td>
+      <td>${marketStr}</td>
+      <td style="font-size:0.75rem">${typeof r.outcome === 'number' ? (r.outcome * 100).toFixed(0) + '%' : 'Resolved'}</td>
+      <td>${correctIcon}</td>
+      <td>${r.squared_error != null ? r.squared_error.toFixed(4) : '—'}</td>
+      <td><span class="tier-badge ${r.tier || ''}">${r.tier || '—'}</span></td>
+    </tr>`;
+  }
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
 // === LLM Predictions ===
 function renderLLMPredictions(llmData) {
   const container = document.querySelector('#llm-predictions .section-content');

@@ -154,6 +154,73 @@ function renderScatterChart(scoresHistory) {
   });
 }
 
+// LLM Divergence horizontal bar chart (market price vs prediction)
+function renderDivergenceChart(llmData) {
+  const canvas = document.getElementById('divergence-canvas');
+  if (!canvas || !llmData || !llmData.predictions) return;
+
+  // Filter to binary predictions with numeric values, sort by divergence
+  const preds = llmData.predictions
+    .filter(p => typeof p.market_price === 'number' && typeof p.shrunk_prediction === 'number')
+    .sort((a, b) => Math.abs(b.divergence || 0) - Math.abs(a.divergence || 0))
+    .slice(0, 15); // Top 15 by divergence
+
+  const labels = preds.map(p => {
+    const q = p.question || p.key || '';
+    return q.length > 40 ? q.substring(0, 37) + '...' : q;
+  });
+
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Market Price',
+          data: preds.map(p => p.market_price * 100),
+          backgroundColor: 'rgba(139, 148, 158, 0.6)',
+          borderColor: '#8b949e',
+          borderWidth: 1,
+        },
+        {
+          label: 'LLM Prediction (shrunk)',
+          data: preds.map(p => p.shrunk_prediction * 100),
+          backgroundColor: 'rgba(188, 140, 255, 0.6)',
+          borderColor: '#bc8cff',
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          title: { display: true, text: 'Probability (%)', color: '#8b949e' },
+          grid: { color: '#21262d' },
+          min: 0,
+          max: 100,
+        },
+        y: {
+          grid: { display: false },
+          ticks: { font: { size: 11 } },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: { usePointStyle: true, pointStyle: 'rect', padding: 16 },
+        },
+        tooltip: {
+          backgroundColor: '#1c2129',
+          borderColor: '#30363d',
+          borderWidth: 1,
+        },
+      },
+    },
+  });
+}
+
 // Inline SVG sparkline for agent cards
 function renderSparkline(container, values, color) {
   if (!values || values.length < 2) {
