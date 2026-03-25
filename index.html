@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oracle Lab Dashboard</title>
+  <meta name="description" content="AI Geopolitical Forecasting Dashboard - Agent Performance Tracker">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+</head>
+<body>
+  <header id="dashboard-header">
+    <div class="header-left">
+      <h1>Oracle Lab</h1>
+      <p class="subtitle">AI Geopolitical Forecasting Dashboard</p>
+    </div>
+    <div class="header-meta">
+      <span class="meta-item" id="last-updated"></span>
+      <span class="meta-item" id="total-cycles"></span>
+      <span id="freshness-indicator"></span>
+    </div>
+  </header>
+
+  <main class="dashboard-grid">
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="dashboard-section">
+      <h2>Leaderboard</h2>
+      <div class="section-content"></div>
+    </section>
+
+    <!-- Per-Market Breakdown -->
+    <section id="market-breakdown" class="dashboard-section">
+      <h2>Per-Market Breakdown</h2>
+      <div class="section-content"></div>
+    </section>
+
+    <!-- Agent Cards -->
+    <section id="agent-cards" class="dashboard-section full-width">
+      <h2>Agent Performance</h2>
+      <div class="cards-grid"></div>
+    </section>
+
+    <!-- MSE Over Time -->
+    <section id="mse-chart" class="dashboard-section full-width">
+      <h2>MSE Over Time</h2>
+      <div class="chart-container">
+        <canvas id="mse-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- Prediction History -->
+    <section id="prediction-history" class="dashboard-section full-width">
+      <h2>Prediction History</h2>
+      <div class="chart-container">
+        <canvas id="scatter-canvas"></canvas>
+      </div>
+      <div class="prediction-table"></div>
+    </section>
+
+    <!-- Contract Overview -->
+    <section id="contracts" class="dashboard-section full-width">
+      <h2>Active Contracts <span class="badge" id="contract-count"></span></h2>
+      <div class="contracts-grid"></div>
+    </section>
+
+    <!-- Latest Briefing -->
+    <section id="briefing" class="dashboard-section full-width">
+      <h2>Latest Intelligence Briefing</h2>
+      <div class="briefing-content"></div>
+    </section>
+
+    <!-- LLM Predictions -->
+    <section id="llm-predictions" class="dashboard-section full-width">
+      <h2>LLM Predictions</h2>
+      <div class="section-content"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data from <a href="https://github.com/andybhall/oracle-lab" target="_blank">oracle-lab</a> &middot; Updated via <code>update_data.py</code></p>
+  </footer>
+
+  <!-- CDN Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3/dist/chartjs-plugin-annotation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5/papaparse.min.js"></script>
+
+  <!-- Dashboard Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
