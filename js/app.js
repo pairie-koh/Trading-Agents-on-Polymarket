@@ -16,9 +16,13 @@ function initTabs() {
       document.getElementById('tab-' + tabId).classList.add('active');
 
       // Lazy-render charts when tab is shown (Chart.js needs visible canvas)
-      if (tabId === 'llm' && !window._llmChartsRendered && window._dashboardData) {
-        renderDivergenceChart(window._dashboardData.llmPredictions);
-        window._llmChartsRendered = true;
+      if (tabId === 'deterministic' && !window._detChartsRendered && window._dashboardData) {
+        const d = window._dashboardData;
+        if (d.scoresHistory && d.scoresHistory.length > 0) {
+          renderMSEChart(d.scoresHistory);
+          renderScatterChart(d.scoresHistory);
+        }
+        window._detChartsRendered = true;
       }
     });
   });
@@ -45,16 +49,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderMarketBreakdown(data.leaderboard);
 
     if (data.scoresHistory && data.scoresHistory.length > 0) {
-      renderMSEChart(data.scoresHistory);
-      renderScatterChart(data.scoresHistory);
       renderPredictionTable(data.scoresHistory);
+      // MSE and scatter charts are lazy-rendered when Deterministic tab is clicked
     }
 
-    // === Tab 2: LLM Forecaster ===
+    // === Tab 2: LLM Forecaster (default tab) ===
     renderLLMOverview(data.llmPredictions, data.rollingScores);
     renderLLMPredictions(data.llmPredictions);
+    renderDivergenceChart(data.llmPredictions);
     renderRollingScores(data.rollingScores);
-    // Divergence chart is lazy-rendered when tab is clicked
+    window._llmChartsRendered = true;
 
     // === Tab 3: Contracts & Intel ===
     renderContracts(data.contracts);
