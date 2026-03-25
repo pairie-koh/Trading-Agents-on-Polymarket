@@ -14,6 +14,7 @@ const DATA = {
   prices: 'data/prices.csv',
   rollingScores: 'data/rolling_scores.csv',
   llmPredictions: 'data/llm_predictions.json',
+  performanceSummary: 'data/performance_summary.json',
 };
 
 // Agent display config

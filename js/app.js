@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // === Tab 2: LLM Forecaster (default tab) ===
+    renderPerformanceSummary(data.performanceSummary);
     renderLLMOverview(data.llmPredictions, data.rollingScores);
     renderLLMPredictions(data.llmPredictions);
     renderDivergenceChart(data.llmPredictions);

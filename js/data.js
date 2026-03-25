@@ -35,6 +35,7 @@ async function loadAllData() {
     fetchCSV(DATA.prices),                           // 9
     fetchJSON(DATA.llmPredictions),                  // 10
     fetchCSV(DATA.rollingScores),                     // 11
+    fetchJSON(DATA.performanceSummary),               // 12
   ]);
 
   const get = (i) => results[i].status === 'fulfilled' ? results[i].value : null;
@@ -54,6 +55,7 @@ async function loadAllData() {
     prices: get(9),
     llmPredictions: get(10),
     rollingScores: get(11),
+    performanceSummary: get(12),
   };
 }
 

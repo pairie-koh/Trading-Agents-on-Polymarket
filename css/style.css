@@ -140,6 +140,19 @@ header h1 {
   gap: 1rem;
 }
 
+.summary-block {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-purple);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.summary-block p:last-child {
+  margin-bottom: 0;
+}
+
 .llm-stat-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
