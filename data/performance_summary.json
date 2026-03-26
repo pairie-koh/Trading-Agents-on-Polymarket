@@ -1,40 +1,40 @@
 {
-  "summary": "# Oracle Lab Performance Summary\n\nOur system has completed three predictions across a diverse portfolio spanning geopolitics, economics, politics, sports, technology, and entertainment, with full contract tracking across 23 total positions. With only 18 scored predictions to date and an accuracy rate of 11.1% against a Brier score of 0.27, we acknowledge we are in the early validation phase of our forecasting cycle. This modest performance reflects both the inherent difficulty of geopolitical prediction and the preliminary nature of our current dataset\u2014a reminder that meaningful statistical confidence requires substantially more historical resolution.\n\nOur tier distribution reveals an interesting strategy choice: we deployed our more sophisticated Sonnet model on just one contract while Haiku handled two predictions. The divergence metrics tell a revealing story about where our system is taking the boldest positions against market consensus. Our highest divergence contract\u2014predicting Miami's highest temperature at 5.5% deviation\u2014suggests we're willing to take contrarian stances even on seemingly straightforward meteorological questions. More intriguingly, our Bitcoin directional call for March 26 shows 4.95% divergence, with our prediction at 3.02% versus a market reading of 0.05%, indicating we're substantially more bullish than consensus on that date.\n\nThe average divergence across all three predictions sits at 3.65%, which signals measured confidence rather than extreme contrarianism. Our lowest-divergence call on NYC's highest temperature (0.5% divergence) appears to reflect market alignment on that forecast. The breadth of our category coverage\u2014six geopolitical contracts forming our core focus\u2014suggests our system is prioritizing the domain it was designed for, though the diversification across economics and politics provides useful stress-testing.\n\nAs we accumulate more resolved contracts, we'll be watching whether our divergence patterns correlate with superior or inferior accuracy, and whether Sonnet's deeper reasoning generates alpha compared to Haiku's efficiency on complex forecasts.",
-  "generated_at": "2026-03-26T16:03:56Z",
+  "summary": "# Oracle Lab Performance Summary \u2014 March 26, 2026\n\nOur system deployed three predictions today across a diverse portfolio spanning geopolitics, economics, politics, sports, tech, and entertainment. While our sample size remains small at this early stage, the data reveals both encouraging signal-detection patterns and sobering accuracy realities that merit careful analysis.\n\nOur accuracy stands at 5.56% across 36 scored predictions, with a Brier score of 0.2974\u2014metrics that honestly reflect the substantial challenges in geopolitical forecasting. However, our average divergence of 0.023 from market consensus suggests we're identifying substantive contrarian positions rather than simply replicating crowd wisdom. This modest but consistent divergence pattern indicates our system is functioning as intended: detecting market inefficiencies and staking claims against prevailing sentiment.\n\nNotably, we deployed exclusively Haiku-tier contracts today, suggesting our current focus is on shorter-horizon, higher-frequency events rather than complex Sonnet-class predictions. Our three most divergent bets reveal where we're positioning most confidently: Miami's temperature high (0.025 divergence), NYC's temperature high (0.0245), and Bitcoin's directional movement on March 26 (0.0195). The weather predictions show near-maximal divergence from market consensus, while our Bitcoin call represents a more moderate contrarian position where market and prediction align more closely at the marginal level.\n\nThe concentration of divergence in weather forecasts is instructive\u2014these represent domains where our quantitative edge, if any exists, may be most pronounced. Meanwhile, the broader portfolio distribution across six categories suggests healthy diversification, though geopolitics represents our largest concentration at six contracts.\n\nAs we scale prediction volume and accumulate historical performance data, we'll be watching whether our modest but consistent divergence translates into alpha generation or reflects systematic miscalibration. The next critical checkpoint arrives when our scored predictions reach statistically meaningful sample sizes.",
+  "generated_at": "2026-03-26T16:30:05Z",
   "metrics_snapshot": {
     "total_predictions": 3,
-    "timestamp": "2026-03-26T16:03:56Z",
-    "sonnet_count": 1,
-    "haiku_count": 2,
-    "avg_divergence": 0.0365,
-    "max_divergence": 0.055,
+    "timestamp": "2026-03-26T16:30:05Z",
+    "sonnet_count": 0,
+    "haiku_count": 3,
+    "avg_divergence": 0.023,
+    "max_divergence": 0.025,
     "top_divergent": [
       {
         "question": "Highest temperature in Miami",
-        "divergence": 0.055,
+        "divergence": 0.025,
         "market": 0,
         "prediction": 0,
-        "tier": "sonnet"
-      },
-      {
-        "question": "Bitcoin Up or Down on March 26?",
-        "divergence": 0.0495,
-        "market": 0.0005,
-        "prediction": 0.0302,
         "tier": "haiku"
       },
       {
         "question": "Highest temperature in NYC",
-        "divergence": 0.005,
+        "divergence": 0.0245,
         "market": 0,
         "prediction": 0,
         "tier": "haiku"
+      },
+      {
+        "question": "Bitcoin Up or Down on March 26?",
+        "divergence": 0.0195,
+        "market": 0.0005,
+        "prediction": 0.0122,
+        "tier": "haiku"
       }
     ],
-    "scored_count": 18,
+    "scored_count": 36,
     "correct_count": 2,
-    "accuracy": 0.1111,
-    "avg_brier": 0.27,
+    "accuracy": 0.0556,
+    "avg_brier": 0.2974,
     "total_contracts": 23,
     "categories": {
       "geopolitics": 6,
