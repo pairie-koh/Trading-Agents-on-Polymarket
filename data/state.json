@@ -2,15 +2,15 @@
   "last_updated": "2026-03-25T00:00:00Z",
   "markets": {
     "regime_fall": {
-      "current_status": "Intensive US-Israeli military campaign with 53,000 total deployed troops and 9,000+ Iranian targets destroyed continues alongside contradictory diplomatic signals, while Iran responds with missile attacks and the nascent Mojtaba regime attempts internal power consolidation amid succession instability and reports of mass defections.",
-      "last_major_event": "Iran launched drone and ballistic missile attacks on Israel and regional targets on March 24, 2026, while simultaneously facing contested diplomatic overtures from Trump administration claiming agreement on major points and a five-day strike postponement.",
+      "current_status": "The Iranian regime faces sustained military degradation with over 9,000 targets destroyed and strikes across 20+ cities including critical nuclear and missile facilities, while navigating a succession crisis with newly appointed Mojtaba Khamenei amid explicit US rejection and a March 27 ceasefire deadline. A 15-point US ceasefire proposal offers diplomatic off-ramp, but Iran's Strait of Hormuz blockade and continued drone/missile attacks indicate regime rejection of current terms, alongside declining military capabilities and personnel losses among senior commanders.",
+      "last_major_event": "Pentagon announced deployment of 3,000-4,000 additional troops (including 2,500 Marines via USS Boxer, USS Portland, and USS Comstock under Operation Epic Fury, plus 82nd Airborne Division forces) to the Middle East on March 24, while White House presented a 15-point ceasefire proposal and extended negotiation deadline to March 27, 2026.",
       "last_major_event_time": "2026-03-24T00:00:00Z",
       "military_pressure": "critical",
-      "internal_stability": "critical",
-      "succession_dynamics": "critical",
+      "internal_stability": "high",
+      "succession_dynamics": "high",
       "diplomatic_signals": "critical",
-      "economic_collapse": "high",
-      "international_response": "critical"
+      "economic_collapse": "critical",
+      "international_response": "high"
     }
   }
 }

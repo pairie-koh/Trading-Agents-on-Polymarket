@@ -1,52 +1,40 @@
 {
-  "summary": "# Oracle Lab Performance Summary: March 2026\n\nOur geopolitical forecasting system has now issued 23 predictions across a diverse portfolio of global events, though we remain in the early evaluation phase with zero scored contracts to date. This initial deployment represents a genuine test of our modeling across multiple domains and complexity levels, offering valuable insights into our prediction profile even as we await market resolution.\n\nThe composition of our predictions reveals a deliberate balance between analytical rigor and exploratory coverage. We've allocated roughly equal weight to Sonnet (8 contracts) and Haiku (10 contracts) tier models, with 5 additional predictions spanning other architectures. This distribution suggests our system is tackling genuinely complex forecasting problems\u2014the predominance of Haiku models indicates we're confident in lightweight analysis for many events, but our substantial Sonnet allocation reflects recognition that geopolitical and economic questions demand deeper reasoning. Our portfolio skews appropriately toward our core domain, with 6 geopolitics and 5 economics predictions, though we've maintained meaningful exposure to politics, tech, and entertainment to test broader applicability.\n\nThe divergence metrics reveal where our system is making genuine contrarian calls. An average divergence of 0.1686 suggests we're generally aligned with market consensus, but our five most divergent predictions\u2014the Iran Strait of Hormuz closure, Fed Chair confirmation, and FIFA World Cup winner among them\u2014represent bets where we see material gaps between market pricing and our analysis. That the maximum divergence reaches 0.5 on several questions indicates we're not merely refinancing popular sentiment.\n\nWhat distinguishes this early phase is our honest acknowledgment of incompleteness. With zero scored predictions and zero accuracy metrics, we're evaluating our system's question selection and reasoning quality rather than predictive power. As these 23 contracts begin resolving over coming weeks and months, our focus will shift to Brier score analysis and systematic error patterns.",
-  "generated_at": "2026-03-24T11:04:09Z",
+  "summary": "# Oracle Lab Performance Summary\n\nOur system has completed three predictions across a diverse portfolio spanning geopolitics, economics, politics, sports, technology, and entertainment, with full contract tracking across 23 total positions. With only 18 scored predictions to date and an accuracy rate of 11.1% against a Brier score of 0.27, we acknowledge we are in the early validation phase of our forecasting cycle. This modest performance reflects both the inherent difficulty of geopolitical prediction and the preliminary nature of our current dataset\u2014a reminder that meaningful statistical confidence requires substantially more historical resolution.\n\nOur tier distribution reveals an interesting strategy choice: we deployed our more sophisticated Sonnet model on just one contract while Haiku handled two predictions. The divergence metrics tell a revealing story about where our system is taking the boldest positions against market consensus. Our highest divergence contract\u2014predicting Miami's highest temperature at 5.5% deviation\u2014suggests we're willing to take contrarian stances even on seemingly straightforward meteorological questions. More intriguingly, our Bitcoin directional call for March 26 shows 4.95% divergence, with our prediction at 3.02% versus a market reading of 0.05%, indicating we're substantially more bullish than consensus on that date.\n\nThe average divergence across all three predictions sits at 3.65%, which signals measured confidence rather than extreme contrarianism. Our lowest-divergence call on NYC's highest temperature (0.5% divergence) appears to reflect market alignment on that forecast. The breadth of our category coverage\u2014six geopolitical contracts forming our core focus\u2014suggests our system is prioritizing the domain it was designed for, though the diversification across economics and politics provides useful stress-testing.\n\nAs we accumulate more resolved contracts, we'll be watching whether our divergence patterns correlate with superior or inferior accuracy, and whether Sonnet's deeper reasoning generates alpha compared to Haiku's efficiency on complex forecasts.",
+  "generated_at": "2026-03-26T16:03:56Z",
   "metrics_snapshot": {
-    "total_predictions": 23,
-    "timestamp": "2026-03-24T11:04:09Z",
-    "sonnet_count": 8,
-    "haiku_count": 10,
-    "avg_divergence": 0.1686,
-    "max_divergence": 0.5,
+    "total_predictions": 3,
+    "timestamp": "2026-03-26T16:03:56Z",
+    "sonnet_count": 1,
+    "haiku_count": 2,
+    "avg_divergence": 0.0365,
+    "max_divergence": 0.055,
     "top_divergent": [
       {
-        "question": "Will Iran close the Strait of Hormuz by...?",
-        "divergence": 0.5,
-        "market": 0,
-        "prediction": 0,
-        "tier": "haiku"
-      },
-      {
-        "question": "Which company has the best AI model end of March?",
-        "divergence": 0.5,
-        "market": 0,
-        "prediction": 0,
-        "tier": "opus"
-      },
-      {
-        "question": "Who will be confirmed as Fed Chair?",
-        "divergence": 0.497,
-        "market": 0,
-        "prediction": 0,
-        "tier": "haiku"
-      },
-      {
-        "question": "Survivor 50 Winner",
-        "divergence": 0.49,
-        "market": 0,
-        "prediction": 0,
-        "tier": "opus"
-      },
-      {
-        "question": "2026 FIFA World Cup Winner ",
-        "divergence": 0.48,
+        "question": "Highest temperature in Miami",
+        "divergence": 0.055,
         "market": 0,
         "prediction": 0,
         "tier": "sonnet"
+      },
+      {
+        "question": "Bitcoin Up or Down on March 26?",
+        "divergence": 0.0495,
+        "market": 0.0005,
+        "prediction": 0.0302,
+        "tier": "haiku"
+      },
+      {
+        "question": "Highest temperature in NYC",
+        "divergence": 0.005,
+        "market": 0,
+        "prediction": 0,
+        "tier": "haiku"
       }
     ],
-    "scored_count": 0,
-    "correct_count": 0,
+    "scored_count": 18,
+    "correct_count": 2,
+    "accuracy": 0.1111,
+    "avg_brier": 0.27,
     "total_contracts": 23,
     "categories": {
       "geopolitics": 6,
