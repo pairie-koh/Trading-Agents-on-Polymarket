@@ -1,4 +1,16 @@
 {
-  "last_updated": null,
-  "markets": {}
+  "last_updated": "2026-03-25T00:00:00Z",
+  "markets": {
+    "regime_fall": {
+      "current_status": "The Iranian regime faces unprecedented military degradation with over 9,000 targets destroyed across 20+ cities including nuclear and missile facilities, while managing a contested succession following Ali Khamenei's death and the appointment of Mojtaba Khamenei (rejected by the US), amid sustained internal unrest, economic collapse from energy infrastructure damage and Strait of Hormuz blockade, and a March 27 ceasefire deadline with explicit US rejection of the current leadership.",
+      "last_major_event": "U.S. Central Command confirmed destruction of over 9,000 Iranian military targets including critical nuclear and missile facilities, with Pentagon deploying additional 3,000-4,000 troops (82nd Airborne Division and 2,500 Marines via three amphibious assault ships under Operation Epic Fury) on March 24-25, 2026, while maintaining 50,000 total troops in the region and considering potential occupation of Kharg Island.",
+      "last_major_event_time": "2026-03-25T00:00:00Z",
+      "military_pressure": "critical",
+      "internal_stability": "critical",
+      "succession_dynamics": "critical",
+      "diplomatic_signals": "critical",
+      "economic_collapse": "critical",
+      "international_response": "high"
+    }
+  }
 }
