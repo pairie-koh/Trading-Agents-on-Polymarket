@@ -477,7 +477,7 @@ function renderLLMPredictions(llmData) {
   </p>
   <table>
     <thead><tr>
-      <th>Contract</th><th>Tier</th><th>Market</th><th>Prediction</th><th>Shrunk</th><th>Divergence</th>
+      <th>Contract</th><th>Tier</th><th>Top Pick</th><th>Market</th><th>Prediction</th><th>Shrunk</th><th>Divergence</th>
     </tr></thead><tbody>`;
 
   // Sort by absolute divergence descending
@@ -490,7 +490,7 @@ function renderLLMPredictions(llmData) {
     const isMulti = p.type === 'multi-outcome';
 
     // For multi-outcome: find the top predicted outcome
-    let marketStr = '—', predStr = '—', shrunkStr = '—';
+    let marketStr = '—', predStr = '—', shrunkStr = '—', topPickStr = '—';
     if (isMulti && p.outcome_questions && p.shrunk_outcome_predictions) {
       // Find index of highest shrunk prediction
       let topIdx = 0;
@@ -501,16 +501,23 @@ function renderLLMPredictions(llmData) {
           topIdx = i;
         }
       }
-      const topQ = (p.outcome_questions[topIdx] || '').replace(p.question, '').trim();
-      const topLabel = topQ.length > 30 ? topQ.substring(0, 27) + '...' : topQ;
+      // Extract a short label from the outcome question (e.g. "82-83°F" or "66°F or higher")
+      const fullQ = p.outcome_questions[topIdx] || '';
+      const tempMatch = fullQ.match(/be\s+((?:between\s+)?\d+[^?]*?)(?:\s+on\s|\?)/i);
+      const dateMatch = fullQ.match(/(?:by|before|after)\s+(\w+\s+\d+)/i);
+      const rangeMatch = fullQ.match(/(\d[\d,.\s°Ffor\-–+]+(or\s+\w+)?)/i);
+      topPickStr = tempMatch ? tempMatch[1].replace(/^between\s+/i, '') :
+                   dateMatch ? dateMatch[1] :
+                   rangeMatch ? rangeMatch[1].trim() :
+                   (fullQ.length > 25 ? fullQ.substring(0, 22) + '...' : fullQ);
+      topPickStr = `<span style="font-weight:600;color:var(--accent-purple)">${topPickStr}</span>`;
+
       const mktVal = p.outcome_market_prices ? p.outcome_market_prices[topIdx] : null;
       const rawVal = p.outcome_predictions ? p.outcome_predictions[topIdx] : null;
 
       marketStr = mktVal != null ? `${(mktVal * 100).toFixed(0)}%` : '—';
       predStr = rawVal != null ? `${(rawVal * 100).toFixed(0)}%` : '—';
       shrunkStr = `${(topVal * 100).toFixed(0)}%`;
-      // Append the top outcome name as a subtitle
-      marketStr = `<span style="font-size:0.7rem;color:var(--text-secondary);display:block">${topLabel || 'Top outcome'}</span>${marketStr}`;
     } else {
       marketStr = p.market_price != null && typeof p.market_price === 'number' ? (p.market_price * 100).toFixed(0) + '%' : '—';
       predStr = p.prediction != null && typeof p.prediction === 'number' ? (p.prediction * 100).toFixed(0) + '%' : '—';
@@ -522,6 +529,7 @@ function renderLLMPredictions(llmData) {
     html += `<tr>
       <td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.question}${typeLabel}</td>
       <td><span style="color:${tierColor};font-weight:600;text-transform:capitalize">${p.tier || '—'}</span></td>
+      <td>${topPickStr}</td>
       <td>${marketStr}</td>
       <td>${predStr}</td>
       <td>${shrunkStr}</td>
