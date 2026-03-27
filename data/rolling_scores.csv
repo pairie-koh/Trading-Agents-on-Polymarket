@@ -1,1 +1,4 @@
 date,contract_key,contract_name,contract_type,prediction,market_price,outcome,correct,squared_error,tier,timestamp
+2026-03-26,bitcoin_daily,Bitcoin Up or Down,binary,0.01,0.0005,0.0,True,0.0001,sonnet,2026-03-27T14:37:56Z
+2026-03-26,nyc_temp,Highest temperature in NYC,multi-outcome,"[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.01, 0.97, 0.02]","[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9975, 0.0035]","[0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]",False,0.176491,haiku,2026-03-27T14:37:56Z
+2026-03-26,miami_temp,Highest temperature in Miami,multi-outcome,"[0.002, 0.002, 0.003, 0.003, 0.005, 0.135, 0.59, 0.25, 0.008, 0.001, 0.001]","[0.0, 0.0, 0.0005, 0.0005, 0.0015, 0.14, 0.59, 0.26, 0.019, 0.0035, 0.002]","[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]",True,0.022631,haiku,2026-03-27T14:37:56Z

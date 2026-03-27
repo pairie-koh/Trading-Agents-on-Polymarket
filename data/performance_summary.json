@@ -1,0 +1,62 @@
+{
+  "summary": "# Oracle Lab Performance Summary: March 27, 2026\n\nOur system currently has 18 active predictions across a diversified portfolio spanning geopolitics, economics, politics, and cultural events. While we're still in early-stage evaluation with only 3 scored predictions to date, our 66.67% accuracy rate and 0.0664 average Brier score suggest meaningful signal in our forecasting methodology. However, with such a limited scoring sample, we treat these metrics as promising indicators rather than definitive performance benchmarks.\n\nThe composition of our prediction set reveals a measured approach to model deployment. Our 7 Sonnet-tier predictions versus 6 Haiku-tier predictions suggest we're tackling moderately complex geopolitical and economic questions rather than simple binary events. The 6 geopolitical contracts form our largest category, reflecting Oracle Lab's core mandate, though our economics portfolio (5 contracts) and tech segment (3 contracts) show appropriate diversification.\n\nOur divergence profile exposes where we're making the boldest bets against market consensus. The Bitcoin price prediction (0.9938 divergence) represents our most contrarian call, followed by predictions on Jerome Powell's tenure as Fed Chair (0.8625) and Iran's potential closure of the Strait of Hormuz (0.8205). These high-divergence contracts indicate our system has identified scenarios where we believe market probabilities are misaligned with underlying fundamentals. Notably, our mean divergence of 0.2775 is moderate, suggesting we're neither blindly tracking consensus nor operating as a pure contrarian system.\n\nThe near-zero market and prediction values across top divergent contracts suggest these are nascent predictions not yet reflected in substantial market positions\u2014a prudent staging approach. With real scoring data still accumulating, our focus remains on monitoring whether these high-conviction divergent bets validate our analytical edge or signal systematic biases in our forecasting model.",
+  "generated_at": "2026-03-27T14:37:56Z",
+  "metrics_snapshot": {
+    "total_predictions": 18,
+    "timestamp": "2026-03-27T14:37:56Z",
+    "sonnet_count": 7,
+    "haiku_count": 6,
+    "avg_divergence": 0.2775,
+    "max_divergence": 0.9938,
+    "top_divergent": [
+      {
+        "question": "What price will Bitcoin hit in 2026?",
+        "divergence": 0.9938,
+        "market": 0,
+        "prediction": 0,
+        "tier": "opus"
+      },
+      {
+        "question": "Jerome Powell out as Fed Chair by...?",
+        "divergence": 0.8625,
+        "market": 0,
+        "prediction": 0,
+        "tier": "opus"
+      },
+      {
+        "question": "Will Iran close the Strait of Hormuz by...?",
+        "divergence": 0.8205,
+        "market": 0,
+        "prediction": 0,
+        "tier": "opus"
+      },
+      {
+        "question": "Will gas hit__ by end of March?",
+        "divergence": 0.7917,
+        "market": 0,
+        "prediction": 0,
+        "tier": "opus"
+      },
+      {
+        "question": "Which party will win the House in 2026?",
+        "divergence": 0.5,
+        "market": 0,
+        "prediction": 0,
+        "tier": "sonnet"
+      }
+    ],
+    "scored_count": 3,
+    "correct_count": 2,
+    "accuracy": 0.6667,
+    "avg_brier": 0.0664,
+    "total_contracts": 23,
+    "categories": {
+      "geopolitics": 6,
+      "economics": 5,
+      "politics": 4,
+      "sports": 2,
+      "tech": 3,
+      "entertainment": 3
+    }
+  }
+}

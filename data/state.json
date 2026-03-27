@@ -1,16 +1,16 @@
 {
-  "last_updated": "2026-03-25T00:00:00Z",
+  "last_updated": "2026-03-27T00:00:00Z",
   "markets": {
     "regime_fall": {
-      "current_status": "The Iranian regime faces unprecedented military degradation with over 9,000 targets destroyed across 20+ cities including nuclear and missile facilities, while managing a contested succession following Ali Khamenei's death and the appointment of Mojtaba Khamenei (rejected by the US), amid sustained internal unrest, economic collapse from energy infrastructure damage and Strait of Hormuz blockade, and a March 27 ceasefire deadline with explicit US rejection of the current leadership.",
-      "last_major_event": "U.S. Central Command confirmed destruction of over 9,000 Iranian military targets including critical nuclear and missile facilities, with Pentagon deploying additional 3,000-4,000 troops (82nd Airborne Division and 2,500 Marines via three amphibious assault ships under Operation Epic Fury) on March 24-25, 2026, while maintaining 50,000 total troops in the region and considering potential occupation of Kharg Island.",
-      "last_major_event_time": "2026-03-25T00:00:00Z",
+      "current_status": "Iran faces acute military pressure from sustained U.S. and Israeli strikes targeting infrastructure, concurrent with a leadership succession following Supreme Leader Khamenei's death on February 28. A 10-day diplomatic pause on power plant strikes offers a narrow window for negotiation, but military operations continue elsewhere.",
+      "last_major_event": "Israeli and U.S. strikes targeted Iranian military infrastructure across multiple cities (Tehran, Isfahan, Shiraz, Bandar Abbas, Mashhad) on March 27, with weapons production facilities struck and Iranian missiles reaching near Dimona.",
+      "last_major_event_time": "2026-03-27T00:00:00Z",
       "military_pressure": "critical",
-      "internal_stability": "critical",
-      "succession_dynamics": "critical",
-      "diplomatic_signals": "critical",
-      "economic_collapse": "critical",
-      "international_response": "high"
+      "internal_stability": "moderate",
+      "succession_dynamics": "high",
+      "diplomatic_signals": "high",
+      "economic_collapse": "moderate",
+      "international_response": "moderate"
     }
   }
 }
