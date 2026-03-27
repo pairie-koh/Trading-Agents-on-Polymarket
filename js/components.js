@@ -501,16 +501,36 @@ function renderLLMPredictions(llmData) {
           topIdx = i;
         }
       }
-      // Extract a short label from the outcome question (e.g. "82-83°F" or "66°F or higher")
+      // Extract a short label from the outcome question
       const fullQ = p.outcome_questions[topIdx] || '';
+      let pickLabel = '';
+      // Priority 1: Dollar amounts ("$200,000", "$3.25")
+      const dollarMatch = fullQ.match(/\$[\d,]+(?:\.\d+)?/);
+      // Priority 2: Temperature ranges ("82-83°F", "66°F or higher")
       const tempMatch = fullQ.match(/be\s+((?:between\s+)?\d+[^?]*?)(?:\s+on\s|\?)/i);
-      const dateMatch = fullQ.match(/(?:by|before|after)\s+(\w+\s+\d+)/i);
-      const rangeMatch = fullQ.match(/(\d[\d,.\s°Ffor\-–+]+(or\s+\w+)?)/i);
-      topPickStr = tempMatch ? tempMatch[1].replace(/^between\s+/i, '') :
-                   dateMatch ? dateMatch[1] :
-                   rangeMatch ? rangeMatch[1].trim() :
-                   (fullQ.length > 25 ? fullQ.substring(0, 22) + '...' : fullQ);
-      topPickStr = `<span style="font-weight:600;color:var(--accent-purple)">${topPickStr}</span>`;
+      // Priority 3: Percentage thresholds ("≥2.8%", "2.5-3.0%")
+      const pctMatch = fullQ.match(/[≥≤><]?\s*\d+\.?\d*\s*%/);
+      // Priority 4: Named entity (person/party as subject — "Will X be/do...")
+      const namedMatch = fullQ.match(/^Will\s+(.+?)\s+(?:be |reach|hit|dip|control|close|win)/i);
+      // Priority 5: Key phrase after "will there be" or "will the"
+      const phraseMatch = fullQ.match(/Will there be\s+(.*?)(?:\s+(?:in|after|by|before)\s)/i);
+
+      if (dollarMatch) {
+        pickLabel = dollarMatch[0];
+      } else if (tempMatch) {
+        pickLabel = tempMatch[1].replace(/^between\s+/i, '');
+      } else if (pctMatch) {
+        pickLabel = pctMatch[0].trim();
+      } else if (phraseMatch) {
+        pickLabel = phraseMatch[1];
+        if (pickLabel.length > 25) pickLabel = pickLabel.substring(0, 22) + '...';
+      } else if (namedMatch) {
+        pickLabel = namedMatch[1];
+        if (pickLabel.length > 25) pickLabel = pickLabel.substring(0, 22) + '...';
+      } else {
+        pickLabel = fullQ.length > 25 ? fullQ.substring(0, 22) + '...' : fullQ;
+      }
+      topPickStr = `<span style="font-weight:600;color:var(--accent-purple)">${pickLabel}</span>`;
 
       const mktVal = p.outcome_market_prices ? p.outcome_market_prices[topIdx] : null;
       const rawVal = p.outcome_predictions ? p.outcome_predictions[topIdx] : null;
