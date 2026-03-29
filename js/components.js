@@ -316,28 +316,121 @@ function renderBriefing(briefing, stateData) {
 }
 
 // === LLM Performance Summary ===
-function renderPerformanceSummary(summaryData) {
+function renderPerformanceSummary(summaryData, iterationLog) {
   const container = document.querySelector('#llm-summary .section-content');
   if (!container) return;
 
-  if (!summaryData || !summaryData.summary) {
-    container.innerHTML = '<div class="loading">No performance summary available. Run <code>python update_data.py</code> with OPENROUTER_API_KEY set.</div>';
+  const entries = iterationLog?.entries || [];
+
+  if (entries.length === 0) {
+    // Fallback to old performance summary if no iteration log yet
+    if (summaryData && summaryData.summary) {
+      const paragraphs = summaryData.summary.split('\n\n').filter(p => p.trim());
+      let html = `<div class="summary-block">`;
+      for (const p of paragraphs) {
+        html += `<p style="margin-bottom:0.8rem;line-height:1.6;color:var(--text-primary)">${p.trim()}</p>`;
+      }
+      html += `</div>`;
+      container.innerHTML = html;
+    } else {
+      container.innerHTML = '<div class="loading">No improvements yet — the self-improvement loop runs daily at 05:00 UTC.</div>';
+    }
     return;
   }
 
-  const paragraphs = summaryData.summary.split('\n\n').filter(p => p.trim());
-  const generatedAt = summaryData.generated_at ? fmtDate(summaryData.generated_at) : 'Unknown';
+  // Show iteration log entries, most recent first
+  const sorted = [...entries].reverse();
+  let html = '';
 
-  let html = `<div class="summary-block">`;
-  for (const p of paragraphs) {
-    html += `<p style="margin-bottom:0.8rem;line-height:1.6;color:var(--text-primary)">${p.trim()}</p>`;
+  for (const entry of sorted) {
+    // Parse the markdown content — extract summary (skip the title line)
+    const lines = entry.content.split('\n').filter(l => l.trim());
+    // Find the summary text (between title and "## Replacements Applied")
+    let summary = '';
+    let inSummary = false;
+    let changes = [];
+    let inChange = false;
+    let currentOld = '';
+    let currentNew = '';
+    let collectingOld = false;
+    let collectingNew = false;
+
+    for (const line of lines) {
+      if (line.startsWith('# LLM Forecast Iteration')) continue;
+      if (line.startsWith('## Replacements Applied')) {
+        inSummary = false;
+        inChange = true;
+        continue;
+      }
+      if (line.startsWith('### Change')) {
+        if (currentOld || currentNew) {
+          changes.push({ old: currentOld.trim(), new: currentNew.trim() });
+        }
+        currentOld = '';
+        currentNew = '';
+        collectingOld = false;
+        collectingNew = false;
+        continue;
+      }
+      if (!inChange) {
+        if (line.trim() && !line.startsWith('#')) summary += line.trim() + ' ';
+        continue;
+      }
+      // Inside change blocks — parse old/new code
+      if (line === '```') {
+        if (collectingOld) collectingOld = false;
+        else if (collectingNew) collectingNew = false;
+        continue;
+      }
+      if (line === '→') {
+        collectingNew = true;
+        continue;
+      }
+      if (!collectingOld && !collectingNew && currentOld === '') {
+        collectingOld = true;
+        continue;
+      }
+      if (collectingOld) currentOld += line + '\n';
+      if (collectingNew) currentNew += line + '\n';
+    }
+    if (currentOld || currentNew) {
+      changes.push({ old: currentOld.trim(), new: currentNew.trim() });
+    }
+
+    summary = summary.trim();
+
+    html += `<div style="margin-bottom:1rem;padding:1.25rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+        <span style="font-style:italic;color:var(--text-primary);font-size:0.85rem">${entry.date}</span>
+        <span style="font-size:0.65rem;color:var(--text-muted)">${changes.length} change${changes.length !== 1 ? 's' : ''} applied</span>
+      </div>
+      <p style="line-height:1.6;color:var(--text-secondary);margin-bottom:0.8rem;font-size:0.85rem">${summary}</p>`;
+
+    if (changes.length > 0) {
+      html += `<details style="margin-top:0.5rem">
+        <summary style="cursor:pointer;color:var(--text-muted);font-size:0.75rem">View code changes</summary>
+        <div style="margin-top:0.5rem">`;
+      for (const c of changes) {
+        html += `<div style="font-size:0.7rem;margin-bottom:0.5rem">
+          <div style="background:rgba(201,42,42,0.04);padding:0.5rem 0.75rem;border-radius:var(--radius) var(--radius) 0 0;border-left:2px solid #dee2e6;white-space:pre-wrap;overflow-x:auto;color:var(--text-secondary)">${escapeHtml(c.old)}</div>
+          <div style="background:rgba(43,138,62,0.04);padding:0.5rem 0.75rem;border-radius:0 0 var(--radius) var(--radius);border-left:2px solid var(--text-primary);white-space:pre-wrap;overflow-x:auto;color:var(--text-primary)">${escapeHtml(c.new)}</div>
+        </div>`;
+      }
+      html += `</div></details>`;
+    }
+
+    html += `</div>`;
   }
-  html += `</div>
-    <p style="margin-top:1rem;font-size:0.7rem;color:var(--text-secondary)">
-      Generated by Claude Haiku &middot; Based on data from ${generatedAt}
-    </p>`;
+
+  html += `<p style="font-size:0.65rem;color:var(--text-muted);margin-top:0.5rem">
+    Improvements made by Claude Sonnet &middot; Runs daily at 05:00 UTC
+  </p>`;
 
   container.innerHTML = html;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 // === LLM Overview Stats ===
@@ -465,7 +558,7 @@ function renderRollingScores(rollingScores) {
 
         const llmCorrect = llmTopIdx === actualIdx;
         const mktCorrect = mktTopIdx === actualIdx;
-        if (llmCorrect && !mktCorrect) resultStr = '<span style="color:var(--accent-green);font-weight:600">LLM correct</span>';
+        if (llmCorrect && !mktCorrect) resultStr = '<span style="color:var(--accent-green);font-style:italic">LLM correct</span>';
         else if (!llmCorrect && mktCorrect) resultStr = '<span style="color:var(--accent-red)">Market correct</span>';
         else if (llmCorrect && mktCorrect) resultStr = '<span style="color:var(--text-secondary)">Both correct</span>';
         else resultStr = '<span style="color:var(--accent-red)">Both wrong</span>';
@@ -487,18 +580,18 @@ function renderRollingScores(rollingScores) {
         const call = pred > 0.5 ? yesLabel : noLabel;
         const conf = pred > 0.5 ? pred : (1 - pred);
         const callColor = pred > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        predStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
+        predStr = `<span style="color:${callColor};font-style:italic">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
       }
       if (mkt != null) {
         const call = mkt > 0.5 ? yesLabel : noLabel;
         const conf = mkt > 0.5 ? mkt : (1 - mkt);
         const callColor = mkt > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        marketStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
+        marketStr = `<span style="color:${callColor};font-style:italic">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
       }
       if (outcome != null) {
         const actualCall = outcome >= 0.5 ? yesLabel : noLabel;
         const actualColor = outcome >= 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        outcomeStr = `<span style="color:${actualColor};font-weight:600">${actualCall}</span>`;
+        outcomeStr = `<span style="color:${actualColor};font-style:italic">${actualCall}</span>`;
       }
 
       // Result: who got the direction right?
@@ -506,7 +599,7 @@ function renderRollingScores(rollingScores) {
         const llmRight = (pred > 0.5) === (outcome >= 0.5);
         const mktRight = (mkt > 0.5) === (outcome >= 0.5);
         if (llmRight && mktRight) resultStr = '<span style="color:var(--accent-green)">Both right</span>';
-        else if (llmRight && !mktRight) resultStr = '<span style="color:var(--accent-green);font-weight:600">LLM right</span>';
+        else if (llmRight && !mktRight) resultStr = '<span style="color:var(--accent-green);font-style:italic">LLM right</span>';
         else if (!llmRight && mktRight) resultStr = '<span style="color:var(--accent-red)">Market right</span>';
         else resultStr = '<span style="color:var(--accent-red)">Both wrong</span>';
       }
@@ -598,7 +691,7 @@ function renderLLMPredictions(llmData) {
       } else {
         pickLabel = fullQ.length > 25 ? fullQ.substring(0, 22) + '...' : fullQ;
       }
-      topPickStr = `<span style="font-weight:600;color:var(--accent-purple)">${pickLabel}</span>`;
+      topPickStr = `<span style="font-style:italic;color:var(--accent-purple)">${pickLabel}</span>`;
 
       const mktVal = p.outcome_market_prices ? p.outcome_market_prices[topIdx] : null;
       const rawVal = p.outcome_predictions ? p.outcome_predictions[topIdx] : null;
@@ -622,7 +715,7 @@ function renderLLMPredictions(llmData) {
         const pick = sp > 0.5 ? yesLabel : noLabel;
         const conf = Math.abs(sp - 0.5) * 200;  // 0-100% confidence away from 50/50
         const pickColor = sp > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        topPickStr = `<span style="font-weight:600;color:${pickColor}">${pick}</span> <span style="font-size:0.65rem;color:var(--text-muted)">${conf.toFixed(0)}%</span>`;
+        topPickStr = `<span style="font-style:italic;color:${pickColor}">${pick}</span> <span style="font-size:0.65rem;color:var(--text-muted)">${conf.toFixed(0)}%</span>`;
       }
     }
 
@@ -630,7 +723,7 @@ function renderLLMPredictions(llmData) {
 
     html += `<tr>
       <td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.question}${typeLabel}</td>
-      <td><span style="color:${tierColor};font-weight:600;text-transform:capitalize">${p.tier || '—'}</span></td>
+      <td><span style="color:${tierColor};font-style:italic;text-transform:capitalize">${p.tier || '—'}</span></td>
       <td>${topPickStr}</td>
       <td>${marketStr}</td>
       <td>${predStr}</td>
@@ -640,7 +733,7 @@ function renderLLMPredictions(llmData) {
           <div class="divergence-bar">
             <div class="divergence-fill" style="width:${Math.min(divPct * 2, 100)}%;background:${divColor}"></div>
           </div>
-          <span style="color:${divColor};font-weight:600;font-size:0.8rem">${divPct.toFixed(1)}%</span>
+          <span style="color:${divColor};font-style:italic;font-size:0.8rem">${divPct.toFixed(1)}%</span>
         </div>
       </td>
     </tr>`;
@@ -712,15 +805,15 @@ function renderLLMvsMarket(rollingScores, contractsData) {
     <div style="margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap">
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
         <div style="font-size:0.75rem;color:var(--text-secondary)">LLM Win Rate</div>
-        <div style="font-size:1.4rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((llmWins / count) * 100).toFixed(0) + '%' : '—'}</div>
+        <div style="font-size:1.4rem;font-style:italic;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((llmWins / count) * 100).toFixed(0) + '%' : '—'}</div>
       </div>
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
         <div style="font-size:0.75rem;color:var(--text-secondary)">Market Win Rate</div>
-        <div style="font-size:1.4rem;font-weight:700;color:${!llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((mktWins / count) * 100).toFixed(0) + '%' : '—'}</div>
+        <div style="font-size:1.4rem;font-style:italic;color:${!llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((mktWins / count) * 100).toFixed(0) + '%' : '—'}</div>
       </div>
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
         <div style="font-size:0.75rem;color:var(--text-secondary)">Verdict</div>
-        <div style="font-size:1.2rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-orange)'}">
+        <div style="font-size:1.2rem;font-style:italic;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-orange)'}">
           ${count === 0 ? 'Awaiting data' : llmBetter ? 'LLM beats market' : 'Market leads'}
         </div>
       </div>
@@ -848,7 +941,7 @@ function renderPnLSimulator(rollingScores) {
       <td>${r.bets}</td>
       <td>${r.wins}</td>
       <td>${winRate}</td>
-      <td style="color:${pnlColor};font-weight:600">$${r.totalPnL.toFixed(2)}</td>
+      <td style="color:${pnlColor};font-style:italic">$${r.totalPnL.toFixed(2)}</td>
       <td style="color:${pnlColor}">${roi}</td>
     </tr>`;
   }

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderHeaderFromLLM(data.llmPredictions);
 
     // === LLM Forecaster ===
-    renderPerformanceSummary(data.performanceSummary);
+    renderPerformanceSummary(data.performanceSummary, data.iterationLog);
     renderLLMOverview(data.llmPredictions, data.rollingScores);
     renderLLMPredictions(data.llmPredictions);
     renderLLMvsMarket(data.rollingScores, data.contracts);

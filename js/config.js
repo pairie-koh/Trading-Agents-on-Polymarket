@@ -6,6 +6,7 @@ const DATA = {
   rollingScores: 'data/rolling_scores.csv',
   llmPredictions: 'data/llm_predictions.json',
   performanceSummary: 'data/performance_summary.json',
+  iterationLog: 'data/iteration_log.json',
 };
 
 // Agent display config
