@@ -661,46 +661,40 @@ function renderLLMvsMarket(rollingScores, contractsData) {
   }
 
   let llmWins = 0, marketWins = 0, ties = 0;
-  let llmBrier = 0, marketBrier = 0;
   let count = 0;
 
   for (const r of rollingScores) {
     if (r.outcome == null || r.prediction == null || r.market_price == null) continue;
 
-    let llmErr, mktErr;
+    let llmRight, mktRight;
 
     if (typeof r.prediction === 'number' && typeof r.market_price === 'number' && typeof r.outcome === 'number') {
-      // Binary prediction
-      llmErr = Math.pow(r.prediction - r.outcome, 2);
-      mktErr = Math.pow(r.market_price - r.outcome, 2);
+      // Binary: did you call the right side?
+      llmRight = (r.prediction > 0.5) === (r.outcome >= 0.5);
+      mktRight = (r.market_price > 0.5) === (r.outcome >= 0.5);
     } else {
-      // Multi-outcome: parse arrays and compute mean squared error across all buckets
+      // Multi-outcome: did you pick the right bucket?
       const predArr = parseArrayStr(r.prediction);
       const mktArr = parseArrayStr(r.market_price);
       const outArr = parseArrayStr(r.outcome);
-      if (!predArr || !mktArr || !outArr || predArr.length !== outArr.length || mktArr.length !== outArr.length) continue;
+      if (!predArr || !mktArr || !outArr) continue;
 
-      llmErr = 0; mktErr = 0;
-      for (let i = 0; i < outArr.length; i++) {
-        llmErr += Math.pow(predArr[i] - outArr[i], 2);
-        mktErr += Math.pow(mktArr[i] - outArr[i], 2);
-      }
-      llmErr /= outArr.length;
-      mktErr /= outArr.length;
+      const llmTopIdx = findWinnerIdx(predArr);
+      const mktTopIdx = findWinnerIdx(mktArr);
+      const actualIdx = findWinnerIdx(outArr);
+
+      llmRight = llmTopIdx === actualIdx;
+      mktRight = mktTopIdx === actualIdx;
     }
 
-    llmBrier += llmErr;
-    marketBrier += mktErr;
     count++;
 
-    if (llmErr < mktErr) llmWins++;
-    else if (mktErr < llmErr) marketWins++;
-    else ties++;
+    if (llmRight && !mktRight) llmWins++;
+    else if (!llmRight && mktRight) marketWins++;
+    else ties++; // both right or both wrong
   }
 
-  const llmAvg = count > 0 ? llmBrier / count : 0;
-  const mktAvg = count > 0 ? marketBrier / count : 0;
-  const llmBetter = llmAvg < mktAvg;
+  const llmBetter = llmWins > marketWins;
 
   let html = `
     <div class="llm-stats-grid" style="grid-template-columns:repeat(4,1fr)">
@@ -723,12 +717,12 @@ function renderLLMvsMarket(rollingScores, contractsData) {
     </div>
     <div style="margin-top:1rem;display:flex;gap:1.5rem;flex-wrap:wrap">
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
-        <div style="font-size:0.75rem;color:var(--text-secondary)">LLM Avg Brier Score</div>
-        <div style="font-size:1.4rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${llmAvg.toFixed(4)}</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary)">LLM Accuracy</div>
+        <div style="font-size:1.4rem;font-weight:700;color:${llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((llmWins / count) * 100).toFixed(0) + '%' : '—'}</div>
       </div>
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
-        <div style="font-size:0.75rem;color:var(--text-secondary)">Market Avg Brier Score</div>
-        <div style="font-size:1.4rem;font-weight:700;color:${!llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${mktAvg.toFixed(4)}</div>
+        <div style="font-size:0.75rem;color:var(--text-secondary)">Market Accuracy</div>
+        <div style="font-size:1.4rem;font-weight:700;color:${!llmBetter ? 'var(--accent-green)' : 'var(--accent-red)'}">${count > 0 ? ((marketWins / count) * 100).toFixed(0) + '%' : '—'}</div>
       </div>
       <div style="flex:1;min-width:180px;padding:1rem;background:var(--bg-secondary);border-radius:8px;border:1px solid var(--border)">
         <div style="font-size:0.75rem;color:var(--text-secondary)">Verdict</div>
