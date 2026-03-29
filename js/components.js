@@ -476,20 +476,27 @@ function renderRollingScores(rollingScores) {
       const mkt = typeof r.market_price === 'number' ? r.market_price : null;
       const outcome = typeof r.outcome === 'number' ? r.outcome : null;
 
+      // Context-aware labels based on contract name
+      const cname = (r.contract_name || r.contract_key || '').toLowerCase();
+      let yesLabel = 'Yes', noLabel = 'No';
+      if (cname.includes('up or down')) { yesLabel = 'Up'; noLabel = 'Down'; }
+      else if (cname.includes('over or under') || cname.includes('higher or lower')) { yesLabel = 'Over'; noLabel = 'Under'; }
+      else if (cname.includes('win') || cname.includes('beat')) { yesLabel = 'Win'; noLabel = 'Lose'; }
+
       if (pred != null) {
-        const call = pred > 0.5 ? 'Yes' : 'No';
+        const call = pred > 0.5 ? yesLabel : noLabel;
         const callColor = pred > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
         predStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(pred * 100).toFixed(0)}%)</span>`;
       }
       if (mkt != null) {
-        const call = mkt > 0.5 ? 'Yes' : 'No';
+        const call = mkt > 0.5 ? yesLabel : noLabel;
         const callColor = mkt > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
         marketStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(mkt * 100).toFixed(0)}%)</span>`;
       }
       if (outcome != null) {
-        outcomeStr = outcome >= 0.5
-          ? '<span style="color:var(--accent-green);font-weight:600">Yes</span>'
-          : '<span style="color:var(--accent-red);font-weight:600">No</span>';
+        const actualCall = outcome >= 0.5 ? yesLabel : noLabel;
+        const actualColor = outcome >= 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
+        outcomeStr = `<span style="color:${actualColor};font-weight:600">${actualCall}</span>`;
       }
 
       // Result: who was closer?
