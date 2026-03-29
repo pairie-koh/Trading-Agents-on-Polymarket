@@ -485,13 +485,15 @@ function renderRollingScores(rollingScores) {
 
       if (pred != null) {
         const call = pred > 0.5 ? yesLabel : noLabel;
+        const conf = pred > 0.5 ? pred : (1 - pred);
         const callColor = pred > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        predStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(pred * 100).toFixed(0)}%)</span>`;
+        predStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
       }
       if (mkt != null) {
         const call = mkt > 0.5 ? yesLabel : noLabel;
+        const conf = mkt > 0.5 ? mkt : (1 - mkt);
         const callColor = mkt > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
-        marketStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(mkt * 100).toFixed(0)}%)</span>`;
+        marketStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(conf * 100).toFixed(0)}%)</span>`;
       }
       if (outcome != null) {
         const actualCall = outcome >= 0.5 ? yesLabel : noLabel;
