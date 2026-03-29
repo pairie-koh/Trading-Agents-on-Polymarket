@@ -407,6 +407,25 @@ function renderLLMOverview(llmData, rollingScores) {
   container.innerHTML = html;
 }
 
+// === Helper: parse array string into array of numbers ===
+function parseArrayStr(val) {
+  if (Array.isArray(val)) return val;
+  if (typeof val === 'string' && val.startsWith('[')) {
+    try { return JSON.parse(val); } catch (e) { return null; }
+  }
+  return null;
+}
+
+// === Helper: find winning outcome index from outcome array ===
+function findWinnerIdx(outcomeArr) {
+  if (!outcomeArr) return -1;
+  let maxIdx = 0, maxVal = -1;
+  for (let i = 0; i < outcomeArr.length; i++) {
+    if (outcomeArr[i] > maxVal) { maxVal = outcomeArr[i]; maxIdx = i; }
+  }
+  return maxIdx;
+}
+
 // === Rolling Scores (Scored LLM Predictions) ===
 function renderRollingScores(rollingScores) {
   const container = document.querySelector('#llm-rolling-scores .section-content');
@@ -419,39 +438,78 @@ function renderRollingScores(rollingScores) {
 
   let html = `<table>
     <thead><tr>
-      <th>Date</th><th>Contract</th><th>Type</th><th>Prediction</th><th>Market</th><th>Outcome</th><th>Correct</th><th>Squared Error</th><th>Tier</th>
+      <th>Date</th><th>Contract</th><th>LLM Call</th><th>Market Call</th><th>Actual</th><th>Result</th><th>Brier Score</th><th>Tier</th>
     </tr></thead><tbody>`;
 
   for (const r of rollingScores) {
+    const isMulti = r.contract_type === 'multi-outcome';
     const isCorrect = r.correct === true || r.correct === 'True';
-    const correctIcon = isCorrect
-      ? '<span style="color:var(--accent-green)">Yes</span>'
-      : '<span style="color:var(--accent-red)">No</span>';
 
-    // Handle array predictions (multi-outcome) vs scalar
-    let predStr = '—';
-    if (typeof r.prediction === 'number') {
-      predStr = (r.prediction * 100).toFixed(0) + '%';
-    } else if (typeof r.prediction === 'string' && r.prediction.startsWith('[')) {
-      predStr = 'Multi';
-    }
+    let predStr = '—', marketStr = '—', outcomeStr = '—', resultStr = '—';
 
-    let marketStr = '—';
-    if (typeof r.market_price === 'number') {
-      marketStr = (r.market_price * 100).toFixed(0) + '%';
-    } else if (typeof r.market_price === 'string' && r.market_price.startsWith('[')) {
-      marketStr = 'Multi';
+    if (isMulti) {
+      // Parse arrays
+      const predArr = parseArrayStr(r.prediction);
+      const mktArr = parseArrayStr(r.market_price);
+      const outArr = parseArrayStr(r.outcome);
+
+      if (predArr && outArr) {
+        const llmTopIdx = findWinnerIdx(predArr);
+        const mktTopIdx = mktArr ? findWinnerIdx(mktArr) : -1;
+        const actualIdx = findWinnerIdx(outArr);
+
+        // Show as "Bucket #X @ YY%"
+        predStr = `#${llmTopIdx + 1} @ ${(predArr[llmTopIdx] * 100).toFixed(0)}%`;
+        if (mktArr) marketStr = `#${mktTopIdx + 1} @ ${(mktArr[mktTopIdx] * 100).toFixed(0)}%`;
+        outcomeStr = `#${actualIdx + 1}`;
+
+        const llmCorrect = llmTopIdx === actualIdx;
+        const mktCorrect = mktTopIdx === actualIdx;
+        if (llmCorrect && !mktCorrect) resultStr = '<span style="color:var(--accent-green);font-weight:600">LLM correct</span>';
+        else if (!llmCorrect && mktCorrect) resultStr = '<span style="color:var(--accent-red)">Market correct</span>';
+        else if (llmCorrect && mktCorrect) resultStr = '<span style="color:var(--text-secondary)">Both correct</span>';
+        else resultStr = '<span style="color:var(--accent-red)">Both wrong</span>';
+      }
+    } else {
+      // Binary
+      const pred = typeof r.prediction === 'number' ? r.prediction : null;
+      const mkt = typeof r.market_price === 'number' ? r.market_price : null;
+      const outcome = typeof r.outcome === 'number' ? r.outcome : null;
+
+      if (pred != null) {
+        const call = pred > 0.5 ? 'Yes' : 'No';
+        const callColor = pred > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
+        predStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(pred * 100).toFixed(0)}%)</span>`;
+      }
+      if (mkt != null) {
+        const call = mkt > 0.5 ? 'Yes' : 'No';
+        const callColor = mkt > 0.5 ? 'var(--accent-green)' : 'var(--accent-red)';
+        marketStr = `<span style="color:${callColor};font-weight:600">${call}</span> <span style="color:var(--text-secondary)">(${(mkt * 100).toFixed(0)}%)</span>`;
+      }
+      if (outcome != null) {
+        outcomeStr = outcome >= 0.5
+          ? '<span style="color:var(--accent-green);font-weight:600">Yes</span>'
+          : '<span style="color:var(--accent-red);font-weight:600">No</span>';
+      }
+
+      // Result: who was closer?
+      if (pred != null && mkt != null && outcome != null) {
+        const llmErr = Math.pow(pred - outcome, 2);
+        const mktErr = Math.pow(mkt - outcome, 2);
+        if (llmErr < mktErr) resultStr = '<span style="color:var(--accent-green);font-weight:600">LLM closer</span>';
+        else if (mktErr < llmErr) resultStr = '<span style="color:var(--accent-red)">Market closer</span>';
+        else resultStr = '<span style="color:var(--text-secondary)">Tie</span>';
+      }
     }
 
     html += `<tr>
       <td>${r.date || '—'}</td>
       <td>${r.contract_name || r.contract_key || '—'}</td>
-      <td>${r.contract_type || '—'}</td>
       <td>${predStr}</td>
       <td>${marketStr}</td>
-      <td style="font-size:0.75rem">${typeof r.outcome === 'number' ? (r.outcome * 100).toFixed(0) + '%' : 'Resolved'}</td>
-      <td>${correctIcon}</td>
-      <td>${r.squared_error != null ? r.squared_error.toFixed(4) : '—'}</td>
+      <td>${outcomeStr}</td>
+      <td>${resultStr}</td>
+      <td>${r.squared_error != null ? Number(r.squared_error).toFixed(4) : '—'}</td>
       <td><span class="tier-badge ${r.tier || ''}">${r.tier || '—'}</span></td>
     </tr>`;
   }
@@ -597,11 +655,29 @@ function renderLLMvsMarket(rollingScores, contractsData) {
   let count = 0;
 
   for (const r of rollingScores) {
-    if (r.squared_error == null || r.outcome == null || r.prediction == null || r.market_price == null) continue;
-    if (typeof r.prediction !== 'number' || typeof r.market_price !== 'number' || typeof r.outcome !== 'number') continue;
+    if (r.outcome == null || r.prediction == null || r.market_price == null) continue;
 
-    const llmErr = Math.pow(r.prediction - r.outcome, 2);
-    const mktErr = Math.pow(r.market_price - r.outcome, 2);
+    let llmErr, mktErr;
+
+    if (typeof r.prediction === 'number' && typeof r.market_price === 'number' && typeof r.outcome === 'number') {
+      // Binary prediction
+      llmErr = Math.pow(r.prediction - r.outcome, 2);
+      mktErr = Math.pow(r.market_price - r.outcome, 2);
+    } else {
+      // Multi-outcome: parse arrays and compute mean squared error across all buckets
+      const predArr = parseArrayStr(r.prediction);
+      const mktArr = parseArrayStr(r.market_price);
+      const outArr = parseArrayStr(r.outcome);
+      if (!predArr || !mktArr || !outArr || predArr.length !== outArr.length || mktArr.length !== outArr.length) continue;
+
+      llmErr = 0; mktErr = 0;
+      for (let i = 0; i < outArr.length; i++) {
+        llmErr += Math.pow(predArr[i] - outArr[i], 2);
+        mktErr += Math.pow(mktArr[i] - outArr[i], 2);
+      }
+      llmErr /= outArr.length;
+      mktErr /= outArr.length;
+    }
 
     llmBrier += llmErr;
     marketBrier += mktErr;
@@ -732,6 +808,7 @@ function renderPnLSimulator(rollingScores) {
     let totalPnL = 0, bets = 0, wins = 0;
 
     for (const r of rollingScores) {
+      // Only simulate P&L on binary contracts (multi-outcome betting is more complex)
       if (typeof r.prediction !== 'number' || typeof r.market_price !== 'number' || typeof r.outcome !== 'number') continue;
 
       const div = r.prediction - r.market_price;
