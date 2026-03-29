@@ -1,16 +1,16 @@
 {
-  "last_updated": "2026-03-27T00:00:00Z",
+  "last_updated": "2026-03-28T00:00:00Z",
   "markets": {
     "regime_fall": {
-      "current_status": "Iran faces acute military pressure from sustained U.S. and Israeli strikes targeting infrastructure, concurrent with a leadership succession following Supreme Leader Khamenei's death on February 28. A 10-day diplomatic pause on power plant strikes offers a narrow window for negotiation, but military operations continue elsewhere.",
-      "last_major_event": "Israeli and U.S. strikes targeted Iranian military infrastructure across multiple cities (Tehran, Isfahan, Shiraz, Bandar Abbas, Mashhad) on March 27, with weapons production facilities struck and Iranian missiles reaching near Dimona.",
-      "last_major_event_time": "2026-03-27T00:00:00Z",
+      "current_status": "Massive U.S. and Israeli strikes on March 28 targeted Iran's nuclear facilities, military infrastructure, and industrial sites across multiple provinces, with operations described as ahead of schedule and nearing completion within weeks. The military-dominated regime under new Supreme Leader Mojtaba Khamenei continues rejecting ceasefire terms despite U.S. diplomatic pause on energy infrastructure strikes, while maintaining Strait of Hormuz control and launching continued attacks on shipping and regional forces.",
+      "last_major_event": "Massive coordinated U.S. and Israeli strikes on March 28, 2026, targeted Iranian nuclear facilities, military bases, intelligence centers, and industrial sites across multiple provinces, with Pentagon indicating operations near completion within weeks.",
+      "last_major_event_time": "2026-03-28T00:00:00Z",
       "military_pressure": "critical",
-      "internal_stability": "moderate",
+      "internal_stability": "high",
       "succession_dynamics": "high",
       "diplomatic_signals": "high",
-      "economic_collapse": "moderate",
-      "international_response": "moderate"
+      "economic_collapse": "high",
+      "international_response": "high"
     }
   }
 }
