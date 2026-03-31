@@ -1,17 +1,18 @@
 {
-  "timestamp": "2026-03-31T17:11:51Z",
+  "timestamp": "2026-03-31T20:57:50Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on March 31?",
       "source": "rolling",
       "key": "bitcoin_daily",
       "type": "binary",
-      "tier": "haiku",
-      "market_price": 0.0005,
-      "divergence": 0.0195,
-      "timestamp": "2026-03-31T17:11:51Z",
-      "prediction": 0.02,
-      "shrunk_prediction": 0.0122
+      "tier": "opus",
+      "market_price": 0.0,
+      "divergence": 0.52,
+      "timestamp": "2026-03-31T20:57:50Z",
+      "prediction": 0.52,
+      "shrunk_prediction": 0.312,
+      "pre_adversarial_prediction": 1.0
     },
     {
       "question": "Highest temperature in NYC",
@@ -20,8 +21,8 @@
       "type": "multi-outcome",
       "tier": "haiku",
       "market_price": 0,
-      "divergence": 0.019500000000000073,
-      "timestamp": "2026-03-31T17:11:51Z",
+      "divergence": 0.01,
+      "timestamp": "2026-03-31T20:57:50Z",
       "outcome_predictions": [
         0.0,
         0.0,
@@ -31,9 +32,9 @@
         0.0,
         0.0,
         0.0,
+        0.0,
         0.01,
-        0.01,
-        0.98
+        0.99
       ],
       "shrunk_outcome_predictions": [
         0.0,
@@ -43,10 +44,10 @@
         0.0,
         0.0,
         0.0,
-        0.00019992003198720517,
-        0.006197520991603358,
-        0.006197520991603358,
-        0.9874050379848062
+        0.0,
+        0.0,
+        0.006001200240048009,
+        0.993998799759952
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 55\u00b0F or below on March 31?",
@@ -69,9 +70,9 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.0005,
-        0.0005,
+        0.0,
+        0.0,
+        0.0,
         0.9995
       ]
     }
