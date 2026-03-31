@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-31T05:54:10Z",
+  "timestamp": "2026-03-31T09:15:56Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on March 31?",
@@ -7,47 +7,47 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "opus",
-      "market_price": 0.53,
-      "divergence": 0.10999999999999999,
-      "timestamp": "2026-03-31T05:54:10Z",
-      "prediction": 0.64,
-      "shrunk_prediction": 0.596,
-      "pre_adversarial_prediction": 0.82
+      "market_price": 0.215,
+      "divergence": 0.06500000000000003,
+      "timestamp": "2026-03-31T09:15:56Z",
+      "prediction": 0.28,
+      "shrunk_prediction": 0.254,
+      "pre_adversarial_prediction": 0.47
     },
     {
       "question": "Highest temperature in NYC",
       "source": "rolling",
       "key": "nyc_temp",
       "type": "multi-outcome",
-      "tier": "haiku",
+      "tier": "sonnet",
       "market_price": 0,
-      "divergence": 0.031984984984984983,
-      "timestamp": "2026-03-31T05:54:10Z",
+      "divergence": 0.025000000000000022,
+      "timestamp": "2026-03-31T09:15:56Z",
       "outcome_predictions": [
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.001001001001001001,
-        0.015015015015015015,
-        0.975975975975976
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.002,
+        0.003,
+        0.005,
+        0.015,
+        0.025,
+        0.95
       ],
       "shrunk_outcome_predictions": [
-        0.0007936167729982164,
-        0.0007936167729982164,
-        0.0007936167729982164,
-        0.0007936167729982164,
-        0.0007936167729982164,
-        0.001586638184576329,
-        0.0011901274787872727,
-        0.002379659596154442,
-        0.0031726810077325543,
-        0.027566424473640973,
-        0.9601363853941175
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0017878426698450538,
+        0.002582439411998411,
+        0.004767580452920143,
+        0.014700039729837109,
+        0.022646007151370683,
+        0.9535160905840286
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 55\u00b0F or below on March 31?",
@@ -63,17 +63,30 @@
         "Will the highest temperature in New York City be 74\u00b0F or higher on March 31?"
       ],
       "outcome_market_prices": [
-        0.0005,
-        0.0005,
-        0.0005,
-        0.0005,
-        0.0005,
-        0.0025,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
         0.0015,
+        0.002,
         0.0045,
-        0.0065,
-        0.047,
-        0.9575
+        0.0145,
+        0.0195,
+        0.975
+      ],
+      "pre_adversarial_predictions": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.02,
+        0.97
       ]
     }
   ]
