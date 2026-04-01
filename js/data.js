@@ -36,12 +36,25 @@ async function loadAllData() {
 
   const get = (i) => results[i].status === 'fulfilled' ? results[i].value : null;
 
+  // Deduplicate rolling scores — the source CSV accumulates duplicates
+  // across GitHub Actions runs. Key on (date, contract_key, timestamp).
+  let rollingScores = get(4);
+  if (rollingScores && rollingScores.length > 0) {
+    const seen = new Set();
+    rollingScores = rollingScores.filter(r => {
+      const key = `${r.date}|${r.contract_key}|${r.timestamp}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
   return {
     contracts: get(0),
     briefing: get(1),
     state: get(2),
     llmPredictions: get(3),
-    rollingScores: get(4),
+    rollingScores,
     performanceSummary: get(5),
     iterationLog: get(6),
     scoreboard: get(7),
