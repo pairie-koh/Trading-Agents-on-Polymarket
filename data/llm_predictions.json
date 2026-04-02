@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T05:50:57Z",
+  "timestamp": "2026-04-02T09:12:21Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 2?",
@@ -7,13 +7,13 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "sonnet",
-      "market_price": 0.0285,
-      "divergence": 0.021500000000000002,
-      "timestamp": "2026-04-02T05:50:57Z",
+      "market_price": 0.0175,
+      "divergence": 0.0325,
+      "timestamp": "2026-04-02T09:12:21Z",
       "prediction": 0.05,
-      "shrunk_prediction": 0.044625,
-      "pre_adversarial_prediction": 0.08,
-      "reasoning_excerpt": "Looking at the current Bitcoin data, BTC opened today at $68,083 and is currently trading at $66,528.50, representing a -2.28% decline. For this contract to resolve YES, Bitcoin needs to close higher than its opening price of $68,083. With only about 10 hours remaining until the 4PM ET resolution and Bitcoin currently down $1,554.50 from the open, this represents a significant gap that needs to be overcome.\n\nThe intraday technicals show Bitcoin has traded in a range from $66,179 (low) to $68,624"
+      "shrunk_prediction": 0.041875,
+      "pre_adversarial_prediction": 0.15,
+      "reasoning_excerpt": "Looking at the current situation, Bitcoin opened today at $68,083 and is currently trading at $66,362, representing a -2.53% intraday decline. For this contract to resolve YES, Bitcoin needs to close above its opening price of $68,083. With only about 7 hours remaining until the 4:00 PM resolution, Bitcoin would need to rally approximately 2.6% from current levels to finish positive for the day. The intraday range shows Bitcoin has already tested lows around $66,179 and peaked at $68,624 (slight"
     },
     {
       "question": "Highest temperature in NYC",
@@ -22,33 +22,33 @@
       "type": "multi-outcome",
       "tier": "haiku",
       "market_price": 0,
-      "divergence": 0.015967798302546132,
-      "timestamp": "2026-04-02T05:50:57Z",
+      "divergence": 0.0039999999999997815,
+      "timestamp": "2026-04-02T09:12:21Z",
       "outcome_predictions": [
-        0.9785322016974539,
-        0.009985022466300552,
-        0.004992511233150276,
-        0.0019970044932601104,
-        0.0009985022466300552,
-        0.0009985022466300552,
-        0.0004992511233150276,
-        0.0004992511233150276,
-        0.0004992511233150276,
-        0.0004992511233150276,
-        0.0004992511233150276
+        0.9900000000000002,
+        0.003000000000000001,
+        0.0020000000000000005,
+        0.0010000000000000002,
+        0.0010000000000000002,
+        0.0010000000000000002,
+        0.0005000000000000001,
+        0.0005000000000000001,
+        0.0005000000000000001,
+        0.00030000000000000003,
+        0.00020000000000000006
       ],
       "shrunk_outcome_predictions": [
-        0.9804407147542376,
-        0.007847091779693564,
-        0.003985913358974884,
-        0.001619312331241195,
-        0.0008720236347487002,
-        0.0008720236347487002,
-        0.0018704636073207143,
-        0.000747849163014864,
-        0.000747849163014864,
-        0.0004983792865024529,
-        0.0004983792865024529
+        0.989886377824947,
+        0.0026220501935322765,
+        0.0018728929953801977,
+        0.0008740167311774255,
+        0.0008740167311774255,
+        0.0008740167311774255,
+        0.0007491571981520789,
+        0.0007491571981520789,
+        0.0008740167311774253,
+        0.0003496066924709702,
+        0.0002746909726557623
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 59\u00b0F or below on April 2?",
@@ -64,19 +64,19 @@
         "Will the highest temperature in New York City be between 76-77\u00b0F on April 2?"
       ],
       "outcome_market_prices": [
-        0.9945,
+        0.994,
         0.0015,
-        0.001,
+        0.0015,
         0.0005,
         0.0005,
         0.0005,
-        0.006,
         0.0015,
         0.0015,
+        0.002,
         0.0005,
         0.0005
       ],
-      "reasoning_excerpt": "# Assessment\n\n**National Weather Service Forecast Analysis:**\nThe NWS forecast high for NYC today is 49\u00b0F, with a peak expected around 1am (already passed at 56\u00b0F). The hourly forecast shows temperatures declining throughout the day, with the 5am reading at 49\u00b0F and continuing to fall or stay flat through the evening. This is a same-day forecast with high reliability.\n\n**Key Observations:**\n- The peak of 56\u00b0F occurred at 1am (before the current time of 5:44am)\n- All subsequent hourly readings sh"
+      "reasoning_excerpt": "# Assessment\n\n**NWS Forecast Analysis:**\nThe National Weather Service forecasts a high of 47\u00b0F for NYC today, with the peak temperature occurring around 4am (49\u00b0F). The hourly breakdown shows temperatures rising to 49\u00b0F at 4am, then falling throughout the day to 45\u00b0F by mid-morning and continuing to decline through the evening. This is unambiguous\u2014the high will be in the upper 40s.\n\n**Temperature Bucket Mapping:**\nThe 47\u00b0F forecast high falls squarely in the \"59\u00b0F or below\" bucket. Given NWS sam"
     },
     {
       "question": "Highest temperature in Miami",
@@ -85,33 +85,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.11182139253279522,
-      "timestamp": "2026-04-02T05:50:57Z",
+      "divergence": 0.11500000000000005,
+      "timestamp": "2026-04-02T09:12:21Z",
       "outcome_predictions": [
-        0.005045408678102927,
-        0.20181634712411706,
-        0.0020181634712411706,
-        0.010090817356205853,
-        0.0010090817356205853,
-        0.04036326942482341,
-        0.0010090817356205853,
-        0.2825428859737639,
-        0.3531786074672048,
-        0.10090817356205853,
-        0.0020181634712411706
+        0.01,
+        0.15,
+        0.0,
+        0.02,
+        0.0,
+        0.05,
+        0.0,
+        0.3,
+        0.35,
+        0.12,
+        0.0
       ],
       "shrunk_outcome_predictions": [
-        0.0046730757357845475,
-        0.17438541659286635,
-        0.00189430551999085,
-        0.008217766316102696,
-        0.0008844646958028474,
-        0.03813686265658731,
-        0.0008844646958028474,
-        0.30030808874656256,
-        0.3822807979943867,
-        0.08644045152612224,
-        0.00189430551999085
+        0.008993255058705971,
+        0.1361478890831876,
+        0.00037471896077941535,
+        0.015613290032475642,
+        0.0,
+        0.04833874594054459,
+        0.0,
+        0.31476392705470896,
+        0.37846615038720954,
+        0.09692730452160879,
+        0.00037471896077941535
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be between 74-75\u00b0F on April 2?",
@@ -127,32 +127,32 @@
         "Will the highest temperature in Miami be between 88-89\u00b0F on April 2?"
       ],
       "outcome_market_prices": [
-        0.0035,
-        0.09,
+        0.006,
+        0.095,
         0.0015,
         0.0025,
-        0.0005,
-        0.031,
-        0.0005,
-        0.35,
+        0.0,
+        0.0435,
+        0.0,
+        0.36,
         0.465,
-        0.042,
+        0.028,
         0.0015
       ],
       "pre_adversarial_predictions": [
-        0.01,
-        0.62,
-        0.01,
-        0.04,
+        0.0,
+        0.2,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
         0.0,
         0.02,
-        0.0,
         0.03,
-        0.11,
-        0.15,
-        0.01
+        0.65,
+        0.0
       ],
-      "reasoning_excerpt": "Looking at the NWS forecast data for Miami today:\n\n**Key Information:**\n- Forecast high: 85\u00b0F\n- Hourly progression shows temperatures peaking at 83\u00b0F around 2-4pm\n- Current conditions: Chance of showers and thunderstorms (60% precipitation chance)\n- East winds 3-10 mph with gusts to 22 mph\n\n**Analysis:**\n\nThe forecast high of 85\u00b0F would place the temperature in the 84-85\u00b0F bucket. However, the hourly temperature data shows a different story - temperatures only reaching 83\u00b0F at peak (2-4pm period"
+      "reasoning_excerpt": "Looking at the National Weather Service forecast for Miami today (April 2, 2026), the key information is:\n\n- **Forecast high: 85\u00b0F**\n- Hourly progression shows temperatures peaking at 83\u00b0F around 3-4pm\n- Conditions include chance of showers/thunderstorms after noon (50% precipitation chance)\n\nThis creates an interesting situation. The official forecast high is 85\u00b0F, but the hourly data only shows temps reaching 83\u00b0F. This discrepancy could be due to:\n1. The forecast high being a broader estimate"
     }
   ]
 }
