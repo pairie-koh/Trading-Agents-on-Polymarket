@@ -1,17 +1,13 @@
 {
-  "timestamp": "2026-04-03T13:15:12Z",
+  "timestamp": "2026-04-03T16:50:37Z",
   "market_prices": {
     "regime_fall": {
-      "current": 0.135,
+      "current": 0.145,
       "previous": 0.135,
-      "change_4h": 0.0,
-      "change_24h": 0.02,
-      "change_7d": -0.06,
+      "change_4h": 0.01,
+      "change_24h": 0.03,
+      "change_7d": -0.05,
       "history_24h": [
-        {
-          "t": 1775136387,
-          "p": 0.115
-        },
         {
           "t": 1775149307,
           "p": 0.115
@@ -35,198 +31,229 @@
         {
           "t": 1775222112,
           "p": 0.135
+        },
+        {
+          "t": 1775235037,
+          "p": 0.145
         }
       ]
     }
   },
   "fresh_facts": [
     {
-      "claim": "The IRGC claimed on Thursday, April 3, 2026, to have struck a US F-35 stealth fighter jet over central Iran using air defenses and released images of wreckage.",
-      "source": "FRANCE 24",
-      "source_category": "wire_service",
+      "claim": "US-Israeli forces struck Iran's B1 bridge near Karaj, killing at least 8 people and injuring dozens.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
       "indicator_category": "military_pressure",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
       "confidence": "high"
     },
     {
-      "claim": "Iran is deploying large numbers of low-cost drones in swarms to target critical infrastructure like desalination plants in Gulf states as a strategy of horizontal escalation.",
-      "source": "Al Jazeera English",
-      "source_category": "wire_service",
+      "claim": "Israeli forces launched a wide-scale wave of strikes including a massive explosion in the Jack neighborhood of northern Tehran on April 3.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
       "indicator_category": "military_pressure",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
       "confidence": "high"
     },
     {
-      "claim": "US Secretary of Defense Pete Hegseth threatened to strike Iran extremely hard with B-2s, B-52s, B-1s, predator drones, and fighters.",
-      "source": "Al Jazeera English",
-      "source_category": "wire_service",
+      "claim": "US President Donald Trump threatened strikes on Iranian bridges and electric power plants via Truth Social posts.",
+      "source": "Multiple video sources",
+      "source_category": "social_media",
       "indicator_category": "military_pressure",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
       "confidence": "high"
     },
     {
-      "claim": "The US Army Chief of Staff was ousted mid-war during the fifth week of conflict with Iran.",
-      "source": "Al Jazeera English",
-      "source_category": "wire_service",
+      "claim": "The IRGC claimed responsibility for 'Wave 91 of Operation True Promise 4,' firing cruise missiles at the USS Abraham Lincoln carrier and ballistic missiles at a US gathering near a UAE base.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
       "indicator_category": "military_pressure",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
       "confidence": "medium"
     },
     {
-      "claim": "President Pezeshkian faces severe political deadlock after signaling conditional willingness to end the war with serious disagreements emerging with IRGC chief Ahmad Vahidi.",
-      "source": "government_official",
+      "claim": "Iranian state media claimed air defenses downed a US F-35 jet over central Iran, with one claim including a captured pilot.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "low"
+    },
+    {
+      "claim": "US officials denied Iranian claims of F-35 losses and a captured pilot.",
+      "source": "Multiple video sources",
       "source_category": "government_official",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iranian drones struck a Kuwait oil refinery, with firefighters controlling the resulting blazes and no injuries reported.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iran deployed drone swarms targeting Gulf infrastructure, with analysts noting thousands of drones remain available despite strikes on missiles.",
+      "source": "Multiple video sources",
+      "source_category": "osint",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "US President Donald Trump announced 'productive' and 'constructive' talks with Iran, postponing strikes on energy infrastructure for five days.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "A 15-point US peace plan delivered via Pakistan to Iran proposes reopening the Strait of Hormuz, missile limits, sanctions relief, and nuclear rollback.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iran's Foreign Minister Abbas Araghchi is reviewing a US peace plan but insists Iran has no intent to negotiate.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Trump threatened continued bombing if diplomacy fails and floated seizing Kharg Island oil or enriched uranium.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Following Supreme Leader Ali Khamenei's death in a February 28 US-Israel strike, his son Mojtaba Khamenei was appointed successor by the Assembly of Experts.",
+      "source": "Multiple sources",
+      "source_category": "osint",
+      "indicator_category": "succession_dynamics",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "President Masoud Pezeshkian faces fierce hardline backlash from IRGC chief Ahmad Vahidi over conditional war-end signals, leading to a political deadlock.",
+      "source": "Multiple sources",
+      "source_category": "osint",
       "indicator_category": "internal_stability",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "IRGC is assuming key state functions amid political deadlock between hardliners and the civilian government.",
+      "source": "Multiple sources",
+      "source_category": "osint",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Mohammad Bagher Zolghadr, an ex-IRGC deputy, was appointed as Supreme National Security Council chief, filling the security gap left by Ali Larijani's assassination.",
+      "source": "Multiple sources",
+      "source_category": "osint",
+      "indicator_category": "succession_dynamics",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iran released 20 cargo ships as a negotiation sign, according to Trump's claims, though disputed by experts.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
       "confidence": "medium"
     },
     {
-      "claim": "Mojtaba Khamenei, the late Supreme Leader Ayatollah Ali Khamenei's son, was appointed as his successor by Tehran's Assembly of Experts following the Supreme Leader's death on February 28, 2026.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "succession_dynamics",
-      "market": "regime_fall",
-      "time": "2026-02-28T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Mohammad Bagher Zolghadr was appointed as secretary of Iran's Supreme National Security Council under pressure from IRGC commanders, replacing the assassinated Ali Larijani.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "succession_dynamics",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Trump stated the U.S. and Iran held productive talks, with Vice President JD Vance and Secretary of State Marco Rubio joining diplomatic envoys Jared Kushner and Steve Witkoff.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Iran's parliament speaker Mohammad Bagher Ghalibaf denied negotiations with the US occurred, while the foreign ministry acknowledged friendly states conveyed US requests for talks.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "A fifteen-point U.S. peace proposal was reportedly delivered via Pakistan, encompassing Strait of Hormuz reopening, missile limits, sanctions relief, and nuclear program rollback.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "Iran's Foreign Minister Abbas Araghchi stated Tehran was reviewing a US peace proposal but insisted it did not intend to negotiate.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Iran stated a condition for war termination includes fighting cessation on all fronts and guarantees against future attacks.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Trump announced a five-day pause on strikes against Iranian energy infrastructure, with more than two thousand additional U.S. Marines expected in the Middle East by the pause's end.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Iran's economy exhibits structural symptoms of currency collapse, with the country losing faith in its own currency and experiencing a shift in its monetary regime.",
-      "source": "government_official",
-      "source_category": "government_official",
+      "claim": "Iran's economy shows structural collapse with currency distrust and monetary regime shift amid war damages.",
+      "source": "Multiple sources",
+      "source_category": "osint",
       "indicator_category": "economic_collapse",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "Iranian officials increasingly portray control of the Strait of Hormuz as a financial asset to offset war costs.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "economic_collapse",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "Recent protests represent the most serious domestic unrest the Islamic Republic has ever faced.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "internal_stability",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "Iranian state television has escalated messaging by warning citizens against revealing official locations and labeling protesters as enemy combatants.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "internal_stability",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "An Iranian armed forces spokesperson warned that adversaries would not be safe in tourist centers worldwide.",
-      "source": "government_official",
-      "source_category": "government_official",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
       "confidence": "high"
     },
     {
-      "claim": "The Revolutionary Guard has effectively assumed control over key state functions within Iran's government.",
-      "source": "government_official",
-      "source_category": "government_official",
+      "claim": "Iranian state TV warned citizens against revealing officials hiding among civilians and labeled protesters 'enemy combatants.'",
+      "source": "Multiple sources",
+      "source_category": "osint",
       "indicator_category": "internal_stability",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Recent protests in Iran marked the country's most serious civil unrest ever, according to historical assessment.",
+      "source": "Multiple sources",
+      "source_category": "osint",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-03",
       "confidence": "medium"
     },
     {
-      "claim": "Mojtaba Khamenei has only recently issued statements after days of absence, with media efforts to reinforce his image as a wartime leader.",
-      "source": "government_official",
+      "claim": "US plans to deploy 2,000 additional Marines by Friday, according to Trump.",
+      "source": "Multiple sources",
       "source_category": "government_official",
-      "indicator_category": "succession_dynamics",
+      "indicator_category": "military_pressure",
       "market": "regime_fall",
-      "time": "2026-04-03T00:00:00Z",
-      "confidence": "medium"
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iran's new leader Mojtaba Khamenei and General Abolfazl Shekarchi issued threats to adversaries' security and tourist sites worldwide.",
+      "source": "Multiple sources",
+      "source_category": "osint",
+      "indicator_category": "international_response",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
+    },
+    {
+      "claim": "Parliament speaker Mohammad Bagher Ghalibaf denied US talks with Iran.",
+      "source": "Multiple sources",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-03",
+      "confidence": "high"
     }
   ],
   "state": {
-    "last_updated": "2026-04-03T00:00:00Z",
+    "last_updated": "2026-04-03T23:59:59Z",
     "markets": {
       "regime_fall": {
-        "current_status": "Iran escalates military operations with drone swarms and claimed F-35 strike while simultaneously engaged in diplomatic signaling through back-channels, creating a strategic ambiguity amid deepening internal fractures between civilian leadership and IRGC, succession instability under Mojtaba Khamenei, currency collapse, and most severe domestic unrest in Islamic Republic history.",
-        "last_major_event": "IRGC claimed to have struck a US F-35 stealth fighter over central Iran on April 3 while Iran's Foreign Minister stated Tehran was reviewing a US 15-point peace proposal without intent to negotiate, signaling parallel military escalation and diplomatic positioning.",
+        "current_status": "Active military escalation with US-Israeli strikes on Iranian infrastructure occurring simultaneously with diplomatic signaling including a 5-day bombing pause and 15-point peace proposal, while Iran's new leadership under Mojtaba Khamenei confronts severe internal fractures between hardline IRGC control and civilian government, unprecedented economic collapse, and the most severe civil unrest in Islamic Republic history.",
+        "last_major_event": "US-Israeli forces conducted wide-scale strikes including attacks on B1 bridge near Karaj and massive explosion in Jack neighborhood of Tehran on April 3, while Trump announced 'productive' talks with Iran and postponed strikes on energy infrastructure for five days, creating a paradox of simultaneous military escalation and diplomatic engagement.",
         "last_major_event_time": "2026-04-03T00:00:00Z",
         "military_pressure": "critical",
         "internal_stability": "critical",
