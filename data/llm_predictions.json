@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-05T16:47:49Z",
+  "timestamp": "2026-04-05T20:45:52Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 5?",
@@ -7,13 +7,13 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "opus",
-      "market_price": 0.0005,
-      "divergence": 0.5195000000000001,
-      "timestamp": "2026-04-05T16:47:49Z",
-      "prediction": 0.52,
-      "shrunk_prediction": 0.39012500000000006,
-      "pre_adversarial_prediction": 1.0,
-      "reasoning_excerpt": "This contract has already expired - the end date was April 5, 2026 at 16:00:00Z, and we're now at 16:43:14Z on the same day. The critical observation is that Bitcoin is currently trading at $67,289.50, which is UP +0.04% from today's opening price of $67,263.00. This represents a gain of $26.50.\n\nThe contract description states it resolves YES if Bitcoin closes HIGHER than it opened. Since we're already 43 minutes past the resolution time of 16:00:00Z, the outcome is already determined. Bitcoin "
+      "market_price": 0.0,
+      "divergence": 0.01,
+      "timestamp": "2026-04-05T20:45:52Z",
+      "prediction": 0.01,
+      "shrunk_prediction": 0.0075,
+      "pre_adversarial_prediction": 0.99,
+      "reasoning_excerpt": "This contract has already expired and should be resolved. The key temporal marker shows we're past the April 5, 2026 4:00 PM UTC resolution time by over 4 hours. The market price at 0.000 suggests the market has already processed the resolution or is awaiting official confirmation.\n\nLooking at the intraday data, Bitcoin opened today at $67,263.00 and is currently trading at $67,627.50, representing a +0.54% gain. This means Bitcoin is definitively UP from today's open. The contract clearly state"
     },
     {
       "question": "Highest temperature in NYC",
@@ -22,33 +22,33 @@
       "type": "multi-outcome",
       "tier": "haiku",
       "market_price": 0,
-      "divergence": 0.009967798302545905,
-      "timestamp": "2026-04-05T16:47:49Z",
+      "divergence": 0.03715213082259661,
+      "timestamp": "2026-04-05T20:45:52Z",
       "outcome_predictions": [
-        0.9785322016974541,
-        0.014977533699450828,
-        0.001997004493260111,
-        0.0009985022466300554,
-        0.0004992511233150277,
-        0.0004992511233150277,
-        0.0004992511233150277,
-        0.0004992511233150277,
-        0.0004992511233150277,
-        0.0004992511233150277,
-        0.0004992511233150277
+        0.9613478691774034,
+        0.019821605550049557,
+        0.0029732408325074335,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956,
+        0.001982160555004956
       ],
       "shrunk_outcome_predictions": [
-        0.9810241512730906,
-        0.012608150274588122,
-        0.0018727533699450833,
-        0.0009988766849725415,
-        0.0004994383424862707,
-        0.0004994383424862707,
-        0.0004994383424862707,
-        0.0004994383424862707,
-        0.0004994383424862707,
-        0.0004994383424862707,
-        0.0004994383424862707
+        0.9695451635740318,
+        0.015224077075826861,
+        0.0023522843045379696,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289,
+        0.0016098093807004289
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 67\u00b0F or below on April 5?",
@@ -64,10 +64,10 @@
         "Will the highest temperature in New York City be 86\u00b0F or higher on April 5?"
       ],
       "outcome_market_prices": [
-        0.9885,
-        0.0055,
+        0.9985,
         0.0015,
-        0.001,
+        0.0005,
+        0.0005,
         0.0005,
         0.0005,
         0.0005,
@@ -76,7 +76,7 @@
         0.0005,
         0.0005
       ],
-      "reasoning_excerpt": "# Assessment\n\nThe National Weather Service forecast is the most reliable signal here. The key data points are:\n- **Forecast high: 63\u00b0F** (official NWS prediction)\n- **Peak expected: 61\u00b0F around 3pm** (with afternoon cooling)\n- **Hourly progression shows peak of 61\u00b0F at 3pm**, then declining temperatures through evening\n- **Conditions: Rain, clouds, and falling temperatures** - all factors that suppress afternoon highs\n\nThe NWS forecast high of 63\u00b0F falls squarely into the \"67\u00b0F or below\" bucket."
+      "reasoning_excerpt": "# Assessment\n\n**NWS Forecast Analysis:**\nThe National Weather Service forecasts a high of 58\u00b0F for April 5 in NYC, with the peak temperature expected around 4pm at 56\u00b0F. The hourly breakdown shows temperatures ranging from 56\u00b0F in the afternoon down to 49\u00b0F by 11pm, with consistent rain and cloud cover throughout the day.\n\n**Confidence in Forecast:**\nSame-day weather forecasts from NWS are highly reliable, especially for temperature highs. The forecast high of 58\u00b0F falls squarely into the \"67\u00b0F "
     },
     {
       "question": "Highest temperature in Miami",
@@ -85,33 +85,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.125,
-      "timestamp": "2026-04-05T16:47:49Z",
+      "divergence": 0.23399999999999999,
+      "timestamp": "2026-04-05T20:45:52Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.25,
-        0.5,
-        0.2,
-        0.04,
+        0.01,
+        0.03,
+        0.75,
+        0.18,
+        0.02,
         0.01,
         0.0,
         0.0
       ],
       "shrunk_outcome_predictions": [
         0.0,
-        0.00012607160867372666,
-        0.00012607160867372666,
-        0.00012607160867372666,
-        0.2685325264750378,
-        0.5181543116490167,
-        0.170196671709531,
-        0.03328290468986384,
-        0.008068582955118506,
-        0.0007564296520423599,
-        0.0006303580433686335
+        0.0,
+        0.0,
+        0.00749063670411985,
+        0.022596754057428215,
+        0.8074906367041199,
+        0.13845193508114856,
+        0.01548064918851436,
+        0.007990012484394507,
+        0.00024968789013732833,
+        0.00024968789013732833
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 73\u00b0F or below on April 5?",
@@ -128,31 +128,31 @@
       ],
       "outcome_market_prices": [
         0.0,
+        0.0,
+        0.0,
+        0.0,
         0.0005,
-        0.0005,
-        0.0005,
-        0.315,
-        0.555,
-        0.075,
-        0.012,
+        0.984,
+        0.0145,
         0.002,
-        0.003,
-        0.0025
+        0.002,
+        0.001,
+        0.001
       ],
       "pre_adversarial_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
-        0.02,
-        0.03,
-        0.9,
-        0.04,
         0.01,
+        0.02,
+        0.95,
+        0.02,
+        0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 5, 2026, I need to assess what actually happened based on the available data.\n\nThe National Weather Service forecast is highly reliable for same-day predictions. The key information:\n- Forecast high: 85\u00b0F\n- Hourly progression shows temperatures peaking at 84\u00b0F around 4pm\n- The day started cooler (82\u00b0F at noon) and gradually warmed\n- Chance of showers and thunderstorms (50% precipitation chance)\n\nThe hourly data is particularl"
+      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 5th, I need to analyze what likely happened versus what the market was predicting.\n\nThe market was extremely concentrated, with 98.4% probability on 82-83\u00b0F. However, the National Weather Service forecast tells a different story:\n- Today's forecast high: 85\u00b0F\n- Hourly temps show a peak of 84\u00b0F at both 3pm and 4pm\n- The temperature progression shows it reached 84\u00b0F and held there briefly before declining\n\nThis is a clear case "
     }
   ]
 }
