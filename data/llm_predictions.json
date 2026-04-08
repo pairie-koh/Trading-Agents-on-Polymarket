@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-08T17:16:23Z",
+  "timestamp": "2026-04-08T20:58:10Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 8?",
@@ -7,13 +7,13 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "opus",
-      "market_price": 0.9995,
-      "divergence": 0.0495000000000001,
-      "timestamp": "2026-04-08T17:16:23Z",
-      "prediction": 0.95,
-      "shrunk_prediction": 0.962375,
+      "market_price": 1.0,
+      "divergence": 0.020000000000000018,
+      "timestamp": "2026-04-08T20:58:10Z",
+      "prediction": 0.98,
+      "shrunk_prediction": 0.985,
       "pre_adversarial_prediction": 0.01,
-      "reasoning_excerpt": "This contract is already expired, and we have the intraday data showing Bitcoin's performance on April 8, 2026. The market price of 100% reflects that participants have already observed the outcome.\n\nLooking at the intraday data: Bitcoin opened at $71,920 and is currently at $71,709, representing a -0.29% decline. For this contract to resolve YES, Bitcoin would need to close HIGHER than the opening price of $71,920. With the trading day presumably closed or nearly closed (given we're past the 4:"
+      "reasoning_excerpt": "This contract has already expired and appears to be in a peculiar state. The market is pricing it at 100% YES, but the real-time data clearly shows Bitcoin is DOWN for the day - it opened at $71,920 and is currently trading at $71,293.50, a decline of 0.87%. This is a straightforward resolution: the contract should resolve NO since Bitcoin is trading below its opening price.\n\nThe market's 100% YES pricing in the face of contrary evidence suggests either a technical issue with the resolution mech"
     },
     {
       "question": "Highest temperature in NYC",
@@ -22,33 +22,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.15149999999999997,
-      "timestamp": "2026-04-08T17:16:23Z",
+      "divergence": 0.0024999999999999996,
+      "timestamp": "2026-04-08T20:58:10Z",
       "outcome_predictions": [
+        0.0,
+        0.0,
+        0.0,
         0.001,
         0.001,
-        0.001,
+        0.97,
+        0.024,
         0.003,
-        0.015,
-        0.18,
-        0.4,
-        0.35,
-        0.045,
-        0.003,
-        0.001
+        0.001,
+        0.0,
+        0.0
       ],
       "shrunk_outcome_predictions": [
-        0.0008531383302864108,
-        0.0008531383302864108,
-        0.0008531383302864108,
-        0.0035344302254722727,
-        0.017550274223034734,
-        0.19463741620962827,
-        0.42693479585618527,
-        0.3071297989031078,
-        0.04277879341864716,
-        0.003412553321145643,
-        0.0014625228519195613
+        0.0,
+        0.0,
+        0.0,
+        0.0008741258741258742,
+        0.0008741258741258742,
+        0.9690309690309691,
+        0.023851148851148855,
+        0.0036213786213786215,
+        0.0013736263736263737,
+        0.0001248751248751249,
+        0.0002497502497502498
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 37\u00b0F or below on April 8?",
@@ -64,32 +64,32 @@
         "Will the highest temperature in New York City be 56\u00b0F or higher on April 8?"
       ],
       "outcome_market_prices": [
+        0.0,
+        0.0,
+        0.0,
         0.0005,
         0.0005,
-        0.0005,
+        0.97,
+        0.0235,
         0.0055,
-        0.027,
-        0.2585,
-        0.5515,
-        0.21,
-        0.0405,
-        0.005,
-        0.003
-      ],
-      "pre_adversarial_predictions": [
-        0.001,
-        0.001,
-        0.001,
-        0.001,
-        0.002,
-        0.004,
-        0.07,
-        0.91,
-        0.008,
-        0.001,
+        0.0025,
+        0.0005,
         0.001
       ],
-      "reasoning_excerpt": "Looking at this expired contract for NYC's high temperature on April 8, 2026, I need to analyze what actually happened based on the NWS data.\n\nThe key information:\n- NWS shows today's forecast high: 50\u00b0F\n- Hourly temperatures show the day peaked at 50\u00b0F around 2-3pm\n- The temperature progression confirms this: 45\u00b0F(12pm), 48\u00b0F(1pm), 50\u00b0F(2-3pm), then declining\n\nThis is a same-day forecast with actual hourly data, so the 50\u00b0F high is essentially certain. The forecast high of 50\u00b0F falls squarely i"
+      "pre_adversarial_predictions": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.01,
+        0.02,
+        0.15,
+        0.8,
+        0.02,
+        0.0,
+        0.0
+      ],
+      "reasoning_excerpt": "Looking at this expired contract from April 8, 2026, I need to assess what the actual high temperature likely was based on the available data.\n\nThe National Weather Service forecast provides the key information:\n- Today's forecast high: 51\u00b0F\n- Peak expected: 50\u00b0F around 4pm\n- Hourly progression shows temperatures reaching 50\u00b0F at 4pm, then declining\n\nThe hourly data is particularly revealing - it shows the temperature peaked at 50\u00b0F at 4pm and immediately began falling. This suggests the actual "
     },
     {
       "question": "Highest temperature in Miami",
@@ -98,33 +98,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.15,
-      "timestamp": "2026-04-08T17:16:23Z",
+      "divergence": 0.0645,
+      "timestamp": "2026-04-08T20:58:10Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
-        0.02,
-        0.25,
-        0.45,
-        0.25,
-        0.02,
-        0.01,
         0.0,
+        0.0,
+        0.01,
+        0.05,
+        0.9,
+        0.03,
+        0.01,
         0.0
       ],
       "shrunk_outcome_predictions": [
         0.0,
         0.0,
         0.0,
-        0.02357196308306311,
-        0.27500623596906965,
-        0.4589673235220754,
-        0.21202294836617613,
-        0.01908206535295585,
-        0.00960339236717386,
-        0.001371913195310551,
-        0.00037415814417560486
+        0.000124750499001996,
+        0.000124750499001996,
+        0.007609780439121756,
+        0.037549900199600805,
+        0.9142964071856288,
+        0.03181137724550898,
+        0.007984031936127744,
+        0.000499001996007984
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 67\u00b0F or below on April 8?",
@@ -143,14 +143,14 @@
         0.0,
         0.0,
         0.0,
-        0.0345,
-        0.3525,
-        0.49,
-        0.1,
-        0.0165,
-        0.0085,
-        0.0055,
-        0.0015
+        0.0005,
+        0.0005,
+        0.0005,
+        0.0005,
+        0.9645,
+        0.0375,
+        0.002,
+        0.002
       ],
       "pre_adversarial_predictions": [
         0.0,
@@ -159,13 +159,13 @@
         0.0,
         0.0,
         0.0,
-        0.98,
-        0.02,
+        1.0,
+        0.0,
         0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 8th, I need to analyze what actually happened based on the weather data provided.\n\nThe National Weather Service forecast indicates:\n- Today's forecast high: 80\u00b0F\n- Hourly temperatures show a peak of 78\u00b0F at 2pm and 3pm\n- Temperatures are already falling by late afternoon (76\u00b0F at 5pm, 75\u00b0F at 6pm)\n- Current time is 5:11 PM (17:11), so we've likely already seen today's peak\n\nThe key insight is that while the forecast called fo"
+      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 8, 2026, I need to assess what actually happened based on the NWS data.\n\n**Key Information:**\n- The contract has expired (it's now 8:53 PM on April 8)\n- NWS shows hourly temperatures with a peak of 78\u00b0F at 4 PM\n- The temperature progression shows a clear peak and decline pattern typical of a normal day\n\n**Analysis:**\n\nThe NWS data is definitive - the high temperature in Miami today was 78\u00b0F. This falls squarely in the 78-79\u00b0F"
     }
   ]
 }
