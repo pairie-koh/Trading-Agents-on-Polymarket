@@ -51,6 +51,10 @@
     {
       "date": "2026-04-10",
       "content": "# LLM Forecast Iteration \u2014 2026-04-10\n\n**Decision: NO CHANGE**\n\nThe system shows recent degradation with avg SE increasing from 0.076 to 0.144, but this appears to be noise from the failed weather experiment that was auto-reverted. The experiment history shows the current SHRINKAGE_KEEP=0.75 configuration was producing consistent improvements (SE decreasing from 0.087 to 0.061, then 0.083 to 0.039, then 0.076 to 0.041) before the failed weather experiments. Weather-specific changes have repeatedly failed and been reverted. Given the core system was working well and recent degradation is from reverted experiments, no change is warranted to avoid introducing additional noise.\n"
+    },
+    {
+      "date": "2026-04-11",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-11\n\nThe system shows poor overall performance with 58% accuracy and negative edge vs market (-0.006), indicating systematic overconfidence. Recent performance degraded from SE 0.081 to 0.147 (+0.066). With the LLM consistently losing to market baseline, the current SHRINKAGE_KEEP=0.75 is too aggressive. Reducing to 0.65 will pull LLM predictions closer to market prices, improving calibration while still allowing the system to express conviction when it has genuine edge.\n\n## Replacements Applied\n\n### Change 1\n```\n# Overconfidence shrinkage: pull LLM estimates toward market price.\n# 0.0 = ignore LLM entirely (use market), 1.0 = trust LLM fully (no shrinkage).\n# 0.5 = split the difference. Research shows LLMs are systematically overconfident,\n# but prediction markets can also be wrong. We keep 75% of LLM divergence from market.\nSHRINKAGE_KEEP = 0.75\n```\n\u2192\n```\n# Overconfidence shrinkage: pull LLM estimates toward market price.\n# 0.0 = ignore LLM entirely (use market), 1.0 = trust LLM fully (no shrinkage).\n# 0.5 = split the difference. Research shows LLMs are systematically overconfident,\n# but prediction markets can also be wrong. We keep 65% of LLM divergence from market.\nSHRINKAGE_KEEP = 0.65\n```\n\n"
     }
   ]
 }
