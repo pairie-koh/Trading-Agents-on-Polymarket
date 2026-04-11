@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-11T16:48:36Z",
+  "timestamp": "2026-04-11T20:45:47Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 11?",
@@ -9,10 +9,10 @@
       "tier": "haiku",
       "market_price": 0.9995,
       "divergence": 0.009500000000000064,
-      "timestamp": "2026-04-11T16:48:36Z",
+      "timestamp": "2026-04-11T20:45:47Z",
       "prediction": 0.99,
       "shrunk_prediction": 0.993325,
-      "reasoning_excerpt": "# Assessment\n\nThe contract has already expired (resolution date was 2026-04-11T16:00:00Z, and current time is 2026-04-11T16:43:40Z), meaning the outcome should already be determined. Based on the intraday data provided, Bitcoin opened at $72,926.00 and is currently trading at $73,025.50, representing a +0.14% intraday gain. Since the contract resolves YES if BTC closes higher than it opened, and we are past the resolution time with BTC trading above the open, the outcome appears to have resolved"
+      "reasoning_excerpt": "# Assessment\n\nThe contract has already expired as of 2026-04-11T16:00:00Z, and we now have complete intraday data showing Bitcoin opened at $72,926.00 and closed at $73,277.50 (current price at 20:41:06Z). Bitcoin is UP +0.48% on the day, meaning the contract should resolve YES based on standard \"up or down\" resolution criteria (close higher than open).\n\nSince the resolution window has closed and the outcome is deterministic from the available data, this is no longer a probabilistic forecast but"
     },
     {
       "question": "Highest temperature in NYC",
@@ -21,15 +21,15 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.135,
-      "timestamp": "2026-04-11T16:48:36Z",
+      "divergence": 0.11499999999999999,
+      "timestamp": "2026-04-11T20:45:47Z",
       "outcome_predictions": [
-        0.1,
-        0.35,
-        0.3,
-        0.2,
-        0.04,
         0.01,
+        0.75,
+        0.2,
+        0.03,
+        0.01,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -37,17 +37,17 @@
         0.0
       ],
       "shrunk_outcome_predictions": [
-        0.11531331108639228,
-        0.385860833024348,
-        0.3104684217031269,
-        0.15103201087628226,
-        0.028303052774687924,
-        0.00729205289828204,
-        0.0005190952910641452,
-        0.0003460635273760968,
-        0.0003460635273760968,
-        0.0001730317636880484,
-        0.0003460635273760968
+        0.006697268417488147,
+        0.792886347104121,
+        0.1673062934256402,
+        0.02149647578197506,
+        0.010560112373642357,
+        0.00017558381618882778,
+        0.00017558381618882778,
+        0.00017558381618882778,
+        0.00017558381618882778,
+        0.00017558381618882778,
+        0.00017558381618882778
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 59\u00b0F or below on April 11?",
@@ -63,32 +63,32 @@
         "Will the highest temperature in New York City be 78\u00b0F or higher on April 11?"
       ],
       "outcome_market_prices": [
-        0.1475,
-        0.465,
-        0.34,
-        0.065,
-        0.0075,
-        0.0025,
-        0.0015,
-        0.001,
-        0.001,
         0.0005,
-        0.001
+        0.865,
+        0.105,
+        0.0055,
+        0.0115,
+        0.0005,
+        0.0005,
+        0.0005,
+        0.0005,
+        0.0005,
+        0.0005
       ],
       "pre_adversarial_predictions": [
-        0.01,
-        0.05,
-        0.18,
-        0.65,
-        0.1,
-        0.01,
+        0.0,
+        0.02,
+        0.95,
+        0.03,
+        0.0,
+        0.0,
         0.0,
         0.0,
         0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at the National Weather Service forecast for today (April 11, 2026), the official forecast high is 64\u00b0F. This is a same-day forecast, which means it should be highly accurate - typically within 1-2\u00b0F of the actual high temperature.\n\nThe key details from the forecast:\n- Forecast high: 64\u00b0F\n- Conditions: Sunny (no precipitation to cool things down)\n- Northwest wind 16-20 mph (could provide some cooling effect)\n- Temperature falling to around 62\u00b0F in the afternoon (suggests peak occurs earl"
+      "reasoning_excerpt": "Looking at this expired contract for April 11, 2026, I need to assess what the actual high temperature was based on the available information.\n\nThe National Weather Service forecast, updated at 8:41 PM on April 11, shows:\n- Today's forecast high: 64\u00b0F\n- Hourly temperatures show the peak already occurred at 62\u00b0F around 3-4 PM\n- Temperatures are now falling (currently in the 50s by evening)\n\nThis is crucial: The NWS forecast says the high was 64\u00b0F, but the actual hourly data shows the peak only re"
     },
     {
       "question": "Highest temperature in Miami",
@@ -97,33 +97,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.11499999999999994,
-      "timestamp": "2026-04-11T16:48:36Z",
+      "divergence": 0.008000000000000007,
+      "timestamp": "2026-04-11T20:45:47Z",
       "outcome_predictions": [
-        0.01,
-        0.01,
-        0.02,
-        0.45,
-        0.35,
-        0.12,
-        0.03,
-        0.01,
         0.0,
+        0.0,
+        0.0,
+        0.002,
+        0.985,
+        0.008,
+        0.003,
+        0.001,
+        0.001,
         0.0,
         0.0
       ],
       "shrunk_outcome_predictions": [
-        0.00656019656019656,
-        0.0063882063882063885,
-        0.012948402948402948,
-        0.48181818181818176,
-        0.3818181818181817,
-        0.08216216216216216,
-        0.020368550368550366,
-        0.007248157248157247,
-        0.00017199017199017195,
-        0.00017199017199017195,
-        0.0003439803439803439
+        0.0,
+        0.0,
+        0.0,
+        0.001469855505729945,
+        0.9843547583457894,
+        0.006402590931738912,
+        0.004035874439461882,
+        0.0015196811160936715,
+        0.0013452914798206274,
+        0.0005231689088191329,
+        0.0003487792725460885
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 73\u00b0F or below on April 11?",
@@ -139,32 +139,32 @@
         "Will the highest temperature in Miami be 92\u00b0F or higher on April 11?"
       ],
       "outcome_market_prices": [
-        0.0005,
+        0.0,
+        0.0,
         0.0,
         0.0005,
-        0.565,
-        0.46,
-        0.016,
+        0.993,
         0.0035,
+        0.006,
         0.0025,
-        0.0005,
-        0.0005,
+        0.002,
+        0.0015,
         0.001
       ],
       "pre_adversarial_predictions": [
-        0.010101010101010102,
-        0.010101010101010102,
-        0.010101010101010102,
-        0.05050505050505051,
-        0.25252525252525254,
-        0.6565656565656566,
-        0.010101010101010102,
+        0.0,
+        0.0,
+        0.0,
+        0.005,
+        0.99,
+        0.005,
+        0.0,
         0.0,
         0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for April 11, 2026, the key information is the NWS weather forecast showing:\n- Today's forecast high: 82\u00b0F\n- Hourly progression shows temperatures peaking at 81\u00b0F around 5pm\n- Conditions are mostly sunny with moderate winds\n\nThe forecast is extremely clear - the high temperature will be either 81\u00b0F or 82\u00b0F. Since this is a same-day forecast with mostly sunny conditions, the accuracy should be very high. The hourly data shows sustained temperatures of 80-81\u00b0F duri"
+      "reasoning_excerpt": "Looking at this expired contract, I need to assess what the actual high temperature in Miami was on April 11, 2026.\n\nThe key information is the NWS weather data from the actual day (April 11, 2026 at 20:41:10Z):\n- Forecast high: 82\u00b0F\n- Hourly temperatures show the peak was 81\u00b0F at 5pm\n- The progression was: 80\u00b0F (4pm), 81\u00b0F (5pm), 79\u00b0F (6pm)\n\nSince this is same-day data from the evening (8:41 PM), and we can see the hourly temperatures through 11pm, the high temperature for the day has already o"
     }
   ]
 }
