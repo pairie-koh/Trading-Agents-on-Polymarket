@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-11T05:32:48Z",
+  "timestamp": "2026-04-11T08:57:43Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 11?",
@@ -7,12 +7,12 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "haiku",
-      "market_price": 0.695,
-      "divergence": 0.025000000000000022,
-      "timestamp": "2026-04-11T05:32:48Z",
-      "prediction": 0.72,
-      "shrunk_prediction": 0.71375,
-      "reasoning_excerpt": "# Assessment\n\n**Current Situation:** Bitcoin opened at $72,926.00 and currently trades at $72,745.50, down 0.25% intraday. The contract resolves YES only if BTC closes HIGHER than the open price. With less than 11 hours until resolution (16:00 UTC), Bitcoin needs to recover ~$180.50 or ~0.25% to achieve an up close.\n\n**Technical & Market Context:** Bitcoin is trading within a relatively tight intraday range ($72,631\u2013$73,071), with the current price near the lower-middle portion of that range. Th"
+      "market_price": 0.725,
+      "divergence": 0.04499999999999993,
+      "timestamp": "2026-04-11T08:57:43Z",
+      "prediction": 0.68,
+      "shrunk_prediction": 0.69575,
+      "reasoning_excerpt": "# Assessment\n\nBitcoin is currently DOWN 0.38% intraday, having opened at $72,926.00 and traded to a low of $72,592.00. With only ~7 hours until resolution at 16:00 UTC, the contract requires BTC to close HIGHER than the open for YES to resolve.\n\nThe current price of $72,652.50 is still $273.50 below the open. Bitcoin would need to rally ~0.38% from current levels just to reach parity, then go positive to resolve YES. While intraday Bitcoin volatility is substantial and such moves are possible, t"
     },
     {
       "question": "Highest temperature in NYC",
@@ -21,14 +21,14 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.10999999999999999,
-      "timestamp": "2026-04-11T05:32:48Z",
+      "divergence": 0.08499999999999996,
+      "timestamp": "2026-04-11T08:57:43Z",
       "outcome_predictions": [
-        0.12,
-        0.28,
-        0.45,
-        0.11,
-        0.02,
+        0.06,
+        0.22,
+        0.48,
+        0.18,
+        0.04,
         0.01,
         0.005,
         0.002,
@@ -37,17 +37,17 @@
         0.001
       ],
       "shrunk_outcome_predictions": [
-        0.12283093703520083,
-        0.3049082796232028,
-        0.42885473475458613,
-        0.10659395141298962,
-        0.01970748636588994,
-        0.008428358948934064,
-        0.004090233019335648,
-        0.0016113039167079827,
-        0.000867625185919683,
-        0.000867625185919683,
-        0.0012394645513138327
+        0.06814121436300043,
+        0.24080923982788557,
+        0.45318436878790164,
+        0.18645731108930325,
+        0.035328753680078505,
+        0.007423064341611937,
+        0.0037996024257064493,
+        0.0014846128683223877,
+        0.0008303766890616743,
+        0.0008303766890616743,
+        0.0017110792380664803
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 59\u00b0F or below on April 11?",
@@ -63,32 +63,32 @@
         "Will the highest temperature in New York City be 78\u00b0F or higher on April 11?"
       ],
       "outcome_market_prices": [
-        0.1355,
-        0.39,
-        0.38,
-        0.1,
-        0.0195,
-        0.004,
+        0.082,
+        0.275,
+        0.395,
+        0.195,
+        0.026,
+        0.0025,
         0.0015,
         0.0005,
         0.0005,
         0.0005,
-        0.002
+        0.003
       ],
       "pre_adversarial_predictions": [
-        0.05,
-        0.12,
-        0.68,
-        0.1,
-        0.02,
         0.01,
+        0.08,
+        0.75,
+        0.14,
         0.01,
+        0.0,
+        0.0,
         0.0,
         0.0,
         0.0,
         0.01
       ],
-      "reasoning_excerpt": "Looking at the National Weather Service forecast for today (April 11, 2026), the key information is crystal clear:\n- Forecast high: 63\u00b0F\n- Hourly progression shows temperatures peaking at 63\u00b0F around 3-4pm\n- Conditions: Sunny with northwest wind 13-18 mph, gusts up to 29 mph\n\nThis is a same-day forecast with only hours remaining until resolution. Same-day NWS forecasts for high temperatures are extremely accurate, typically within 1-2\u00b0F of the actual high.\n\nThe forecast high of 63\u00b0F falls square"
+      "reasoning_excerpt": "Looking at the National Weather Service forecast for today (April 11, 2026), the forecast high is 63\u00b0F. This is a same-day forecast with hourly temperature data showing a clear progression that peaks at 63\u00b0F from 2pm to 5pm. Same-day NWS forecasts for high temperatures are typically very accurate, with errors rarely exceeding 1-2\u00b0F.\n\nThe hourly forecast shows temperatures rising from the low 50s this morning to 63\u00b0F by 2pm, maintaining that peak through 5pm, then declining. This pattern is consi"
     },
     {
       "question": "Highest temperature in Miami",
@@ -97,33 +97,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.0895,
-      "timestamp": "2026-04-11T05:32:48Z",
+      "divergence": 0.135,
+      "timestamp": "2026-04-11T08:57:43Z",
       "outcome_predictions": [
         0.005,
-        0.025,
-        0.08,
-        0.35,
+        0.01,
+        0.045,
         0.38,
+        0.42,
         0.12,
-        0.025,
-        0.008,
-        0.004,
-        0.002,
-        0.001
+        0.015,
+        0.005,
+        0.0,
+        0.0,
+        0.0
       ],
       "shrunk_outcome_predictions": [
-        0.00478228039265039,
-        0.02466649886735465,
-        0.08809463881198087,
-        0.37125597785049086,
-        0.3788069468915178,
-        0.09828844701736723,
-        0.020891014346841184,
-        0.007299270072992702,
-        0.00339793606846212,
-        0.0016360432922225023,
-        0.0008809463881198088
+        0.004986909362922329,
+        0.009275651415035531,
+        0.0623363670365291,
+        0.426131405061713,
+        0.39446453060715614,
+        0.08477745916967959,
+        0.012342600673232763,
+        0.004812367535220047,
+        0.0005236254831068445,
+        0.00017454182770228148,
+        0.00017454182770228148
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 73\u00b0F or below on April 11?",
@@ -139,32 +139,32 @@
         "Will the highest temperature in Miami be 92\u00b0F or higher on April 11?"
       ],
       "outcome_market_prices": [
-        0.004,
-        0.023,
-        0.11,
-        0.425,
-        0.365,
-        0.0305,
-        0.008,
         0.005,
+        0.008,
+        0.095,
+        0.515,
+        0.35,
+        0.02,
+        0.0075,
+        0.0045,
         0.0015,
         0.0005,
         0.0005
       ],
       "pre_adversarial_predictions": [
         0.01,
-        0.02,
-        0.03,
-        0.08,
-        0.45,
-        0.35,
-        0.04,
         0.01,
-        0.005,
-        0.003,
-        0.002
+        0.02,
+        0.12,
+        0.38,
+        0.42,
+        0.03,
+        0.01,
+        0.0,
+        0.0,
+        0.0
       ],
-      "reasoning_excerpt": "Looking at the National Weather Service forecast for Miami today:\n\n**Key Information:**\n- Official forecast high: 82\u00b0F\n- Hourly progression shows temperatures peaking at 81\u00b0F around 3pm and 5pm\n- Current conditions (5:27am): Already at 61\u00b0F, matching the hourly forecast\n- Weather: Mostly sunny with moderate northeast winds\n\n**Analysis:**\n\nThe NWS forecast is extremely reliable for same-day predictions, especially just hours before the peak temperature period. The forecast high of 82\u00b0F places us "
+      "reasoning_excerpt": "Looking at the National Weather Service forecast for Miami today (April 11, 2026), the key information is:\n- Forecast high: 82\u00b0F\n- Hourly temperatures show a peak of 81\u00b0F at 5pm\n- Conditions: Mostly sunny with northeast winds 5-10 mph, gusts up to 23 mph\n\nThis is a same-day forecast with only hours remaining until resolution. The NWS same-day forecasts are highly accurate, typically within 1-2\u00b0F of the actual high temperature. The hourly forecast shows the temperature reaching 80\u00b0F by 2pm and pe"
     }
   ]
 }
