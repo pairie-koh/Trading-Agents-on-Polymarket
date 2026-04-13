@@ -59,6 +59,10 @@
     {
       "date": "2026-04-12",
       "content": "# LLM Forecast Iteration \u2014 2026-04-12\n\n**AUTO-REVERT**: Reverted changes from 2026-04-11 because performance degraded.\n\nReverted 1 replacement(s).\n"
+    },
+    {
+      "date": "2026-04-13",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-13\n\n**Decision: NO CHANGE**\n\nThe system shows recent strong improvement with avg SE decreasing from 0.087137 to 0.038032 (-0.049105) in the last iteration, despite poor overall performance (57% accuracy, -0.008981 edge vs market). However, experiment history clearly shows that adjusting SHRINKAGE_KEEP and weather-specific prompts consistently degraded performance and were reverted. The current configuration was producing consistent improvements before failed experiments. Given the recent positive trend and the pattern of failed parameter adjustments, making another change now would likely introduce noise rather than systematic improvement.\n"
     }
   ]
 }
