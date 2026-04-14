@@ -63,6 +63,10 @@
     {
       "date": "2026-04-13",
       "content": "# LLM Forecast Iteration \u2014 2026-04-13\n\n**Decision: NO CHANGE**\n\nThe system shows recent strong improvement with avg SE decreasing from 0.087137 to 0.038032 (-0.049105) in the last iteration, despite poor overall performance (57% accuracy, -0.008981 edge vs market). However, experiment history clearly shows that adjusting SHRINKAGE_KEEP and weather-specific prompts consistently degraded performance and were reverted. The current configuration was producing consistent improvements before failed experiments. Given the recent positive trend and the pattern of failed parameter adjustments, making another change now would likely introduce noise rather than systematic improvement.\n"
+    },
+    {
+      "date": "2026-04-14",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-14\n\n**Decision: NO CHANGE**\n\nThe system shows recent degradation (SE increased from 0.083477 to 0.090477) and negative market edge (-0.007726), but experiment history clearly demonstrates that adjusting SHRINKAGE_KEEP consistently fails and gets reverted. The current 0.75 configuration was producing consistent improvements before failed experiments introduced noise. With only 12 recent predictions, the sample size is too small to justify another parameter change that contradicts the clear pattern of failed adjustments.\n"
     }
   ]
 }
