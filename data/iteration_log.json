@@ -75,6 +75,10 @@
     {
       "date": "2026-04-20",
       "content": "# LLM Forecast Iteration \u2014 2026-04-20\n\n**Decision: NO CHANGE**\n\nThe system shows recent improvement with avg SE decreasing from 0.0840 to 0.0629 after strengthening weather guidance in the last iteration. While temperature contracts still underperform (49-52% accuracy vs 83% for Bitcoin), the recent weather prompt changes are working in the right direction. Experiment history clearly shows that adjusting SHRINKAGE_KEEP consistently degrades performance and gets reverted. With only 12 recent predictions, the sample size is insufficient to justify another change that could disrupt the positive trend from the weather improvements.\n"
+    },
+    {
+      "date": "2026-04-21",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-21\n\n**Decision: NO CHANGE**\n\nThe system shows mixed signals with recent degradation (SE increased from 0.075254 to 0.089627) but this is based on only 12 predictions. The weather prompt improvements from the previous iteration helped overall performance (SE decreased from 0.0840 to 0.0629), and experiment history clearly shows that parameter adjustments consistently fail and get reverted. With the small recent sample size and the positive longer-term trend from weather improvements, making another change now could disrupt the progress being made on temperature contracts.\n"
     }
   ]
 }
