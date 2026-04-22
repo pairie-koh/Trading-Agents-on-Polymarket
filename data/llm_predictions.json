@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-22T17:16:27Z",
+  "timestamp": "2026-04-22T21:09:11Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 22?",
@@ -7,47 +7,47 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "haiku",
-      "market_price": 0.9995,
-      "divergence": 0.019500000000000073,
-      "timestamp": "2026-04-22T17:16:27Z",
-      "prediction": 0.98,
-      "shrunk_prediction": 0.984875,
-      "reasoning_excerpt": "# Assessment\n\n**Contract Status & Resolution Logic:**\nThis contract has already expired (resolution was 2026-04-22T16:00:00Z, and current time is 2026-04-22T17:09:26Z - over 1 hour past deadline). The contract resolves YES if Bitcoin closes HIGHER than today's open of $76,289.00.\n\n**Intraday Performance:**\nBitcoin opened at $76,289.00 and is currently trading at $78,842.50, representing a +3.35% intraday gain. The current price is substantially above the opening price, and with the market having"
+      "market_price": 1.0,
+      "divergence": 0.030000000000000027,
+      "timestamp": "2026-04-22T21:09:11Z",
+      "prediction": 0.97,
+      "shrunk_prediction": 0.9775,
+      "reasoning_excerpt": "# Assessment\n\nThis contract has **already expired** (resolution was April 22, 2026 at 16:00 UTC, and current time is 21:02 UTC on the same day). The resolution should have occurred ~5 hours ago.\n\nHowever, examining the intraday data: Bitcoin opened at $76,289.00 and is currently trading at $78,485.50, representing a **+2.88% intraday gain**. For the contract to resolve YES, BTC needs to close higher than its open price. The current price is substantially above the open, and there's only ~3 hours"
     },
     {
       "question": "Highest temperature in NYC",
       "source": "rolling",
       "key": "nyc_temp",
       "type": "multi-outcome",
-      "tier": "opus",
+      "tier": "haiku",
       "market_price": 0,
-      "divergence": 0.030000000000000027,
-      "timestamp": "2026-04-22T17:16:27Z",
+      "divergence": 0.017269326683291508,
+      "timestamp": "2026-04-22T21:09:11Z",
       "outcome_predictions": [
-        0.7,
-        0.25,
-        0.03,
-        0.01,
-        0.003,
-        0.002,
-        0.001,
-        0.001,
-        0.001,
-        0.001,
-        0.001
+        0.9077306733167085,
+        0.05985037406483792,
+        0.009975062344139654,
+        0.004987531172069827,
+        0.0024937655860349135,
+        0.0024937655860349135,
+        0.0024937655860349135,
+        0.0024937655860349135,
+        0.0024937655860349135,
+        0.0024937655860349135,
+        0.0024937655860349135
       ],
       "shrunk_outcome_predictions": [
-        0.6919726197884257,
-        0.25637834474175486,
-        0.03273179838207842,
-        0.010578718108276293,
-        0.002364654635967642,
-        0.0016179215930304921,
-        0.0008711885500933418,
-        0.0008711885500933418,
-        0.0008711885500933418,
-        0.0008711885500933418,
-        0.0008711885500933418
+        0.9113644816263113,
+        0.05859383517224922,
+        0.010348535356587295,
+        0.00573634611946277,
+        0.0019938288179127497,
+        0.0019938288179127497,
+        0.0019938288179127497,
+        0.0019938288179127497,
+        0.0019938288179127497,
+        0.0019938288179127497,
+        0.0019938288179127497
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 55\u00b0F or below on April 22?",
@@ -63,10 +63,10 @@
         "Will the highest temperature in New York City be 74\u00b0F or higher on April 22?"
       ],
       "outcome_market_prices": [
-        0.68,
-        0.28,
-        0.0415,
-        0.0125,
+        0.925,
+        0.055,
+        0.0115,
+        0.008,
         0.0005,
         0.0005,
         0.0005,
@@ -75,20 +75,7 @@
         0.0005,
         0.0005
       ],
-      "pre_adversarial_predictions": [
-        0.8982035928143715,
-        0.07984031936127746,
-        0.009980039920159682,
-        0.004990019960079841,
-        0.0009980039920159682,
-        0.0009980039920159682,
-        0.0009980039920159682,
-        0.0009980039920159682,
-        0.0009980039920159682,
-        0.0009980039920159682,
-        0.0009980039920159682
-      ],
-      "reasoning_excerpt": "Looking at this expired contract, I need to analyze what the actual high temperature was on April 22, 2026 (today).\n\nThe National Weather Service forecast provides critical information:\n- Today's forecast high: 56\u00b0F\n- Hourly temperatures show a peak of 55\u00b0F around 6pm\n- The temperatures through the day ranged from 51-55\u00b0F based on the hourly data\n\nThis is a same-day forecast with hourly data already available through 11pm, so we can be highly confident about the actual high temperature. The NWS "
+      "reasoning_excerpt": "# Assessment\n\n**Primary Signal - NWS Forecast:**\nThe National Weather Service forecasts a high of 55\u00b0F for NYC on April 22, with the peak expected around 5pm at 54\u00b0F. Same-day forecasts this close to resolution are typically accurate within 1-2\u00b0F, making this the dominant signal.\n\n**Market Assessment:**\nThe market has heavily concentrated probability (92.5%) in the \"\u226455\u00b0F\" bucket, which aligns well with the NWS forecast. However, the market appears to have underweighted the precision of same-day"
     },
     {
       "question": "Highest temperature in Miami",
@@ -97,19 +84,19 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.13999999999999999,
-      "timestamp": "2026-04-22T17:16:27Z",
+      "divergence": 0.010000000000000009,
+      "timestamp": "2026-04-22T21:09:11Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
+        0.0,
         0.01,
-        0.08,
-        0.5,
-        0.35,
-        0.05,
-        0.01,
+        0.97,
+        0.02,
+        0.0,
+        0.0,
         0.0
       ],
       "shrunk_outcome_predictions": [
@@ -117,13 +104,13 @@
         0.0,
         0.0,
         0.0,
-        0.007615179591318696,
-        0.09074755679654779,
-        0.5216398020053308,
-        0.3198375428353852,
-        0.05051402462241402,
-        0.008757456530016501,
-        0.0008884376189871811
+        0.0,
+        0.007505629221916438,
+        0.9732299224418314,
+        0.017638228671503633,
+        0.00037528146109582183,
+        0.00062546910182637,
+        0.00062546910182637
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 67\u00b0F or below on April 22?",
@@ -144,27 +131,27 @@
         0.0,
         0.0,
         0.0,
-        0.1175,
-        0.555,
-        0.21,
-        0.049,
-        0.0045,
-        0.0035
+        0.0,
+        0.98,
+        0.0105,
+        0.0015,
+        0.0025,
+        0.0025
       ],
       "pre_adversarial_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
-        0.01,
-        0.01,
-        0.15,
-        0.8,
-        0.03,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 22, 2026, I need to analyze what the actual outcome likely was based on the NWS data provided.\n\nThe National Weather Service forecast shows:\n- Today's forecast high: 80\u00b0F\n- Hourly temperatures peaked at 80\u00b0F at 3pm\n- The forecast explicitly states \"Peak expected: 80 deg F around 3pm\"\n\nThis is same-day weather data, which is extremely reliable. The NWS has already observed temperatures throughout the day, and their \"forecast\" "
+      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 22, 2026, I need to analyze what actually happened based on the available data.\n\n**Key Information:**\n- The NWS forecast shows today's forecast high was 80\u00b0F\n- The hourly temperatures show a peak of 79\u00b0F at 5pm\n- The contract has expired, so we're looking at what actually occurred\n\n**Analysis:**\n\nThe NWS forecast called for a high of 80\u00b0F, but the actual peak temperature recorded was 79\u00b0F at 5pm. Looking at the hourly progres"
     }
   ]
 }
