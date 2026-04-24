@@ -1,19 +1,19 @@
 {
-  "timestamp": "2026-04-24T17:12:12Z",
+  "timestamp": "2026-04-24T21:03:01Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 24?",
       "source": "rolling",
       "key": "bitcoin_daily",
       "type": "binary",
-      "tier": "sonnet",
-      "market_price": 0.0005,
-      "divergence": 0.0095,
-      "timestamp": "2026-04-24T17:12:12Z",
-      "prediction": 0.01,
-      "shrunk_prediction": 0.007625,
+      "tier": "opus",
+      "market_price": 0.0,
+      "divergence": 0.5,
+      "timestamp": "2026-04-24T21:03:01Z",
+      "prediction": 0.5,
+      "shrunk_prediction": 0.375,
       "pre_adversarial_prediction": 0.0,
-      "reasoning_excerpt": "This contract has already expired and the outcome is definitively known. According to the Bitcoin intraday data provided, Bitcoin opened at $78,226.00 on April 24, 2026, and the current price is $77,628.50, representing a -0.76% decline for the day. Since the contract resolves YES only if BTC closes HIGHER than it opened, and Bitcoin has clearly closed lower than its opening price, this contract should resolve to NO (0% probability of YES).\n\nThe market price of 0.001 (0.1%) suggests the market h"
+      "reasoning_excerpt": "This contract has already expired and should be resolved based on Bitcoin's closing price on April 24, 2026. The temporal context shows we're past the 4:00 PM UTC deadline, and the current time is 8:55 PM UTC on the same day.\n\nLooking at the intraday data, Bitcoin opened at $78,226.00 and is currently trading at $77,651.50, representing a -0.73% decline. The contract resolves YES only if Bitcoin closes HIGHER than it opened. Given that we're nearly 5 hours past the typical 4:00 PM UTC close, and"
     },
     {
       "question": "Highest temperature in NYC",
@@ -22,33 +22,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.21000000000000002,
-      "timestamp": "2026-04-24T17:12:12Z",
+      "divergence": 0.21450000000000002,
+      "timestamp": "2026-04-24T21:03:01Z",
       "outcome_predictions": [
         0.0,
         0.0,
-        0.01,
+        0.0,
+        0.0,
+        0.0,
+        0.15,
         0.02,
-        0.03,
-        0.05,
-        0.08,
-        0.12,
-        0.25,
-        0.24,
-        0.2
+        0.02,
+        0.02,
+        0.77,
+        0.02
       ],
       "shrunk_outcome_predictions": [
         0.0,
         0.0,
-        0.007478499314470896,
-        0.014956998628941792,
-        0.022435497943412687,
-        0.03739249657235449,
-        0.05982799451576717,
-        0.08974199177365075,
-        0.30163280568365947,
-        0.2580082263492459,
-        0.20852548921849684
+        0.0,
+        0.0,
+        0.0,
+        0.11242973141786382,
+        0.014990630855715175,
+        0.014990630855715175,
+        0.015115552779512802,
+        0.8231105559025609,
+        0.019362898188632103
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 47\u00b0F or below on April 24?",
@@ -72,9 +72,9 @@
         0.0,
         0.0,
         0.0,
-        0.46,
-        0.315,
-        0.2365
+        0.0005,
+        0.9845,
+        0.0175
       ],
       "pre_adversarial_predictions": [
         0.0,
@@ -82,14 +82,14 @@
         0.0,
         0.0,
         0.0,
+        1.0,
         0.0,
-        0.15,
         0.0,
-        0.85,
+        0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for NYC's high temperature on April 24th, I need to analyze what actually happened versus what the market predicted.\n\n**Key Information:**\n- The NWS forecast shows today's high was 62\u00b0F\n- The hourly data confirms temperatures peaked at 59\u00b0F around 1-3pm, then declined\n- Since this contract has expired, we're dealing with actual observed data, not predictions\n\n**Analysis of What Happened:**\n\nThe official high temperature for April 24th would be recorded as 62\u00b0F ba"
+      "reasoning_excerpt": "This is a fascinating case where the market appears to be dramatically mispriced relative to the actual weather data. Let me analyze this carefully.\n\n**Key Facts:**\n- The NWS forecast explicitly states today's high will be 62\u00b0F\n- The hourly data shows temperatures have already peaked at 57\u00b0F at 4pm and are now declining\n- It's currently 8:55pm (20:55) and temperatures are at 51\u00b0F and falling\n- The contract has expired (resolution was at noon today)\n- The actual high temperature for April 24th ha"
     },
     {
       "question": "Highest temperature in Miami",
@@ -98,33 +98,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.065,
-      "timestamp": "2026-04-24T17:12:12Z",
+      "divergence": 0.025000000000000022,
+      "timestamp": "2026-04-24T21:03:01Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
-        0.0,
         0.001,
-        0.6,
-        0.38,
+        0.002,
         0.015,
-        0.003,
+        0.96,
+        0.015,
+        0.005,
         0.001,
-        0.0
+        0.001
       ],
       "shrunk_outcome_predictions": [
         0.0,
         0.0,
         0.0,
-        0.0,
-        0.0008751093886735842,
-        0.6138267283410427,
-        0.3637954744343043,
-        0.016502062757844733,
-        0.003500437554694337,
-        0.001375171896487061,
-        0.00012501562695336918
+        0.0007500000000000001,
+        0.0015000000000000002,
+        0.011250000000000001,
+        0.96625,
+        0.013625000000000002,
+        0.0046250000000000015,
+        0.0010000000000000002,
+        0.0010000000000000002
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 71\u00b0F or below on April 24?",
@@ -144,28 +144,28 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.655,
-        0.315,
-        0.021,
-        0.005,
-        0.0025,
-        0.0005
+        0.0,
+        0.0,
+        0.985,
+        0.0095,
+        0.0035,
+        0.001,
+        0.001
       ],
       "pre_adversarial_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
+        0.0,
         0.01,
-        0.1,
-        0.8,
-        0.08,
+        0.98,
         0.01,
+        0.0,
         0.0,
         0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract, I need to assess what the actual high temperature likely was in Miami on April 24, 2026, based on the available information.\n\n**Key Information:**\n- The NWS forecast (as of 5:04 PM on April 24) shows:\n  - Today's forecast high: 84\u00b0F\n  - Hourly temperatures peaked at 82\u00b0F from 2-5 PM\n  - Peak expected: 82\u00b0F around 2 PM\n\n**Critical Analysis:**\n\nThe NWS data presents an interesting discrepancy. The \"forecast high\" states 84\u00b0F, but the hourly temperature data shows "
+      "reasoning_excerpt": "Looking at this expired contract, I need to analyze what the actual high temperature in Miami was on April 24, 2026.\n\nThe NWS weather forecast data shows:\n- Today's forecast high: 83\u00b0F\n- Peak expected: 82\u00b0F around 5pm\n- Hourly temps show the peak was 82\u00b0F at 5pm\n\nThis is crucial - the actual recorded peak temperature was 82\u00b0F, which falls in the 82-83\u00b0F bucket.\n\nSince this contract has already expired and we have the actual temperature data showing a peak of 82\u00b0F, I can be certain about the outc"
     }
   ]
 }
