@@ -1,17 +1,13 @@
 {
-  "timestamp": "2026-04-25T13:16:20Z",
+  "timestamp": "2026-04-25T16:52:04Z",
   "market_prices": {
     "regime_fall": {
       "current": 0.085,
       "previous": 0.085,
       "change_4h": 0.0,
-      "change_24h": 0.0,
+      "change_24h": 0.01,
       "change_7d": 0.02,
       "history_24h": [
-        {
-          "t": 1777038532,
-          "p": 0.085
-        },
         {
           "t": 1777050262,
           "p": 0.075
@@ -35,50 +31,18 @@
         {
           "t": 1777122980,
           "p": 0.085
+        },
+        {
+          "t": 1777135924,
+          "p": 0.085
         }
       ]
     }
   },
   "fresh_facts": [
     {
-      "claim": "US military planners are preparing strikes on IRGC leaders including Ahmad Vahidi, naval assets, and energy infrastructure if Iran talks collapse.",
-      "source": "CNN via Hindustan Times",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:09:09Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "US Defense Secretary Pete Hegseth warned Iran to 'choose wisely' and confirmed global enforcement against Iranian-linked ships and readiness to counter Strait of Hormuz mining.",
-      "source": "CNN",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Three US aircraft carrier groups have been deployed as part of a strengthened naval blockade against Iran.",
-      "source": "CNN via Hindustan Times",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:09:09Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "A 'shoot and kill' order has been issued for Iranian boats in the Strait of Hormuz if they violate restrictions.",
-      "source": "CNN",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "Iran-linked proxy forces conducted drone strikes on Kuwait's northern border posts on April 24, 2026, launched from Iraq.",
-      "source": "CNN-News18",
+      "claim": "A third US aircraft carrier group has deployed to the Middle East region, marking the first time three carriers have operated in the same theater in 23 years.",
+      "source": "Al Jazeera",
       "source_category": "wire_service",
       "indicator_category": "military_pressure",
       "market": "regime_fall",
@@ -86,53 +50,44 @@
       "confidence": "high"
     },
     {
-      "claim": "Kuwait's military confirmed two drones damaged border sites, attributing them to pro-Iran militias.",
-      "source": "CNN-News18",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-24T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "IRGC Quds Force commander Esmail Qaani visited Iraq, with warnings preceding the drone strikes on Kuwait.",
-      "source": "CNN-News18",
-      "source_category": "wire_service",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-24T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "US President Trump claimed Iran's military is 'totally defeated' with leaders 'fighting like cats.'",
-      "source": "CNN",
-      "source_category": "wire_service",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "President Trump extended a ceasefire with Iran to allow Tehran time for a 'unified proposal.'",
-      "source": "Axios",
+      "claim": "US military planners are considering targeted strikes on IRGC commander Ahmad Vahidi if ceasefire talks collapse.",
+      "source": "Hindustan Times/CNN",
       "source_category": "us_prestige",
-      "indicator_category": "diplomatic_signals",
+      "indicator_category": "military_pressure",
       "market": "regime_fall",
       "time": "2026-04-25T00:00:00Z",
       "confidence": "high"
     },
     {
-      "claim": "Mediators from the US and Pakistan await a response from Supreme Leader Mojtaba Khamenei, expected on Wednesday.",
-      "source": "Axios",
+      "claim": "Defense Secretary Pete Hegseth warned Iran that any escalation such as mining the Strait of Hormuz would violate the ceasefire, with US forces prepared to respond.",
+      "source": "CNN/News18",
       "source_category": "us_prestige",
-      "indicator_category": "diplomatic_signals",
+      "indicator_category": "military_pressure",
       "market": "regime_fall",
       "time": "2026-04-25T00:00:00Z",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
-      "claim": "Mohammad Bagher Ghalibaf, head of Iran's US negotiating team, quit amid internal disagreements.",
-      "source": "Axios",
+      "claim": "US military options under consideration include strikes on Iranian naval assets, mines in the Strait of Hormuz, and energy infrastructure if diplomacy fails.",
+      "source": "Hindustan Times/CNN",
+      "source_category": "us_prestige",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "high"
+    },
+    {
+      "claim": "US forces have expanded a naval blockade of Iranian ports and vessels globally, including seizing Iranian-linked ships in the Indo-Pacific and boarding sanctioned oil tankers.",
+      "source": "Al Jazeera",
+      "source_category": "wire_service",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "high"
+    },
+    {
+      "claim": "IRGC commander-in-chief Ahmad Vahidi is identified as a key obstacle to ceasefire deals and a target of US concern for directing military moves and undermining negotiations.",
+      "source": "Hindustan Times/CNN",
       "source_category": "us_prestige",
       "indicator_category": "succession_dynamics",
       "market": "regime_fall",
@@ -140,17 +95,17 @@
       "confidence": "high"
     },
     {
-      "claim": "Iranian civilian officials including the foreign minister and parliament speaker favor continuing talks, while Revolutionary Guard commanders oppose until the Strait of Hormuz issue resolves.",
-      "source": "Axios",
-      "source_category": "us_prestige",
-      "indicator_category": "internal_stability",
+      "claim": "Iran opted out of planned US peace talks in Pakistan, according to Iran's foreign ministry spokesperson.",
+      "source": "CNN/News18",
+      "source_category": "wire_service",
+      "indicator_category": "diplomatic_signals",
       "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "medium"
+      "time": "2026-04-25T01:25:00Z",
+      "confidence": "high"
     },
     {
-      "claim": "Iran's Foreign Minister Abbas Araghchi conveyed a 'comprehensive response to proposals' during talks with Pakistan's army chief.",
-      "source": "Axios",
+      "claim": "US envoys Steve Witkoff and Jared Kushner have been dispatched to Islamabad for potential direct talks with Iran.",
+      "source": "Al Jazeera",
       "source_category": "us_prestige",
       "indicator_category": "diplomatic_signals",
       "market": "regime_fall",
@@ -158,116 +113,134 @@
       "confidence": "high"
     },
     {
-      "claim": "Internal disputes within Iranian leadership blocked negotiators' trip to Islamabad.",
-      "source": "Axios",
-      "source_category": "us_prestige",
+      "claim": "President Trump stated that Iran's military is 'totally defeated' with leaders 'fighting like cats,' urging no rush on decisions.",
+      "source": "social_media",
+      "source_category": "government_official",
+      "indicator_category": "diplomatic_signals",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "medium"
+    },
+    {
+      "claim": "Iran's political establishment largely rallied behind a two-week ceasefire decision made by the Supreme National Security Council.",
+      "source": "Regional source",
+      "source_category": "regional_specialist",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-18T00:00:00Z",
+      "confidence": "medium"
+    },
+    {
+      "claim": "On April 18, 2026, Tehran's Revolutionary Guard fired on a tanker in the Strait of Hormuz and reimposed its blockade, just one day after Iran announced reopening the critical waterway.",
+      "source": "Regional expert analysis",
+      "source_category": "regional_specialist",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-04-18T00:00:00Z",
+      "confidence": "high"
+    },
+    {
+      "claim": "Severe divisions have emerged within Iran's political and military establishment over diplomacy versus continued conflict.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
       "indicator_category": "internal_stability",
       "market": "regime_fall",
       "time": "2026-04-25T00:00:00Z",
       "confidence": "medium"
     },
     {
-      "claim": "IRGC Navy seized two vessels in the Strait of Hormuz hours after the ceasefire extension.",
-      "source": "Axios",
-      "source_category": "us_prestige",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "IRGC-linked media mapped undersea internet cables, signaling a potential warning.",
-      "source": "Axios",
-      "source_category": "us_prestige",
-      "indicator_category": "military_pressure",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "medium"
-    },
-    {
-      "claim": "A secret letter to Supreme Leader Mojtaba Khamenei has triggered top-level uncertainty and highlighted sensitivities over divisions within Iranian leadership.",
-      "source": "Axios",
-      "source_category": "us_prestige",
+      "claim": "President Masoud Pezeshkian faces fierce backlash after signaling conditional willingness to end the war.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
       "indicator_category": "succession_dynamics",
       "market": "regime_fall",
       "time": "2026-04-25T00:00:00Z",
       "confidence": "medium"
     },
     {
-      "claim": "Exiled Prince Reza Pahlavi dismissed Iranian negotiators as part of the repression system.",
-      "source": "Axios",
-      "source_category": "us_prestige",
+      "claim": "Hardliners have branded former Foreign Minister Mohammad Javad Zarif a 'traitor' and accused him of espionage over his call to end the war, with lawmakers urging his arrest.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
       "indicator_category": "internal_stability",
       "market": "regime_fall",
       "time": "2026-04-25T00:00:00Z",
       "confidence": "medium"
     },
     {
-      "claim": "Bread shortages and soaring prices are straining Iranian households amid sanctions and conflict.",
-      "source": "Axios",
-      "source_category": "us_prestige",
+      "claim": "Lawmakers have urged the arrest of former President Hassan Rouhani alongside former Foreign Minister Zarif.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "medium"
+    },
+    {
+      "claim": "The absence of a clear supreme arbiter in Tehran is giving hardliners increased room to shape narratives and hinder potential agreements.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
+      "indicator_category": "succession_dynamics",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "medium"
+    },
+    {
+      "claim": "The Israeli Defense Force has expanded air campaigns targeting Iranian regime institutions including the Ministry of Intelligence and Security (MOIS) and Law Enforcement Command (LEC) headquarters.",
+      "source": "Institute for the Study of War",
+      "source_category": "think_tank",
+      "indicator_category": "military_pressure",
+      "market": "regime_fall",
+      "time": "2026-02-03T00:00:00Z",
+      "confidence": "high"
+    },
+    {
+      "claim": "The degradation of the Iranian coercive apparatus coupled with energy infrastructure damage could destabilize the regime.",
+      "source": "Institute for the Study of War",
+      "source_category": "think_tank",
       "indicator_category": "economic_collapse",
       "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "UK PM Keir Starmer pledged to proscribe the IRGC in upcoming legislation.",
-      "source": "Axios",
-      "source_category": "uk_prestige",
-      "indicator_category": "international_response",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Two men accused of Iran-linked surveillance on Jewish and Israeli sites in London face court proceedings.",
-      "source": "Axios",
-      "source_category": "uk_prestige",
-      "indicator_category": "international_response",
-      "market": "regime_fall",
-      "time": "2026-04-25T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "US envoys were heading to Pakistan for Iran talks as of April 24, 2026.",
-      "source": "CNN",
-      "source_category": "wire_service",
-      "indicator_category": "diplomatic_signals",
-      "market": "regime_fall",
-      "time": "2026-04-24T00:00:00Z",
-      "confidence": "high"
-    },
-    {
-      "claim": "Unverified reports suggest Iran-backed Iraqi militias have been deployed to Tehran's streets for security purposes.",
-      "source": "Wall Street Journal",
-      "source_category": "us_prestige",
-      "indicator_category": "internal_stability",
-      "market": "regime_fall",
-      "time": "2026-04-21T00:00:00Z",
-      "confidence": "low"
-    },
-    {
-      "claim": "Iran has granted Iran-backed Iraqi militias greater autonomy amid US pressure on Iraq to curb such groups.",
-      "source": "Wall Street Journal",
-      "source_category": "us_prestige",
-      "indicator_category": "internal_stability",
-      "market": "regime_fall",
-      "time": "2026-04-21T00:00:00Z",
+      "time": "2026-02-03T00:00:00Z",
       "confidence": "medium"
+    },
+    {
+      "claim": "Supreme Leader Ali Khamenei appointed Major General Amir Hatami as overall Artesh commander, a vocal proponent of Iran's 'active deterrence' doctrine.",
+      "source": "Institute for the Study of War",
+      "source_category": "think_tank",
+      "indicator_category": "succession_dynamics",
+      "market": "regime_fall",
+      "time": "2026-02-03T00:00:00Z",
+      "confidence": "high"
+    },
+    {
+      "claim": "Iran's state broadcaster has adopted a noticeably harsher tone toward dissent, increasingly framing domestic protests as part of a war waged by 'enemies.'",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "medium"
+    },
+    {
+      "claim": "Iran's state broadcaster claimed that 87% of Iranians support continuing the war, representing a reversal from earlier in the conflict.",
+      "source": "Regional analysis",
+      "source_category": "regional_specialist",
+      "indicator_category": "internal_stability",
+      "market": "regime_fall",
+      "time": "2026-04-25T00:00:00Z",
+      "confidence": "low"
     }
   ],
   "state": {
     "last_updated": "2026-06-16T00:00:00Z",
     "markets": {
       "regime_fall": {
-        "current_status": "Iran faces escalating military pressure from three US carrier groups with explicit strike preparations targeting IRGC leadership and energy infrastructure, while internal divisions between negotiation-favoring civilians and hardline military commanders intensify amid a secret letter to Supreme Leader Mojtaba Khamenei triggering top-level uncertainty. Economic deterioration including bread shortages compounds regime fragility as diplomatic channels remain blocked by internal disputes despite Trump administration ceasefire extensions.",
+        "current_status": "Iran faces unprecedented military pressure from three US carrier groups with explicit strike preparations targeting IRGC leadership and energy infrastructure, while severe internal divisions between negotiation-favoring civilians (Pezeshkian, Zarif, Rouhani) and hardline military commanders (Vahidi, Hatami) intensify succession uncertainty and obstruct ceasefire diplomacy despite Trump administration diplomatic overtures.",
         "last_major_event": "On June 16, 2026, the IDF struck Iranian regime security institutions and the Shahran oil depot near Tehran, while Iran launched approximately 30 ballistic missiles targeting Haifa in Operation True Promise III with 92% interception rates, and Supreme Leader Khamenei appointed Maj. Gen. Amir Hatami as Artesh commander emphasizing 'active deterrence.'",
         "last_major_event_time": "2026-06-16T00:00:00Z",
         "military_pressure": "critical",
         "internal_stability": "critical",
         "succession_dynamics": "critical",
-        "diplomatic_signals": "critical",
+        "diplomatic_signals": "high",
         "economic_collapse": "critical",
         "international_response": "critical"
       }
