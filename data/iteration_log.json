@@ -95,6 +95,10 @@
     {
       "date": "2026-04-25",
       "content": "# LLM Forecast Iteration \u2014 2026-04-25\n\n**Decision: NO CHANGE**\n\nThe system shows recent degradation (SE increased from 0.073946 to 0.076854) after the weather prompt changes in the last iteration. While temperature contracts still underperform (48% accuracy vs 85% for Bitcoin), the recent attempt to make weather guidance more prescriptive appears to have backfired. Experiment history shows that all parameter adjustments consistently fail, and with only 12 recent predictions, this could be statistical noise. The system needs time to stabilize after the recent prompt changes rather than additional tweaks that could compound the problem.\n"
+    },
+    {
+      "date": "2026-04-26",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-26\n\n**Decision: NO CHANGE**\n\nThe system shows recent degradation (SE increased from 0.074067 to 0.081842) after the aggressive weather prompt changes in the last iteration. Temperature contracts continue underperforming (48-50% accuracy vs 84% for Bitcoin) and the system has a negative market edge (-0.008488). However, experiment history clearly demonstrates that parameter adjustments consistently fail and get reverted, while recent weather guidance changes appear to be overcorrecting. With only 12 recent predictions, this could be statistical noise, and the system needs time to stabilize after recent prompt changes rather than additional tweaks.\n"
     }
   ]
 }
