@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T17:58:17Z",
+  "timestamp": "2026-04-28T21:18:49Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 28?",
@@ -9,10 +9,10 @@
       "tier": "haiku",
       "market_price": 0.0,
       "divergence": 0.0,
-      "timestamp": "2026-04-28T17:58:17Z",
+      "timestamp": "2026-04-28T21:18:49Z",
       "prediction": 0.0,
       "shrunk_prediction": 0.0,
-      "reasoning_excerpt": "# Assessment\n\nThis contract has already expired (resolution was 2026-04-28T16:00:00Z, and current time is 2026-04-28T17:51:15Z). The contract requires Bitcoin to close HIGHER than its opening price of $77,320.00 to resolve YES. As of the latest data point, Bitcoin is trading at $76,156.50, which is DOWN 1.50% from the open. With the market already closed past the resolution time and Bitcoin well below the opening price, the outcome is determined: Bitcoin closed lower than it opened on April 28, "
+      "reasoning_excerpt": "# Assessment\n\nThis contract has already expired (resolution was 2026-04-28T16:00:00Z, and it's now 2026-04-28T21:12:11Z). The market price of 0.000 (0.0%) indicates the contract has resolved to NO.\n\nLooking at the intraday Bitcoin data: BTC opened at $77,320.00 and is currently trading at $76,352.50, representing a -1.25% intraday decline. For the contract to resolve YES, Bitcoin needed to close *higher* than its opening price. With the market now showing 0.0% and being past the resolution deadl"
     },
     {
       "question": "Highest temperature in NYC",
@@ -21,33 +21,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.30500000000000005,
-      "timestamp": "2026-04-28T17:58:17Z",
+      "divergence": 0.5415000000000001,
+      "timestamp": "2026-04-28T21:18:49Z",
       "outcome_predictions": [
-        0.001,
-        0.005,
-        0.04,
-        0.05,
-        0.08,
-        0.6,
-        0.18,
-        0.03,
+        0.0,
+        0.0,
         0.01,
-        0.003,
-        0.001
+        0.05,
+        0.1,
+        0.45,
+        0.25,
+        0.08,
+        0.04,
+        0.01,
+        0.01
       ],
       "shrunk_outcome_predictions": [
-        0.0007468259895444361,
-        0.0037341299477221803,
-        0.029873039581777443,
-        0.03734129947722181,
-        0.05987055016181229,
-        0.6733881005725666,
-        0.15807816778690564,
-        0.0248941996514812,
-        0.008215085884988798,
-        0.0026138909634055266,
-        0.0012447099825740602
+        0.0,
+        0.0,
+        0.007087172218284905,
+        0.03543586109142453,
+        0.07087172218284905,
+        0.5531537916371368,
+        0.23222300968580203,
+        0.05740609496810773,
+        0.02882116702102528,
+        0.0076777699031419806,
+        0.007323411292227736
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 55\u00b0F or below on April 28?",
@@ -67,28 +67,28 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.905,
-        0.095,
-        0.01,
+        0.0,
+        0.9915,
+        0.233,
         0.003,
-        0.0015,
-        0.002
+        0.002,
+        0.0025,
+        0.001
       ],
       "pre_adversarial_predictions": [
+        0.0,
+        0.03,
+        0.85,
+        0.1,
         0.01,
-        0.05,
-        0.8,
-        0.12,
-        0.01,
-        0.005,
-        0.003,
-        0.001,
-        0.0005,
-        0.0003,
-        0.0002
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.01
       ],
-      "reasoning_excerpt": "Looking at this expired contract for April 28, 2026, I need to assess what the actual high temperature was based on the available information.\n\nThe National Weather Service forecast shows:\n- Forecast high: 60\u00b0F\n- Hourly temperatures peak at 59\u00b0F around 3pm\n- Temperatures then decline through the afternoon/evening\n\nThis is critical: The NWS data shows the actual peak was 59\u00b0F, not the forecasted 60\u00b0F. Since this contract has already expired (we're past noon on April 28), these hourly readings rep"
+      "reasoning_excerpt": "Looking at this expired contract for April 28th, 2026, I need to reconcile the market prices with the NWS forecast data.\n\n**Key Analysis:**\n\nThe NWS forecast clearly states:\n- Today's forecast high: 60\u00b0F\n- Peak expected: 58\u00b0F around 4pm\n- The hourly temperatures show 58\u00b0F at 4pm (the peak) then declining\n\nThis is a critical discrepancy - the \"forecast high\" is listed as 60\u00b0F but the actual hourly data shows temperatures peaking at 58\u00b0F and then falling. Given that it's already 9:12 PM (past the "
     },
     {
       "question": "Highest temperature in Miami",
@@ -97,33 +97,33 @@
       "type": "multi-outcome",
       "tier": "opus",
       "market_price": 0,
-      "divergence": 0.04500000000000004,
-      "timestamp": "2026-04-28T17:58:17Z",
+      "divergence": 0.08499999999999996,
+      "timestamp": "2026-04-28T21:18:49Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
-        0.001,
-        0.005,
-        0.7,
-        0.25,
-        0.035,
-        0.007,
-        0.002
+        0.0,
+        0.01,
+        0.9,
+        0.05,
+        0.03,
+        0.01,
+        0.0
       ],
       "shrunk_outcome_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
-        0.0007466401194624191,
-        0.0038576406172224995,
-        0.7080637132901941,
-        0.24763563962170235,
-        0.03173220507715281,
-        0.006097560975609756,
-        0.0018666002986560478
+        0.0,
+        0.007446940548591286,
+        0.9147325307186297,
+        0.04157875139630135,
+        0.02817425840883703,
+        0.007819287576020852,
+        0.00024823135161970955
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 73\u00b0F or below on April 28?",
@@ -144,12 +144,12 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.745,
-        0.245,
-        0.0225,
-        0.0035,
-        0.0015
+        0.0,
+        0.985,
+        0.0175,
+        0.0235,
+        0.0015,
+        0.001
       ],
       "pre_adversarial_predictions": [
         0.0,
@@ -159,12 +159,12 @@
         0.0,
         0.0,
         0.01,
-        0.01,
-        0.12,
-        0.8,
-        0.06
+        0.02,
+        0.95,
+        0.02,
+        0.0
       ],
-      "reasoning_excerpt": "Looking at this expired contract for Miami's high temperature on April 28, 2026:\n\n**Critical Information:**\n- The NWS forecast high for today is **91\u00b0F**\n- The hourly data shows temperatures reaching 90\u00b0F around 5pm\n- Same-day weather forecasts are highly accurate (>90%)\n\n**Analysis:**\n\nThe NWS is forecasting a high of 91\u00b0F. This falls in the **90-91\u00b0F bucket**. Given that same-day forecasts are extremely accurate, I need to place 75-85% of my probability mass on this bucket.\n\nThe market is seve"
+      "reasoning_excerpt": "Looking at this prediction market for Miami's high temperature on April 28, 2026, I need to analyze the National Weather Service forecast, which is the most reliable signal for same-day temperature predictions.\n\n**Key Information:**\n- NWS forecast high: 90\u00b0F\n- Current time: 9:12 PM on April 28\n- Peak temperature already occurred: 88\u00b0F at 5 PM\n- Current temperature trend: 84\u00b0F at 7 PM, dropping to 79\u00b0F at 8 PM\n\n**Critical Analysis:**\n\nThe NWS forecast predicted 90\u00b0F, but the actual peak was 88\u00b0F "
     }
   ]
 }
