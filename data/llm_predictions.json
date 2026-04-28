@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-28T06:41:19Z",
+  "timestamp": "2026-04-28T10:26:22Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on April 28?",
@@ -7,11 +7,11 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "haiku",
-      "market_price": 0.6,
+      "market_price": 0.395,
       "divergence": 0.0,
-      "timestamp": "2026-04-28T06:41:19Z",
-      "prediction": 0.6,
-      "shrunk_prediction": 0.6,
+      "timestamp": "2026-04-28T10:26:22Z",
+      "prediction": 0.395,
+      "shrunk_prediction": 0.395,
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     },
     {
@@ -22,32 +22,32 @@
       "tier": "haiku",
       "market_price": 0,
       "divergence": 0.0,
-      "timestamp": "2026-04-28T06:41:19Z",
+      "timestamp": "2026-04-28T10:26:22Z",
       "outcome_predictions": [
         0.0015,
         0.001,
-        0.007,
-        0.0405,
+        0.0015,
+        0.034,
+        0.245,
+        0.525,
         0.215,
-        0.44,
-        0.235,
-        0.0595,
-        0.0065,
-        0.0055,
-        0.002
+        0.0245,
+        0.0045,
+        0.0015,
+        0.0015
       ],
       "shrunk_outcome_predictions": [
         0.0015,
         0.001,
-        0.007,
-        0.0405,
+        0.0015,
+        0.034,
+        0.245,
+        0.525,
         0.215,
-        0.44,
-        0.235,
-        0.0595,
-        0.0065,
-        0.0055,
-        0.002
+        0.0245,
+        0.0045,
+        0.0015,
+        0.0015
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 55\u00b0F or below on April 28?",
@@ -65,15 +65,15 @@
       "outcome_market_prices": [
         0.0015,
         0.001,
-        0.007,
-        0.0405,
+        0.0015,
+        0.034,
+        0.245,
+        0.525,
         0.215,
-        0.44,
-        0.235,
-        0.0595,
-        0.0065,
-        0.0055,
-        0.002
+        0.0245,
+        0.0045,
+        0.0015,
+        0.0015
       ],
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     },
@@ -85,32 +85,32 @@
       "tier": "haiku",
       "market_price": 0,
       "divergence": 0.0,
-      "timestamp": "2026-04-28T06:41:19Z",
+      "timestamp": "2026-04-28T10:26:22Z",
       "outcome_predictions": [
+        0.0,
+        0.0,
         0.0005,
-        0.0005,
-        0.0005,
-        0.0065,
-        0.023,
-        0.095,
-        0.495,
-        0.315,
-        0.042,
-        0.0155,
-        0.0055
+        0.005,
+        0.005,
+        0.085,
+        0.605,
+        0.31,
+        0.024,
+        0.0095,
+        0.005
       ],
       "shrunk_outcome_predictions": [
+        0.0,
+        0.0,
         0.0005,
-        0.0005,
-        0.0005,
-        0.0065,
-        0.023,
-        0.095,
-        0.495,
-        0.315,
-        0.042,
-        0.0155,
-        0.0055
+        0.005,
+        0.005,
+        0.085,
+        0.605,
+        0.31,
+        0.024,
+        0.0095,
+        0.005
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 73\u00b0F or below on April 28?",
@@ -126,17 +126,17 @@
         "Will the highest temperature in Miami be 92\u00b0F or higher on April 28?"
       ],
       "outcome_market_prices": [
+        0.0,
+        0.0,
         0.0005,
-        0.0005,
-        0.0005,
-        0.0065,
-        0.023,
-        0.095,
-        0.495,
-        0.315,
-        0.042,
-        0.0155,
-        0.0055
+        0.005,
+        0.005,
+        0.085,
+        0.605,
+        0.31,
+        0.024,
+        0.0095,
+        0.005
       ],
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     }
