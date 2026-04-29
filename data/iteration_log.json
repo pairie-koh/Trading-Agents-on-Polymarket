@@ -103,6 +103,10 @@
     {
       "date": "2026-04-27",
       "content": "# LLM Forecast Iteration \u2014 2026-04-27\n\n**Decision: NO CHANGE**\n\nThe system shows recent improvement (SE decreased from 0.074376 to 0.062150) but is currently blocked by API payment errors preventing predictions on weather contracts. While weather contracts continue underperforming (48-50% accuracy vs 85% for Bitcoin), the small sample size (12 recent predictions) and active system issues make this insufficient evidence for prompt changes. The experiment history shows that weather prompt adjustments have mixed results, and the recent improvement trend suggests the system needs stability rather than further tweaks.\n"
+    },
+    {
+      "date": "2026-04-29",
+      "content": "# LLM Forecast Iteration \u2014 2026-04-29\n\n**Decision: NO CHANGE**\n\nThe system shows severe recent degradation with avg SE increasing from 0.073908 to 0.131157 (+0.057249) after aggressive weather prompt changes in recent iterations. While temperature contracts continue underperforming (50-52% accuracy vs 83% for Bitcoin), the experiment history clearly demonstrates that parameter adjustments and weather prompt modifications consistently fail or backfire. With only 18 recent predictions and active API payment issues, the system needs time to stabilize rather than further tweaks that could compound the current problems.\n"
     }
   ]
 }
