@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-05-01T06:40:54Z",
+  "timestamp": "2026-05-01T09:51:04Z",
   "market_prices": {
     "regime_fall": {
-      "current": 0.085,
+      "current": 0.075,
       "previous": 0.085,
-      "change_4h": 0.0,
-      "change_24h": 0.01,
-      "change_7d": 0.0,
+      "change_4h": -0.01,
+      "change_24h": 0.0,
+      "change_7d": -0.015,
       "history_24h": [
         {
           "t": 1777543863,
@@ -31,6 +31,10 @@
         {
           "t": 1777617654,
           "p": 0.085
+        },
+        {
+          "t": 1777629064,
+          "p": 0.075
         }
       ]
     }
