@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-09T17:09:12Z",
+  "timestamp": "2026-05-09T20:57:13Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on May 9?",
@@ -9,7 +9,7 @@
       "tier": "haiku",
       "market_price": 0.9995,
       "divergence": 0.0,
-      "timestamp": "2026-05-09T17:09:12Z",
+      "timestamp": "2026-05-09T20:57:13Z",
       "prediction": 0.9995,
       "shrunk_prediction": 0.9995,
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
@@ -22,19 +22,19 @@
       "tier": "haiku",
       "market_price": 0,
       "divergence": 0.0,
-      "timestamp": "2026-05-09T17:09:12Z",
+      "timestamp": "2026-05-09T20:57:13Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.0005,
-        0.755,
-        0.152,
-        0.0365,
-        0.0125
+        0.0,
+        0.0,
+        0.9965,
+        0.005,
+        0.003,
+        0.0005
       ],
       "shrunk_outcome_predictions": [
         0.0,
@@ -42,12 +42,12 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.0005,
-        0.755,
-        0.152,
-        0.0365,
-        0.0125
+        0.0,
+        0.0,
+        0.9965,
+        0.005,
+        0.003,
+        0.0005
       ],
       "outcome_questions": [
         "Will the highest temperature in New York City be 51\u00b0F or below on May 9?",
@@ -68,12 +68,12 @@
         0.0,
         0.0,
         0.0,
-        0.0005,
-        0.0005,
-        0.755,
-        0.152,
-        0.0365,
-        0.0125
+        0.0,
+        0.0,
+        0.9965,
+        0.005,
+        0.003,
+        0.0005
       ],
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     },
@@ -85,32 +85,32 @@
       "tier": "haiku",
       "market_price": 0,
       "divergence": 0.0,
-      "timestamp": "2026-05-09T17:09:12Z",
+      "timestamp": "2026-05-09T20:57:13Z",
       "outcome_predictions": [
         0.0,
         0.0,
         0.0,
+        0.0,
         0.0005,
         0.0005,
-        0.04,
-        0.66,
-        0.23,
-        0.019,
-        0.0075,
-        0.0025
+        0.974,
+        0.0255,
+        0.0035,
+        0.0025,
+        0.0015
       ],
       "shrunk_outcome_predictions": [
         0.0,
         0.0,
         0.0,
+        0.0,
         0.0005,
         0.0005,
-        0.04,
-        0.66,
-        0.23,
-        0.019,
-        0.0075,
-        0.0025
+        0.974,
+        0.0255,
+        0.0035,
+        0.0025,
+        0.0015
       ],
       "outcome_questions": [
         "Will the highest temperature in Miami be 79\u00b0F or below on May 9?",
@@ -129,14 +129,14 @@
         0.0,
         0.0,
         0.0,
+        0.0,
         0.0005,
         0.0005,
-        0.04,
-        0.66,
-        0.23,
-        0.019,
-        0.0075,
-        0.0025
+        0.974,
+        0.0255,
+        0.0035,
+        0.0025,
+        0.0015
       ],
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     }
