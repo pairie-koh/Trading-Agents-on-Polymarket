@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-19T04:10:31Z",
+  "timestamp": "2026-05-19T08:00:18Z",
   "predictions": [
     {
       "question": "Bitcoin Up or Down on May 19?",
@@ -7,11 +7,11 @@
       "key": "bitcoin_daily",
       "type": "binary",
       "tier": "haiku",
-      "market_price": 0.695,
+      "market_price": 0.865,
       "divergence": 0.0,
-      "timestamp": "2026-05-19T04:10:31Z",
-      "prediction": 0.695,
-      "shrunk_prediction": 0.695,
+      "timestamp": "2026-05-19T08:00:18Z",
+      "prediction": 0.865,
+      "shrunk_prediction": 0.865,
       "reasoning_excerpt": "[ERROR: 402 Client Error: Payment Required for url: https://openrouter.ai/api/v1/chat/completions]"
     }
   ]
