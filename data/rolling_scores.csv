@@ -515,3 +515,5 @@ date,contract_key,contract_name,contract_type,prediction,market_price,outcome,co
 2026-05-17,bitcoin_daily,Bitcoin Up or Down,binary,0.395,0.395,0.0,True,0.156025,0.156025,0.0,haiku,2026-05-17T06:54:54Z
 2026-05-17,bitcoin_daily,Bitcoin Up or Down,binary,0.435,0.435,0.0,True,0.189225,0.189225,0.0,haiku,2026-05-17T09:56:13Z
 2026-05-17,bitcoin_daily,Bitcoin Up or Down,binary,0.635,0.635,0.0,False,0.403225,0.403225,0.0,haiku,2026-05-17T13:49:00Z
+2026-05-18,bitcoin_daily,Bitcoin Up or Down,binary,0.165,0.165,0.0,True,0.027225,0.027225,0.0,haiku,2026-05-18T04:15:42Z
+2026-05-18,bitcoin_daily,Bitcoin Up or Down,binary,0.175,0.175,0.0,True,0.030625,0.030625,0.0,haiku,2026-05-18T11:57:04Z
